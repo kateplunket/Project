@@ -25,14 +25,14 @@
                 <td>Moo</td>
                 <td>Farm</td>
                 <td>11-12-2018</td>
-                <td><button class="btn btn-success btn-xs btnsound">Play Sound</button></td>
+                <td><button data-sound="Moo" class="btn btn-success btn-xs btnsound">Play Sound</button></td>
             </tr>
             <tr>
                 <td>Pig</td>
                 <td>Oink</td>
                 <td>Farm</td>
                 <td>01-02-2022</td>
-                <td><button class="btn btn-success btn-xs btnsound">Play Sound</button></td>
+                <td><button data-sound="Oink" class="btn btn-success btn-xs btnsound">Play Sound</button></td>
             </tr>
         </tbody>
     </table>
@@ -40,8 +40,13 @@
     <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
     <script>
         $('.btnsound').on('click', function(){
-            alert('Sound Button Clicked');
+            let strSound = $(this).attr('data-sound');
+            alert(strSound);
         })
+        /*$(document).on('click','.btnsound',function(){
+            alert('Sound Button Clicked');
+        })*/
     </script>
+
 </body>
 </html>
