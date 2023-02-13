@@ -24,7 +24,7 @@
               <a class="nav-link active" aria-current="page" href="home.html">Home</a>
               <a class="nav-link" href="login.html">Login</a>
               <a class="nav-link" href="registration.html">Registration</a>
-              <a class="nav-link" href="#Farm ID">Farm ID</a>
+              <a class="nav-link" href="FarmID.html">Farm ID</a>
             </div>
           </div>
         </div>
@@ -33,16 +33,9 @@
         <form class="bg-success-subtle">
             <h3 class="pt-2" id="Registration">Registration</h3>
            <div class="alert alert-info col-md-12" role="alert">
-               Enter FarmID or Create a New Account 
+               Create a New Account
            </div> 
 
-           <label for="txtFarmID" class="form-label ">FarmID:</label>
-           <input type="FarmID" class="form-control" id="txtFarmID">
-
-           <div class="bg-warning-text">
-               <h5>--OR--</h5>
-           </div>
-           
            <label for="txtFarmName" class="form-label">Farm Name:</label>
            <input type="Farm Name" class="form-control" id="txtFarmName">
 
@@ -74,9 +67,6 @@
         $('#txtPassword').val();
 
        $('#btnRegister').click(function(){
-           let strFarmID = $('#txtFarmID').val();
-           let intFarmIDLength = $('#txtFarmID').val().length;
-           
            let strFarmName = $('#txtFarmName').val();
            let intFarmNameLength = $('#txtFarmName').val().length;
            
@@ -97,6 +87,35 @@
 
            var blnErrorFound = false;
            var strErrorMessage;
+
+           if(intFarmNameLength < 1){
+                blnErrorFound = true;
+                strErrorMessage += " You must enter a Farm Name.";
+                console.log('You must enter a Farm Name');
+            }
+            if(intAddressLine1Length < 1){
+                blnErrorFound = true;
+                strErrorMessage += " You must enter an Address on 'Address Line 1'.";
+                console.log('You must enter an Address');
+            }
+            if(intCityLength < 1){
+                blnErrorFound = true;
+                strErrorMessage += " You must enter a City.";
+                console.log('You must enter a City');
+            }
+            if(intStateLength < 1){
+                blnErrorFound = true;
+                strErrorMessage += " You must enter a State.";
+                console.log('You must enter a State');
+            }
+            if(intZipLength < 1){
+                blnErrorFound = true;
+                strErrorMessage += " You must enter a Zip Code.";
+                console.log('You must enter a Zip Code');
+            }
+            if(strErrorMessage.length > 0){
+                alert(strErrorMessage);
+            }
        })
     </script>
 
