@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Create Account</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <style>
         body {
@@ -31,7 +31,12 @@
       </nav>
     <div class="card-body col-md-6 offset-md-3 text-center">
         <form class="bg-success">
-            <h3 id="Login">Login</h3>
+            <h3 id="Login">Create Account</h3>
+            <label for="txtFirstName" class="form-label">First Name:</label>
+            <input type="FirstName" class="form-control" id="txtFirstName">
+
+            <label for="txtLastName" class="form-label">Last Name:</label>
+            <input type="LastName" class="form-control" id="txtLastName">
 
             <label for="txtEmail" class="form-label">Email:</label>
             <input for="Email" class="form-control" id="txtEmail" type="Email">
@@ -39,14 +44,17 @@
             <label for="txtPassword" class="form-label">Password:</label>
             <input for="Password" class="form-control" id="txtPassword" type="Password">
 
+            <label for="txtMobileNumber" class="form-label">Mobile Number:</label>
+            <input for="MobileNumber" class="form-control" id="txtMobileNumber" type="tel">
+
             <button id="btnLogin"class="btn btn-warning col-12 mt-3 block" type="button" action="Registration.php" method="Post"><b>Login</b></button>
 
-        </form>
+        </form>     
     </div>
 
     <div>
         <form>
-            <hs>Create an account!</hs>
+            <hs>Have an account? Login!</hs>
         </form>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
@@ -57,8 +65,14 @@
         $('#txtPassword').val();
 
         $('#btnLogin').click(function(){
+            let strFirstName = $('#txtFirstName').val();
             document.getElementsByClassName('form-control').value;
             $('.form-control').val();
+            let intFirstNameLength = $('#txtFirstName').val().length;
+            
+            let strLastName = $('#txtLastName').val();
+            let intLastNameLength = $('#txtLastName').val().length;
+            
             let strEmail = $('#txtEmail').val();
             let intEmailLength = $('#txtEmail').val().length;
             
@@ -68,6 +82,17 @@
             var blnErrorFound = false;
             var strErrorMessage;
 
+            
+            if(intFirstNameLength < 1){
+                blnErrorFound = true;
+                strErrorMessage += " You must enter a First Name.";
+                console.log('You must enter a First Name');
+            }
+            if(intLastNameLength < 1){
+                blnErrorFound = true;
+                strErrorMessage += " You must enter a Last Name.";
+                console.log('You must enter a Last Name');
+            }
             if(intEmailLength < 1){
                 blnErrorFound = true;
                 strErrorMessage += " You must enter an Email.";
