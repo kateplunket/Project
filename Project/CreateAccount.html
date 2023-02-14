@@ -9,6 +9,11 @@
     <style>
         body {
           background-image: url('landscape.jpeg');
+        
+         background-position: center;
+         background-repeat: no-repeat;
+         background-size: cover;
+         background-attachment: fixed;
         }
         </style>
 </head>
@@ -30,7 +35,7 @@
         </div>
       </nav>
     <div class="card-body col-md-6 offset-md-3 text-center">
-        <form class="bg-success">
+        <form class="bg-success-subtle">
             <h3 id="Login">Create Account</h3>
             <label for="txtFirstName" class="form-label">First Name:</label>
             <input type="FirstName" class="form-control" id="txtFirstName">
@@ -47,12 +52,12 @@
             <label for="txtMobileNumber" class="form-label">Mobile Number:</label>
             <input for="MobileNumber" class="form-control" id="txtMobileNumber" type="tel">
 
-            <button id="btnLogin"class="btn btn-warning col-12 mt-3 block" type="button" action="Registration.php" method="Post"><b>Login</b></button>
+            <button id="btnLogin"class="btn btn-warning col-12 mt-3 block" type="button" action="Registration.php" method="Post"><b>Create New Account</b></button>
 
         </form>     
     </div>
 
-    <div class="nav-link">
+    <div class="nav-link col-md-6 offset-md-3">
         <form>
                 <hs><a href="Login.html">Have an account? Login!</a></hs>
         </form>

@@ -9,6 +9,11 @@
     <style>
         body {
           background-image: url('landscape.jpeg');
+         
+          background-position: center;
+         background-repeat: no-repeat;
+         background-size: cover;
+         background-attachment: fixed;
         }
         </style>
 </head>
@@ -41,8 +46,8 @@
             <h1 class="display-2">County <br>
                 CO-OP</h1>
             <div class="vstack gap-4 col-md-5 mx-auto ms-auto">
-            <button class="btn btn-success col-md-6 offset-md-3" type="button" id="btnLogin" href="CreateAccount.html">Create Account</button>
-            <button class="btn btn-warning col-md-6 offset-md-3" type="button" id="btnRegistration" href="registration.html">Register</button>
+            <button class="btn btn-success col-md-6 offset-md-3" type="button" id="btnLogin" onclick="window.location.href='CreateAccount.html';" >Create Account</button>
+            <button class="btn btn-warning col-md-6 offset-md-3" type="button" id="btnRegistration" onclick="window.location.href='registration.html';">Register</button>
             </div>
         </form>
     </div>
