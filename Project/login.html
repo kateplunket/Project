@@ -16,6 +16,26 @@
         background-attachment: fixed;
         }
         </style>
+
+<script>
+    function validate(){
+        var mail = document.getElementById("txtEmail").value;
+
+        var regx = /^([a-zA-Z0-9\._]+)@([a-zA-Z0-9])+.([a-z]+)(.[a-z]+)?$/
+
+        if(regx.test(mail)){
+            alert("You have provided a valid Email.")
+            return true;
+        }
+        else{
+            alert("Not a valid Email.")
+            return false;
+        }
+
+    }
+</script>
+
+
 </head>
 <body>
     <nav class="navbar navbar-expand-lg sticky-top bg-body-tertiary">
@@ -35,7 +55,7 @@
         </div>
       </nav>
     <div class="card-body col-md-6 offset-md-3 text-center">
-        <form class="bg-success">
+        <form class="bg-success-subtle">
             <h3 id="Login">Login</h3>
 
             <label for="txtEmail" class="form-label">Email:</label>
@@ -43,11 +63,20 @@
 
             <label for="txtPassword" class="form-label">Password:</label>
             <input for="Password" class="form-control" id="txtPassword" type="Password">
+            <div class="errors">
+                <ul>
+                    <li id="length">Must be 6 characters</li>
+                    <li id="upper">Must have an uppercase</li>
+                    <li id="number">Must have a number</li>
+                    <li id="specialCharacter">Must have a special character</li>
+                </ul>
+            </div>
 
-            <button id="btnLogin"class="btn btn-warning col-12 mt-3 block" type="button" action="Registration.php" method="Post"><b>Login</b></button>
+            <button onclick="validate()" id="btnLogin"class="btn btn-success col-12 mt-3 block" type="button" action="Registration.php" method="Post"><b>Login</b></button>
 
         </form>
     </div>
+
 
     <div>
         <form>
@@ -57,6 +86,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
     <script>
+
 
         $('#txtEmail').val();
         $('#txtPassword').val();

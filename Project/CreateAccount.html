@@ -15,7 +15,26 @@
          background-size: cover;
          background-attachment: fixed;
         }
-        </style>
+    </style>
+
+    <script>
+        function validate(){
+            var mail = document.getElementById("txtEmail").value;
+
+            var regx = /^([a-zA-Z0-9\._]+)@([a-zA-Z0-9])+.([a-z]+)(.[a-z]+)?$/
+
+            if(regx.test(mail)){
+                alert("You have provided a valid Email.")
+                return true;
+            }
+            else{
+                alert("Not a valid Email.")
+                return false;
+            }
+
+        }
+    </script>
+
 </head>
 <body>
     <nav class="navbar navbar-expand-lg sticky-top bg-body-tertiary">
@@ -49,10 +68,19 @@
             <label for="txtPassword" class="form-label">Password:</label>
             <input for="Password" class="form-control" id="txtPassword" type="Password">
 
+            <div class="errors">
+                <ul>
+                    <li id="length">Must be 6 characters</li>
+                    <li id="upper">Must have an uppercase</li>
+                    <li id="number">Must have a number</li>
+                    <li id="specialCharacter">Must have a special character</li>
+                </ul>
+            </div>
+
             <label for="txtMobileNumber" class="form-label">Mobile Number:</label>
             <input for="MobileNumber" class="form-control" id="txtMobileNumber" type="tel">
 
-            <button id="btnLogin"class="btn btn-warning col-12 mt-3 block" type="button" action="Registration.php" method="Post"><b>Create New Account</b></button>
+            <button onclick="validate()" id="btnLogin"class="btn btn-success col-12 mt-3 block" type="button" action="Registration.php" method="Post"><b>Create New Account</b></button>
 
         </form>     
     </div>
@@ -114,6 +142,7 @@
             
         })
 
-    </script> 
+    </script>
+    
 </body>
 </html>
