@@ -20,7 +20,7 @@
                         <input id="txtLoginEmail" type="email" class="form-control" placeholder="johndoe@email.com" aria-label="Email">
                         <input id="txtLoginPassword" type="password" class="form-control mt-2" placeholder="password" aria-label="Password">
                         <button class="btn btn-primary col-12 mt-4" type="button" id="btnLogin">Login</button>
-                        <button class="btn btn-secondary col-12 mt-2 btnSwap" type="button">Create Account</button>
+                        <button class="btn btn-secondary col-12 mt-2 btnSwap" id="btnCreate" type="button">Create Account</button>
                     </form>
                 </div>
             </div>
@@ -28,7 +28,7 @@
         <div class="d-none d-md-block col-6  d-flex justify-content-center align-items-center vh-100 bg-white">
             <h2 class="text-primary text-center mt-5">Welcome to Hippo Farm Register</h2>
             <div style="display:flex; justify-content: center; align-items: center;">
-                <img src="images/hippo.png" alt="Hippo Logo" class="p-5">
+                <img src="hippo.png" alt="Hippo Logo" class="p-5">
             </div>
         </div>
     </div>
@@ -36,7 +36,7 @@
         <div class="d-none d-md-block col-6  d-flex justify-content-center align-items-center vh-100 bg-white">
             <h2 class="text-primary text-center mt-5">Let's Get Registered</h2>
             <div style="display:flex; justify-content: center; align-items: center;">
-                <img src="images/hippo.png" alt="Hippo Logo" class="p-5">
+                <img src="hippo.png" alt="Hippo Logo" class="p-5">
             </div>
         </div>
         <div class="col-12 col-md-6 d-flex justify-content-center align-items-center vh-100">
@@ -59,6 +59,10 @@
                             <input class="form-control" id="txtCreateEmail" placeholder="" type="email">
                         </div>
                         <div class="form-group">
+                            <label for="txtCreatePhone" class="form-label mt-4">Phone Number</label>
+                            <input class="form-control" id="txtCreateEmail" placeholder="" type="email">
+                        </div>
+                        <div class="form-group">
                             <label for="txtCreatePassword" class="form-label mt-4">Password</label>
                             <input class="form-control" id="txtCreatePassword" placeholder="" type="password">
                         </div>
@@ -69,11 +73,11 @@
             </div>
         </div>
     </div>
-    <div id="divCreateFarm">
+    <div id="divCreateFarm" style="display:none">
         <div class="d-none d-md-block col-6  d-flex justify-content-center align-items-center vh-100 bg-white">
             <h2 class="text-primary text-center mt-5">Let's Get Registered</h2>
             <div style="display:flex; justify-content: center; align-items: center;">
-                <img src="images/hippo.png" alt="Hippo Logo" class="p-5">
+                <img src="hippo.png" alt="Hippo Logo" class="p-5">
             </div>
         </div>
         <div class="col-12 col-md-6 d-flex justify-content-center align-items-center vh-100">
@@ -84,16 +88,32 @@
                 <div class="card-body">
                     <form>
                         <div class="form-group">
+                            <label for="txtFarmID" class="form-label mt-4">Farm ID</label>
+                            <input class="form-control" id="txtFarmID" placeholder="" type="text">
+                        </div>
+                        <div class="form-group">
                             <label for="txtFarmName" class="form-label mt-4">Farm Name</label>
                             <input class="form-control" id="txtFarmName" placeholder="" type="text">
                         </div>
                         <div class="form-group">
-                            <label for="txtFarmEmail" class="form-label mt-4">Email</label>
-                            <input class="form-control" id="txtFarmEmail" placeholder="" type="email">
+                            <label for="txtAddressLine1" class="form-label mt-4">Street Address</label>
+                            <input class="form-control" id="txtAddressLine1" placeholder="" type="text">
                         </div>
                         <div class="form-group">
-                            <label for="txtFarmPassword" class="form-label mt-4">Password</label>
-                            <input class="form-control" id="txtFarmPassword" placeholder="" type="password">
+                            <label for="txtAddressLine2" class="form-label mt-4">Street Address</label>
+                            <input class="form-control" id="txtAddressLine2" placeholder="" type="text">
+                        </div>
+                        <div class="form-group">
+                            <label for="txtFarmCity" class="form-label mt-4">City</label>
+                            <input class="form-control" id="txtFarmPassword" placeholder="" type="text">
+                        </div>
+                        <div class="form-group">
+                            <label for="txtFarmState" class="form-label mt-4">State</label>
+                            <input class="form-control" id="txtFarmState" placeholder="" type="text">
+                        </div>
+                        <div class="form-group">
+                            <label for="txtFarmZip" class="form-label mt-4">Zip</label>
+                            <input class="form-control" id="txtFarmZip" placeholder="" type="text">
                         </div>
                         <button class="btn btn-primary col-12 mt-4" type="button" id="btnRegisterFarm">Register Farm</button>
                         <button class="btn btn-secondary col-12 mt-2 btnSwap" type="button">Back To Login</button>
@@ -102,11 +122,11 @@
             </div>
         </div>
     </div>
-    <div id="divUser">
+    <div id="divUser" style="display:none">
         <div class="d-none d-md-block col-6  d-flex justify-content-center align-items-center vh-100 bg-white">
             <h2 class="text-primary text-center mt-5">User Dashboard</h2>
             <div style="display:flex; justify-content: center; align-items: center;">
-                <img src="images/hippo.png" alt="Hippo Logo" class="p-5">
+                <img src="hippo.png" alt="Hippo Logo" class="p-5">
             </div>
         </div>
         <div id="tblHours">
@@ -145,11 +165,163 @@
             </form>
         </div>
     </div>
-    <div id="divFarm">
+    <div id="divFarm" style="display:none">
 
     </div>
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
  <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
- 
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+ <script>
+
+    $('#btnCreate').on('click',function(){
+        $('#divCreateUser').slideToggle()
+    })
+
+    $('#btnRegisterUser').on('click',function(){
+        let strFirstName = $('#txtCreateFirstName').val()
+        let strLastName = $('#txtCreateLastName').val()
+        let strEmail = $('#txtCreateEmail').val()
+        let strPhone = $('#txtCreatePhone').val()
+        let strPassword = $('#txtCreatePassword').val()
+
+        let blnError = false
+        let strErrorMessage = ''
+
+        if(strFirstName.length < 1){
+            blnError = true
+            strErrorMessage += "Please Enter A First Name"
+        }
+        if(strLastName.length < 1){
+            blnError = true
+            strErrorMessage += "Please Enter A Last Name"
+        }
+        if(strEmail.length < 1){
+            blnError = true
+            strErrorMessage += "Please Enter An Email"
+        }
+        if(strPhone.length < 1){
+            blnError = true
+            strErrorMessage += "Please Enter A Phone Number"
+        }
+        if(strPassword.length < 1){
+            blnError = true
+            strErrorMessage += "Please Enter A Password"
+        }
+        if(blnError == true){
+            Swal.Fire({
+                type: 'error',
+                title: 'Error',
+                html: strErrorMessage
+            })
+        }
+
+        if(blnError == false){
+            $.post('',{First:strFirstName,Last:strLastName,Email:strEmail,Phone:strPhone,Password:strPassword},function(result){
+                result = JSON.parse
+                if(resultError){
+                    Swal.Fire({
+                        type: 'error',
+                        title: 'Error',
+                        html: '<p> User Creation Error <p>'
+                    })
+                } else{
+                    $.post('',{Email:strEmail,Password:strPassword},function(){
+                        result = JSON.parse
+                        if(resultError){
+                            Swal.Fire({
+                                type: 'error',
+                                title: 'Error',
+                                html: '<p> Please Return to Login, User Creation Failed <p>'
+                            })
+                        }
+                        if(resultSucess){
+                            sessionStorage.setItem('Simple Session',resultSession.SessionID)
+                            $('#divUser').slideToggle()
+                        }
+                    })
+                }
+            })
+        }
+    })
+
+
+    $('#btnRegisterFarm').on('click',function(){
+        let strFarmID = $('#txtFarmID').val()
+        let strFarmName = $('#txtFarmName').val()
+        let strAddress = $('#txtAddressLine1'+'#txtAddressLine2').val()
+        let strCity = $('#txtFarmCity').val()
+        let strState = $('#txtFarmState').val()
+        let strZip = $('#txtFarmZip').val()
+
+        let blnError = false
+        let strErrorMessage = ''
+
+        if(strFarmID.length < 1){
+            blnError = true
+            strErrorMessage += "Please Enter A FarmID"
+        }
+        if(strFarmName.length < 1){
+            blnError = true
+            strErrorMessage += "Please Enter A Farm Name"
+        }
+        if(strAddress.length < 1){
+            blnError = true
+            strErrorMessage += "Please Enter An Address"
+        }
+        if(strCity.length < 1){
+            blnError = true
+            strErrorMessage += "Please Enter A City"
+        }
+        if(strState.length < 1){
+            blnError = true
+            strErrorMessage += "Please Enter A State"
+        }
+        if(strZip.length < 1){
+            blnError = true
+            strErrorMessage += "Please Enter A Zip"
+        }
+        if(blnError == true){
+            Swal.Fire({
+                type: 'error',
+                title: 'Error',
+                html: strErrorMessage
+            })
+        }
+
+        if(blnError == false){
+            $.post('',{FarmID:strFarmID,FarmName:strFarmName,StreetAddress1:strAddress,
+                City:strCity,State:strState,Zip:strZip},function(result){
+                result = JSON.parse
+                if(resultError){
+                    Swal.Fire({
+                        type: 'error',
+                        title: 'Error',
+                        html: '<p> User Creation Error <p>'
+                    })
+                } else{
+                    $.post('',{FarmID,strFarmID},function(){
+                        result = JSON.parse
+                        if(resultError){
+                            Swal.Fire({
+                                type: 'error',
+                                title: 'Error',
+                                html: '<p> Please Return to Login, User Creation Failed <p>'
+                            })
+                        }
+                        if(resultSucess){
+                            sessionStorage.setItem('Simple Session',resultSession.SessionID)
+                            $('#divFarm').slideToggle()
+                        }
+                    })
+                }
+            })
+        }
+    })
+
+
+
+
+ </script>
+
 </body>
 </html>
