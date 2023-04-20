@@ -9,7 +9,7 @@
 
 </head>
 <body>
-    <div id="divHome" class="col-12 row">
+    <div id="divHome" class="col-12 row" style="background-color: #989F8B">
         <div class="col-12 col-md-6 d-flex justify-content-center align-items-center vh-100">
             <div class="card col-12 col-md-10 offset-md-1">
                 <div class="card-head">
@@ -19,24 +19,24 @@
                     <form>
                         <input id="txtLoginEmail" type="email" class="form-control" placeholder="johndoe@email.com" aria-label="Email">
                         <input id="txtLoginPassword" type="password" class="form-control mt-2" placeholder="password" aria-label="Password">
-                        <button class="btn btn-primary col-12 mt-4" type="button" id="btnLogin">Login</button>
-                        <button class="btn btn-secondary col-12 mt-2 btnSwap" id="btnCreate" type="button">Create Account</button>
+                        <button class="btn col-12 mt-4 btnSwap" type="button" id="btnLogin" style="background-color: #C98143">Login</button>
+                        <button class="btn col-12 mt-2 btnSwap" id="btnCreate" type="button" style="background-color: #D49C7F">Create Account</button>
                     </form>
                 </div>
             </div>
         </div>
         <div class="d-none d-md-block col-6  d-flex justify-content-center align-items-center vh-100 bg-white">
-            <h2 class="text-primary text-center mt-5">Welcome to Hippo Farm Register</h2>
+            <h2 class="text-center mt-5" style="background-color: #C98143">Welcome to Hippo Farm Register</h2>
             <div style="display:flex; justify-content: center; align-items: center;">
-                <img src="hippo.png" alt="Hippo Logo" class="p-5">
+                <img src="farm.jpeg" alt="Farm Table" class="p-5">
             </div>
         </div>
     </div>
-    <div id="divCreateUser" style="display:none">
-        <div class="d-none d-md-block col-6  d-flex justify-content-center align-items-center vh-100 bg-white">
-            <h2 class="text-primary text-center mt-5">Let's Get Registered</h2>
+    <div id="divCreateUser" style="background-color: #989F8B">
+        <div class="d-none d-md-block col-6  d-flex justify-content-center align-items-center vh-100">
+            <h2 class="text-center mt-5" style="background-color: #C98143">Let's Get Registered</h2>
             <div style="display:flex; justify-content: center; align-items: center;">
-                <img src="hippo.png" alt="Hippo Logo" class="p-5">
+                <img src="farm2.jpeg" alt="Chickens" class="p-5">
             </div>
         </div>
         <div class="col-12 col-md-6 d-flex justify-content-center align-items-center vh-100">
@@ -66,18 +66,18 @@
                             <label for="txtCreatePassword" class="form-label mt-4">Password</label>
                             <input class="form-control" id="txtCreatePassword" placeholder="" type="password">
                         </div>
-                        <button class="btn btn-primary col-12 mt-4" type="button" id="btnRegisterUser">Register User</button>
-                        <button class="btn btn-secondary col-12 mt-2 btnSwap" type="button">Back To Login</button>
+                        <button class="btn col-12 mt-4" type="button" id="btnRegisterUser" style="background-color: #C98143">Register User</button>
+                        <button class="btn col-12 mt-2 btnSwap" type="button" style="background-color: #D49C7F">Back To Login</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-    <div id="divCreateFarm" style="display:none">
-        <div class="d-none d-md-block col-6  d-flex justify-content-center align-items-center vh-100 bg-white">
-            <h2 class="text-primary text-center mt-5">Let's Get Registered</h2>
+    <div id="divCreateFarm" style="background-color: #989F8B">
+        <div class="d-none d-md-block col-6  d-flex justify-content-center align-items-center vh-100">
+            <h2 class="text-center mt-5">Let's Get Registered</h2>
             <div style="display:flex; justify-content: center; align-items: center;">
-                <img src="hippo.png" alt="Hippo Logo" class="p-5">
+                <img src="farm3.jpeg" alt="Chickens at a Farm" class="p-5">
             </div>
         </div>
         <div class="col-12 col-md-6 d-flex justify-content-center align-items-center vh-100">
@@ -115,18 +115,61 @@
                             <label for="txtFarmZip" class="form-label mt-4">Zip</label>
                             <input class="form-control" id="txtFarmZip" placeholder="" type="text">
                         </div>
-                        <button class="btn btn-primary col-12 mt-4" type="button" id="btnRegisterFarm">Register Farm</button>
-                        <button class="btn btn-secondary col-12 mt-2 btnSwap" type="button">Back To Login</button>
+                        <button class="btn col-12 mt-4" type="button" id="btnRegisterFarm" style="background-color: #C98143">Register Farm</button>
+                        <button class="btn col-12 mt-2 btnSwap" type="button" style="background-color: #D49C7F">Back To Login</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-    <div id="divUser" style="display:none">
-        <div class="d-none d-md-block col-6  d-flex justify-content-center align-items-center vh-100 bg-white">
-            <h2 class="text-primary text-center mt-5">User Dashboard</h2>
+    <div id="divUser" style="background-color: #989F8B">
+        <div class="d-none d-md-block col-6  d-flex justify-content-center align-items-center vh-100">
+            <h2 class="text-center mt-5">User Dashboard</h2>
             <div style="display:flex; justify-content: center; align-items: center;">
-                <img src="hippo.png" alt="Hippo Logo" class="p-5">
+                <img src="farm4.jpeg" alt="Hippo Logo" class="p-5">
+            </div>
+        </div>
+        <div id="tblHours">
+            <table>
+                <thead>
+                    <td></td>
+                </thead>
+            </table>
+        </div>
+        <div id="tblSalary">
+            <table>
+                <thead>
+                    <td></td>
+                </thead>
+            </table>
+        </div>
+        <div id="tblFarmID">
+            <table>
+                <thead>
+                    <td></td>
+                </thead>
+            </table>
+        </div>
+        <div>
+            <form>
+                <input placeholder="enter hours worked">
+                <button style="background-color: #C98143">Input Hours</button>
+            </form>
+            <form>
+                <input placeholder="enter your rate per hour">
+                <button style="background-color: #C98143">Input Salary</button>
+            </form>
+            <form>
+                <input placeholder="enter the FarmID">
+                <button style="background-color: #C98143">Input FarmID</button>
+            </form>
+        </div>
+    </div>
+    <div id="divFarm" style="background-color: #989F8B">
+        <div class="d-none d-md-block col-6  d-flex justify-content-center align-items-center vh-100">
+            <h2 class="text-center mt-5">User Dashboard</h2>
+            <div style="display:flex; justify-content: center; align-items: center;">
+                <img src="farm5.jpeg" alt="Hippo Logo" class="p-5">
             </div>
         </div>
         <div id="tblHours">
@@ -165,16 +208,12 @@
             </form>
         </div>
     </div>
-    <div id="divFarm" style="display:none">
-
-    </div>
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
  <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
  <script>
-
     $('#btnCreate').on('click',function(){
-        $('#divCreateUser').slideToggle()
+        $('#divCreateUser').slideToggle();
     })
 
     $('#btnRegisterUser').on('click',function(){
