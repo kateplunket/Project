@@ -32,7 +32,7 @@
             </div>
         </div>
     </div>
-    <div id="divCreateUser" style="background-color: #989F8B">
+    <div id="divCreateUser" style=" display: none; background-color: #989F8B">
         <div class="d-none d-md-block col-6  d-flex justify-content-center align-items-center vh-100">
             <h2 class="text-center mt-5" style="background-color: #C98143">Let's Get Registered</h2>
             <div style="display:flex; justify-content: center; align-items: center;">
@@ -73,7 +73,7 @@
             </div>
         </div>
     </div>
-    <div id="divCreateFarm" style="background-color: #989F8B">
+    <div id="divCreateFarm" style=" display: none; background-color: #989F8B">
         <div class="d-none d-md-block col-6  d-flex justify-content-center align-items-center vh-100">
             <h2 class="text-center mt-5">Let's Get Registered</h2>
             <div style="display:flex; justify-content: center; align-items: center;">
@@ -122,7 +122,7 @@
             </div>
         </div>
     </div>
-    <div id="divUser" style="background-color: #989F8B">
+    <div id="divUser" style=" display: none; background-color: #989F8B">
         <div class="d-none d-md-block col-6  d-flex justify-content-center align-items-center vh-100">
             <h2 class="text-center mt-5">User Dashboard</h2>
             <div style="display:flex; justify-content: center; align-items: center;">
@@ -165,7 +165,7 @@
             </form>
         </div>
     </div>
-    <div id="divFarm" style="background-color: #989F8B">
+    <div id="divFarm" style=" display: none; background-color: #989F8B">
         <div class="d-none d-md-block col-6  d-flex justify-content-center align-items-center vh-100">
             <h2 class="text-center mt-5">User Dashboard</h2>
             <div style="display:flex; justify-content: center; align-items: center;">
@@ -213,6 +213,7 @@
  <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
  <script>
     $('#btnCreate').on('click',function(){
+        $('#divHome').slideToggle();
         $('#divCreateUser').slideToggle();
     })
 
