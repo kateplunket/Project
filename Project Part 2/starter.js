@@ -9,7 +9,3 @@ class Session {
 let objSession = new Session('abcd1234','2023-04-20','akplunket43@tntech.edu');
 
 objSession.SessionID
-
-class  user { 
-    constructor(strEmail,strFirstName,strLastName,str)
-}
