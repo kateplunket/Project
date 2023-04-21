@@ -12,7 +12,12 @@ const pool = mysql.createpool({
 })
 
 class Session {
-    constructor
+    constructor(strSessionID,objUser,datStartDateTime,datLastUsedDateTime) {
+        this.strSessionID = strSessionID;
+        this.user = objUser;
+        this.StartDateTime = datStartDateTime;
+        this.LastUsedDateTime = datLastUsedDateTime;
+    }
 }
 
 const HTTP_PORT = 8000;
