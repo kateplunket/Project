@@ -10,6 +10,12 @@
 </head>
 <body>
     <div id="divHome" class="col-12 row" style="background-color: #989F8B">
+        <div class="container my-5"  style="background-color: #C98143">
+            <div class="p-5 text-center bg-body-tertiary rounded-3">
+              <h1 class="text-body-emphasis">Hippie Hippo Farm Register</h1>
+              <p class="lead"> This is your one stop shop for Farm Tracking</p>
+            </div>
+          </div>
         <div class="col-12 col-md-6 d-flex justify-content-center align-items-center vh-100">
             <div class="card col-12 col-md-10 offset-md-1">
                 <div class="card-head">
@@ -17,7 +23,7 @@
                 </div>
                 <div class="card-body">
                     <form>
-                        <input id="txtLoginEmail" type="email" class="form-control" placeholder="johndoe@email.com" aria-label="Email">
+                        <input id="txtLoginFarmID" type="text" class="form-control" placeholder="FarmID" aria-label="Enter FarmID">
                         <input id="txtLoginPassword" type="password" class="form-control mt-2" placeholder="password" aria-label="Password">
                         <button class="btn col-12 mt-4 btnSwap" type="button" id="btnLogin" style="background-color: #C98143">Login</button>
                         <button class="btn col-12 mt-2 btnSwap" id="btnCreate" type="button" style="background-color: #D49C7F">Create Account</button>
@@ -26,21 +32,14 @@
             </div>
         </div>
         <div class="d-none d-md-block col-6  d-flex justify-content-center align-items-center vh-100 bg-white">
-            <h2 class="text-center mt-5" style="background-color: #C98143">Welcome to Hippo Farm Register</h2>
             <div style="display:flex; justify-content: center; align-items: center;">
                 <img src="farm.jpeg" alt="Farm Table" class="p-5">
             </div>
         </div>
     </div>
-    <div id="divCreateUser" style="background-color: #989F8B">
-        <div class="d-none d-md-block col-6  d-flex justify-content-center align-items-center vh-100">
-            <h2 class="text-center mt-5" style="background-color: #C98143">Let's Get Registered</h2>
-            <div style="display:flex; justify-content: center; align-items: center;">
-                <img src="farm2.jpeg" alt="Chickens" class="p-5">
-            </div>
-        </div>
+    <div id="divCreateUser" style="background-color: #989F8B; display:none;">
         <div class="col-12 col-md-6 d-flex justify-content-center align-items-center vh-100">
-            <div class="card col-12 col-md-10 offset-md-1">
+            <div class="card col-12 col-md-10 offset-md-4">
                 <div class="card-head">
                     <h3 class="col-12 text-center mt-1">Create User Account</h3>
                 </div>
@@ -60,7 +59,7 @@
                         </div>
                         <div class="form-group">
                             <label for="txtCreatePhone" class="form-label mt-4">Phone Number</label>
-                            <input class="form-control" id="txtCreateEmail" placeholder="" type="email">
+                            <input class="form-control" id="txtCreatePhone" placeholder="" type="email">
                         </div>
                         <div class="form-group">
                             <label for="txtCreatePassword" class="form-label mt-4">Password</label>
@@ -71,9 +70,15 @@
                     </form>
                 </div>
             </div>
+            <div class="d-none d-md-block col-6  d-flex justify-content-center align-items-center vh-100">
+                <h2 class="text-center mt-5" style="background-color: #C98143">Let's Get Registered</h2>
+                <div style="display:flex; justify-content: center; align-items: center;">
+                    <img src="farm2.jpeg" alt="Chickens" class="p-5">
+                </div>
+            </div>
         </div>
     </div>
-    <div id="divCreateFarm" style="background-color: #989F8B">
+    <div id="divCreateFarm" style="background-color: #989F8B; display:none;">
         <div class="d-none d-md-block col-6  d-flex justify-content-center align-items-center vh-100">
             <h2 class="text-center mt-5">Let's Get Registered</h2>
             <div style="display:flex; justify-content: center; align-items: center;">
@@ -105,7 +110,7 @@
                         </div>
                         <div class="form-group">
                             <label for="txtFarmCity" class="form-label mt-4">City</label>
-                            <input class="form-control" id="txtFarmPassword" placeholder="" type="text">
+                            <input class="form-control" id="txtFarmCity" placeholder="" type="text">
                         </div>
                         <div class="form-group">
                             <label for="txtFarmState" class="form-label mt-4">State</label>
@@ -122,7 +127,7 @@
             </div>
         </div>
     </div>
-    <div id="divUser" style="background-color: #989F8B">
+    <div id="divUser" style="background-color: #989F8B; display:none;">
         <div class="d-none d-md-block col-6  d-flex justify-content-center align-items-center vh-100">
             <h2 class="text-center mt-5">User Dashboard</h2>
             <div style="display:flex; justify-content: center; align-items: center;">
@@ -165,7 +170,7 @@
             </form>
         </div>
     </div>
-    <div id="divFarm" style="background-color: #989F8B">
+    <div id="divFarm" style="background-color: #989F8B; display:none;">
         <div class="d-none d-md-block col-6  d-flex justify-content-center align-items-center vh-100">
             <h2 class="text-center mt-5">User Dashboard</h2>
             <div style="display:flex; justify-content: center; align-items: center;">
@@ -193,7 +198,14 @@
                 </thead>
             </table>
         </div>
-        <div>
+        <div form-control>
+            <div>
+                <form>
+                    <label>Register Your Employees!</label>
+                    <input>
+                    <button>Add to Farm</button>
+                </form>
+            </div>
             <form>
                 <input placeholder="enter hours worked">
                 <button>Input Hours</button>
@@ -210,10 +222,17 @@
     </div>
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
  <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+ <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
  <script>
+    $('#btnLogin').on('click',function(){
+        $('#divHome').slideToggle(function(){
+            $('#divFarm').slideToggle()
+        });
+    })
     $('#btnCreate').on('click',function(){
-        $('#divCreateUser').slideToggle();
+        $('#divHome').slideToggle(function(){
+            $('#divCreateFarm').slideToggle();
+        });
     })
 
     $('#btnRegisterUser').on('click',function(){
@@ -228,49 +247,46 @@
 
         if(strFirstName.length < 1){
             blnError = true
-            strErrorMessage += "Please Enter A First Name"
+            strErrorMessage += "Please Enter A First Name "
         }
         if(strLastName.length < 1){
             blnError = true
-            strErrorMessage += "Please Enter A Last Name"
+            strErrorMessage += "Please Enter A Last Name "
         }
         if(strEmail.length < 1){
             blnError = true
-            strErrorMessage += "Please Enter An Email"
+            strErrorMessage += "Please Enter An Email "
         }
         if(strPhone.length < 1){
             blnError = true
-            strErrorMessage += "Please Enter A Phone Number"
+            strErrorMessage += "Please Enter A Phone Number "
         }
         if(strPassword.length < 1){
             blnError = true
-            strErrorMessage += "Please Enter A Password"
+            strErrorMessage += "Please Enter A Password "
         }
         if(blnError == true){
-            Swal.Fire({
-                type: 'error',
-                title: 'Error',
-                html: strErrorMessage
-            })
+            swal({
+                icon: "error",
+                text: strErrorMessage
+            });
         }
 
         if(blnError == false){
             $.post('',{First:strFirstName,Last:strLastName,Email:strEmail,Phone:strPhone,Password:strPassword},function(result){
                 result = JSON.parse
                 if(resultError){
-                    Swal.Fire({
-                        type: 'error',
-                        title: 'Error',
-                        html: '<p> User Creation Error <p>'
+                    swal({
+                        icon: 'error',
+                        text: '<p> User Creation Error <p>'
                     })
                 } else{
                     $.post('',{Email:strEmail,Password:strPassword},function(){
                         result = JSON.parse
                         if(resultError){
-                            Swal.Fire({
-                                type: 'error',
-                                title: 'Error',
-                                html: '<p> Please Return to Login, User Creation Failed <p>'
+                            swal({
+                                icon: 'error',
+                                text: '<p> Please Return to Login, User Creation Failed <p>'
                             })
                         }
                         if(resultSucess){
@@ -283,11 +299,11 @@
         }
     })
 
-
     $('#btnRegisterFarm').on('click',function(){
         let strFarmID = $('#txtFarmID').val()
         let strFarmName = $('#txtFarmName').val()
-        let strAddress = $('#txtAddressLine1'+'#txtAddressLine2').val()
+        let strAddress1 = $('#txtAddressLine1').val()
+        let strAddress2 = $('#txtAddressLine2').val()
         let strCity = $('#txtFarmCity').val()
         let strState = $('#txtFarmState').val()
         let strZip = $('#txtFarmZip').val()
@@ -303,7 +319,11 @@
             blnError = true
             strErrorMessage += "Please Enter A Farm Name"
         }
-        if(strAddress.length < 1){
+        if(strAddress1.length < 1){
+            blnError = true
+            strErrorMessage += "Please Enter An Address"
+        }
+        if(strAddress2.length < 1){
             blnError = true
             strErrorMessage += "Please Enter An Address"
         }
@@ -320,10 +340,9 @@
             strErrorMessage += "Please Enter A Zip"
         }
         if(blnError == true){
-            Swal.Fire({
-                type: 'error',
-                title: 'Error',
-                html: strErrorMessage
+            swal({
+                icon: 'error',
+                text: strErrorMessage
             })
         }
 
@@ -332,19 +351,17 @@
                 City:strCity,State:strState,Zip:strZip},function(result){
                 result = JSON.parse
                 if(resultError){
-                    Swal.Fire({
-                        type: 'error',
-                        title: 'Error',
-                        html: '<p> User Creation Error <p>'
+                    swal({
+                        icon: 'error',
+                        text: '<p> User Creation Error <p>'
                     })
                 } else{
                     $.post('',{FarmID,strFarmID},function(){
                         result = JSON.parse
                         if(resultError){
-                            Swal.Fire({
-                                type: 'error',
-                                title: 'Error',
-                                html: '<p> Please Return to Login, User Creation Failed <p>'
+                            swal({
+                                icon: 'error',
+                                text: '<p> Please Return to Login, User Creation Failed <p>'
                             })
                         }
                         if(resultSucess){
@@ -357,7 +374,9 @@
         }
     })
 
-
+    $('#btnLogin').on('click',function(){
+        
+    })
 
 
  </script>
