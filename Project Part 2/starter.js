@@ -348,7 +348,9 @@ app.get("/test", (req,res,next)=>{
         
     })
 })
+
 // End Step Four
+
 // Step Five
 function getSessionDetails(strSessionID,callback){
     pool.query('SELECT * FROM tblSessions LEFT JOIN tblUsers ON tblSessions.UserID = tblUsers.Email LEFT JOIN tblFarmAssignment ON tblSessions.UserID = tblFarmAssignment.User WHERE SessionID = ?',[strSessionID], function(error, results){
@@ -366,6 +368,7 @@ function getSessionDetails(strSessionID,callback){
         }
     })
 }
+
 // Example function using the async pool.query with a callback
 function getFarmByID(strFarmID,callback){
     pool.query('SELECT * FROM tblFarms WHERE FarmID = ?',[strFarmID], function(error, results){
