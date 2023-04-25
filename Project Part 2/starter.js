@@ -9,7 +9,7 @@ const pool = mysql.createPool({
     host: 'localhost',
     user:'root',
     password:'Mickey2023!',
-    database:'SimpleAg'
+    database:'SwollenFarm'
 });
 const HTTP_PORT = 8000;
 // Create Custom Classes
