@@ -220,7 +220,7 @@
                         </ul>
                         <form>
                             <input id="txtProduct" type="text" class="form-control mt-2" placeholder="ex. Corn" aria-label="enter Products">
-                            <button class="btn col-12 mt-4" type="button" id="btnCreateNewProduct" style="background-color: #C98143">Add to Products</button>    
+                            <button class="btn col-12 mt-4" type="button" id="btnCreateNewTask" style="background-color: #C98143">Add to Products</button>    
                         </form>
                     </div>
                 </div>
@@ -238,7 +238,7 @@
                         </ul>
                         <form>
                             <input id="txtProduct" type="text" class="form-control mt-2" placeholder="ex. Corn" aria-label="enter Products">
-                            <button class="btn col-12 mt-4" type="button" id="btnCreateNewProduct" style="background-color: #C98143">Add to Products</button>    
+                            <button class="btn col-12 mt-4" type="button" id="btnCreateNewmaterials" style="background-color: #C98143">Add to Products</button>    
                         </form>
                     </div>
                 </div>
@@ -256,7 +256,7 @@
                         </ul>
                         <form>
                             <input id="txtProduct" type="text" class="form-control mt-2" placeholder="ex. Corn" aria-label="enter Products">
-                            <button class="btn col-12 mt-4" type="button" id="btnCreateNewProduct" style="background-color: #C98143">Add to Products</button>    
+                            <button class="btn col-12 mt-4" type="button" id="btnCreateNewHarvest" style="background-color: #C98143">Add to Products</button>    
                         </form>
                     </div>
                 </div>
@@ -299,7 +299,6 @@
             $('#divCreateFarm').slideToggle();
         });
     })
-
     $('#btnNewUser').on('click',function(){
         $('#divFarm').slideToggle(function(){
             $('#divCreateFarm').slideToggle()
@@ -345,7 +344,7 @@
         }
 
         if(blnError == false){
-            $.post('',{First:strFirstName,Last:strLastName,Email:strEmail,Phone:strPhone,Password:strPassword},function(result){
+            $.post('htpp://localhost:8000/users',{First:strFirstName,Last:strLastName,Email:strEmail,Phone:strPhone,Password:strPassword},function(result){
                 result = JSON.parse
                 if(resultError){
                     swal({
@@ -353,7 +352,7 @@
                         text: '<p> User Creation Error <p>'
                     })
                 } else{
-                    $.post('',{Email:strEmail,Password:strPassword},function(){
+                    $.post('http://localhost:8000/users',{Email:strEmail,Password:strPassword},function(){
                         result = JSON.parse
                         if(resultError){
                             swal({
@@ -415,7 +414,7 @@
         }
 
         if(blnError == false){
-            $.post('',{FarmID:strFarmID,FarmName:strFarmName,StreetAddress1:strAddress,
+            $.post('http://localhost:8000/farm',{FarmID:strFarmID,FarmName:strFarmName,StreetAddress1:strAddress1,StreetAddress2:strAddress2,
                 City:strCity,State:strState,Zip:strZip},function(result){
                 result = JSON.parse
                 if(resultError){
@@ -424,7 +423,7 @@
                         text: '<p> User Creation Error <p>'
                     })
                 } else{
-                    $.post('',{FarmID,strFarmID},function(){
+                    $.post('http://localhost:8000/farm',{FarmID,strFarmID},function(){
                         result = JSON.parse
                         if(resultError){
                             swal({
@@ -442,9 +441,103 @@
         }
     })
 
-    $('#btnLogin').on('click',function(){
-        
-    })
+    $(document).on('click', '#btnLogin', function(){
+            let strFarmID = $('#txtLoginFarmID').val();
+            let strPassword = $('#txtLoginFarmPassword').val();
+
+            var objInsertResult;
+            var objInsertCallBack = $.post('http://localhost:8000/farm?email=' + strFarmID + '&password=' + strPassword, function(result){
+                objInsertResult = result;
+            })
+
+            $.when(objInsertCallBack).done(function(){
+                $.getJSON('http://localhost:8000/farm', function(result){
+                    $.each(result,function(index,farm){
+                        $('#divFarm').append(farm.FarmID + ' ' + farm.Password);
+                    })
+                    console.log(result);
+                })
+            })
+        })
+
+        $(document).on('click', '#btnRegisterUser', function(){
+            let strFirstName = $('#txtCreateFirstName').val()
+            let strLastName = $('#txtCreateLastName').val()
+            let strEmail = $('#txtCreateEmail').val()
+            let strPhone = $('#txtCreatePhone').val()            
+
+            var objInsertResult;
+            var objInsertCallBack = $.post('http://localhost:8000/user?FName=' + strFirstName + '&LName=' + strLastName + '&Email='+ strEmail + '&Phone=' + strPhone, function(result){
+                objInsertResult = result;
+            })
+
+            $.when(objInsertCallBack).done(function(){
+                $.getJSON('http://localhost:8000/user', function(result){
+                    $.each(result,function(index,user){
+                        $('#divFarm').append(user.strFirstName + ' ' + user.strLastName + ' ' + user.strEmail + ' ' + user.strPhone);
+                    })
+                    console.log(result);
+                })
+            })
+        })
+
+        $(document).on('click', '#btnCreateNewProduct', function(){
+            let strFarmID = $('#txtLoginFarmID').val();
+            let strPassword = $('#txtLoginFarmPassword').val();
+
+            var objInsertResult;
+            var objInsertCallBack = $.post('http://localhost:8000/farm?email=' + strFarmID + '&password=' + strPassword, function(result){
+                objInsertResult = result;
+            })
+
+            $.when(objInsertCallBack).done(function(){
+                $.getJSON('http://localhost:8000/farm', function(result){
+                    $.each(result,function(index,farm){
+                        $('#divFarm').append(farm.FarmID + ' ' + farm.Password);
+                    })
+                    console.log(result);
+                })
+            })
+        })
+
+        $(document).on('click', '#btnCreateNewTask', function(){
+            let strFarmID = $('#txtLoginFarmID').val();
+            let strPassword = $('#txtLoginFarmPassword').val();
+
+            var objInsertResult;
+            var objInsertCallBack = $.post('http://localhost:8000/farm?email=' + strFarmID + '&password=' + strPassword, function(result){
+                objInsertResult = result;
+            })
+
+            $.when(objInsertCallBack).done(function(){
+                $.getJSON('http://localhost:8000/farm', function(result){
+                    $.each(result,function(index,farm){
+                        $('#divFarm').append(farm.FarmID + ' ' + farm.Password);
+                    })
+                    console.log(result);
+                })
+            })
+        })
+
+        $(document).on('click', '#btnCreateNewProduct', function(){
+            let strFarmID = $('#txtLoginFarmID').val();
+            let strPassword = $('#txtLoginFarmPassword').val();
+
+            var objInsertResult;
+            var objInsertCallBack = $.post('http://localhost:8000/farm?email=' + strFarmID + '&password=' + strPassword, function(result){
+                objInsertResult = result;
+            })
+
+            $.when(objInsertCallBack).done(function(){
+                $.getJSON('http://localhost:8000/farm', function(result){
+                    $.each(result,function(index,farm){
+                        $('#divFarm').append(farm.FarmID + ' ' + farm.Password);
+                    })
+                    console.log(result);
+                })
+            })
+        })
+    
 
     function showInfo(item) {
 			// Get the corresponding info element
