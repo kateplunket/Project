@@ -26,7 +26,7 @@
                         <input id="txtLoginFarmID" type="text" class="form-control" placeholder="FarmID" aria-label="Enter FarmID">
                         <input id="txtLoginPassword" type="password" class="form-control mt-2" placeholder="password" aria-label="Password">
                         <button class="btn col-12 mt-4 btnSwap" type="button" id="btnLogin" style="background-color: #C98143">Login</button>
-                        <button class="btn col-12 mt-2 btnSwap" id="btnCreate" type="button" style="background-color: #D49C7F">Create Account</button>
+                        <button class="btn col-12 mt-2 btnSwap" id="btnCreate" type="button" style="background-color: #D49C7F">Create Farm</button>
                     </form>
                 </div>
             </div>
@@ -79,7 +79,7 @@
         </div>
     </div>
     <div id="divCreateFarm" style="background-color: #989F8B; display:none;">
-        <div class="d-none d-md-block col-6  d-flex justify-content-center align-items-center vh-100">
+        <div class="d-none d-md-block col-6  d-flex justify-content-center align-items-center">
             <h2 class="text-center mt-5">Let's Get Registered</h2>
             <div style="display:flex; justify-content: center; align-items: center;">
                 <img src="farm3.jpeg" alt="Chickens at a Farm" class="p-5">
@@ -105,7 +105,7 @@
                             <input class="form-control" id="txtAddressLine1" placeholder="" type="text">
                         </div>
                         <div class="form-group">
-                            <label for="txtAddressLine2" class="form-label mt-4">Street Address</label>
+                            <label for="txtAddressLine2" class="form-label mt-4">Street Address 2</label>
                             <input class="form-control" id="txtAddressLine2" placeholder="" type="text">
                         </div>
                         <div class="form-group">
@@ -302,7 +302,7 @@
 
     $('#btnNewUser').on('click',function(){
         $('#divFarm').slideToggle(function(){
-            $('divCreateUser').slideToggle()
+            $('#divCreateFarm').slideToggle()
         })
     })
 
@@ -319,23 +319,23 @@
 
         if(strFirstName.length < 1){
             blnError = true
-            strErrorMessage += "Please Enter A First Name "
+            strErrorMessage += "Please Enter A First Name. "
         }
         if(strLastName.length < 1){
             blnError = true
-            strErrorMessage += "Please Enter A Last Name "
+            strErrorMessage += "Please Enter A Last Name. "
         }
         if(strEmail.length < 1){
             blnError = true
-            strErrorMessage += "Please Enter An Email "
+            strErrorMessage += "Please Enter An Email. "
         }
         if(strPhone.length < 1){
             blnError = true
-            strErrorMessage += "Please Enter A Phone Number "
+            strErrorMessage += "Please Enter A Phone Number. "
         }
         if(strPassword.length < 1){
             blnError = true
-            strErrorMessage += "Please Enter A Password "
+            strErrorMessage += "Please Enter A Password. "
         }
         if(blnError == true){
             swal({
@@ -385,31 +385,27 @@
 
         if(strFarmID.length < 1){
             blnError = true
-            strErrorMessage += "Please Enter A FarmID"
+            strErrorMessage += "Please Enter A Farm ID."
         }
         if(strFarmName.length < 1){
             blnError = true
-            strErrorMessage += "Please Enter A Farm Name"
+            strErrorMessage += " Please Enter A Farm Name."
         }
         if(strAddress1.length < 1){
             blnError = true
-            strErrorMessage += "Please Enter An Address"
-        }
-        if(strAddress2.length < 1){
-            blnError = true
-            strErrorMessage += "Please Enter An Address"
+            strErrorMessage += " Please Enter An Address."
         }
         if(strCity.length < 1){
             blnError = true
-            strErrorMessage += "Please Enter A City"
+            strErrorMessage += " Please Enter A City."
         }
         if(strState.length < 1){
             blnError = true
-            strErrorMessage += "Please Enter A State"
+            strErrorMessage += " Please Enter A State."
         }
         if(strZip.length < 1){
             blnError = true
-            strErrorMessage += "Please Enter A Zip"
+            strErrorMessage += " Please Enter A Zip."
         }
         if(blnError == true){
             swal({
