@@ -1,3 +1,125 @@
+/* My table structure was created in MySQL Workbench with these scripts: 
+CREATE TABLE tblSessions (
+    SessionID varchar(80),
+    UserID varchar(250),
+    StartDateTime datetime,
+    FOREIGN KEY (UserID) REFERENCES tblUsers(Email),
+    CONSTRAINT PK_Sessions PRIMARY KEY (SessionID)
+);
+
+CREATE TABLE tblUsers (
+	FirstName varchar(50) NOT NULL,
+	LastName varchar(75) NOT NULL,
+	Email varchar(250),
+	MobileNumber varchar(12) NOT NUll,
+	CONSTRAINT PK_Users PRIMARY KEY (Email)
+);
+
+CREATE TABLE tblFarms (
+	FarmID varchar(80),
+	FarmName varchar(250),
+	StreetAddress1 varchar(100),
+	StreetAddress2 varchar(100),
+	City varchar(100),
+	State varchar(2),
+	ZIP varchar(5),
+	CONSTRAINT PK_Farms PRIMARY KEY (FarmID)
+);
+
+CREAT TABLE tblTasks (
+	TaskID varchar(80),
+	TaskName varchar(100),
+	Notes varchar(65535),
+	Status varchar(10),
+	CONSTRAINT PK_Tasks PRIMARY KEY (TaskID)
+);
+
+CREATE TABLE tblProducts (
+	ProductID varchar(80),
+	ShortName varchar(100),
+	LongName varchar(250),
+	Description varchar(65535),
+	Status varchar(10),
+	FarmID varchar(80),
+	FOREIGN KEY (FarmID) REFERENCES tblFarms(FarmID),
+	CONSTRAINT PK_Products PRIMARY KEY (ProductID)
+);
+
+CREATE TABLE tblHarvests (
+	HarvestID varchar(80),
+	Product varchar(80),
+	User varchar(250),
+	HarvestDateTime datetime,
+	Quantity DECIMAL(9,2),
+	UnitOfMeasure varchar(80),
+	FarmID varchar(80),
+	FOREIGN KEY (FarmID) REFERENCES tblFarms(FarmID),
+	CONSTRAINT PK_Harvest PRIMARY KEY (HarvestID),
+	FOREIGN KEY (User) REFERENCES tblUsers(Email),
+	FOREIGN KEY (Product) REFERENCES tblProducts(ProductID),
+	FOREIGN KEY (UnitOfMeasure) REFERENCES tblUnitOfMeasure(Abbreviation)
+);
+
+CREATE TABLE tblTaskLog (
+	TaskLogID varchar(80),
+	Task varchar(80),
+	User varchar(250),
+	LogDateTime datetime,
+	Minutes DECIMAL(9,2),
+	FarmID varchar(80),
+	FOREIGN KEY (FarmID) REFERENCES tblFarms(FarmID),
+	CONSTRAINT PK_TaskLog PRIMARY KEY (TaskLogID),
+	FOREIGN KEY (User) REFERENCES tblUsers(Email)
+);
+
+CREATE TABLE tblPosition (
+	EntryID varchar(80),
+	User varchar(250),
+	Title varchar(100),
+	PayRate DECIMAL(6,2),
+	EffectiveDateTime datetime,
+	FarmID varchar(80),
+	FOREIGN KEY (FarmID) REFERENCES tblFarms(FarmID),
+	CONSTRAINT PK_Position PRIMARY KEY (EntryID),
+	FOREIGN KEY (User) REFERENCES tblUsers(Email)
+);
+
+CREATE TABLE tblRawMaterials (
+	MaterialID varchar(80,
+	Description varchar(200),
+	RelatedProduct varchar(80),
+	RecordedByUser varchar(250),
+	RecordedDateTime datetime,
+	Quantity DECIMAL (9,2),
+	UnitOfMeasure varchar(80),
+	Cost DECIMAL (9,2),
+	FarmID varchar(80),
+	FOREIGN KEY (FarmID) REFERENCES tblFarms(FarmID),
+	CONSTRAINT PK_RawMaterials PRIMARY KEY (MaterialID),
+	FOREIGN KEY (RecordedByUser) REFERENCES tblUsers(Email),
+	FOREIGN KEY (RelatedProduct) REFERENCES tblProducts(ProductID),
+	FOREIGN KEY (UnitOfMeasure) REFERENCES tblUnitOfMeasure(Abbreviation)
+);
+
+CREATE TABLE tblUnitOfMeasure (
+	Abbreviation varchar(3),
+	Description varchar(200),
+	FarmID varchar(80),
+	FOREIGN KEY (FarmID) REFERENCES tblFarms(FarmID),
+	Status varchar(10)
+);
+
+CREATE TABLE tblFarmAssignment (
+	AssignmentID varchar(80),
+	FarmID varchar(80),
+	User varchar(250),
+	IsOwner BOOLEAN,
+	CONSTRAINT PK_FarmAssignment PRIMARY KEY (AssignmentID),
+	FOREIGN KEY (User) REFERENCES tblUsers(Email),
+	FOREIGN KEY (FarmID) REFERENCES tblFarms(FarmID)
+);
+*/
+
 // Step One
 const mysql = require('mysql');
 const express = require('express');
@@ -29,6 +151,66 @@ class User {
         this.MobileNumber = strMobileNumber;
         this.Farm = objFarm;
         this.FarmOwner = blnOwner;
+    }
+}
+class Task {
+    constructor(strTaskID,strTaskName,strNotes,strStatus){
+        this.TaskID = strTaskID;
+        this.TaskName = strTaskName;
+        this.Notes = strNotes;
+        this.Status = strStatus;
+    }
+}
+class TaskLog {
+    constructor(strTaskLogID,objTask,objUser,datLogDateTime,decMinutes){
+        this.TaskLogID = strTaskLogID;
+        this.Task = objTask;
+        this.User = objUser;
+        this.LogDateTime = datLogDateTime;
+        this.Minutes = decMinutes;
+    }
+}
+class Position {
+    constructor(strEntryID,objUser,strTitle,decPayRate,datEffectiveDateTime){
+        this.EntryID = strEntryID;
+        this.User = objUser;
+        this.Title = strTitle;
+        this.PayRate = decPayRate;
+        this.EffectiveDateTime = datEffectiveDateTime;
+    }
+}
+class RawMaterial {
+    constructor(strMaterialID,strDescription,objProduct,objUser,datRecordedDateTime,decQuantity,objUnitOfMeasure,decCost){
+        this.MaterialID = strMaterialID;
+        this.Description = strDescription;
+        this.RelatedProduct = objProduct;
+        this.RecordedByUser = objUser;
+        this.RecordedDateTime = datRecordedDateTime;
+        this.Quantity = decQuantity;
+        this.UnitOfMeasure = objUnitOfMeasure;
+        this.Cost = decCost;
+    }
+}
+class UnitOfMeasure {
+    constructor(strAbbreviation,strDescription){
+        this.Abbreviation = strAbbreviation;
+        this.Description = strDescription;
+    }
+}
+class FarmAssignment {
+    constructor(strAssignmentID,objFarm,objUser,blnIsOwner){
+        this.AssignmentID = strAssignmentID;
+        this.Farm = objFarm;
+        this.User = objUser;
+        this.IsOwner = blnIsOwner;
+    }
+}
+class Harvests {
+    constructor(strHarvestID,objProduct,datHarvestDate,decQuantity){
+        this.HarvestID = strHarvestID;
+        this.Product = objProduct;
+        this.HarvestDate = datHarvestDate;
+        this.Quantity = decQuantity;
     }
 }
 class Farm {
@@ -347,6 +529,7 @@ app.post('/Sessions', (req,res,next) => {
         
     })
 })
+
 app.get("/tasks", (req,res,next) => {
     let strSessionID = req.query.sessionid || req.body.sessionid;
     getSessionDetails(strSessionID,function(objSession){
@@ -417,7 +600,7 @@ app.get("/farmassignment", (req,res,next) => {
         })
     })
 })
-app.get("/farms", (req,res,next) => {
+app.get("/farm", (req,res,next) => {
     let strSessionID = req.query.sessionid || req.body.sessionid;
     getSessionDetails(strSessionID,function(objSession){
         pool.query("SELECT * FROM tblFarm WHERE FarmID = ?",objSession.Farm.FarmID, function(error,results){
@@ -473,6 +656,32 @@ app.get("/products", (req,res,next) => {
         })
     })
 })
+app.get("/rawmaterials", (req,res,next)=>{
+    let strSessionID = req.query.sessionid || req.body.sessionid;
+    getSessionDetails(strSessionID,function(objSession){
+        pool.query("SELECT * FROM tblRawMaterials WHERE FarmID = ?",objSession.Farm.FarmID, function(error,results){
+            if(!error){
+                res.status(200).send(results);
+            } else {
+                let objError = new Message("Error",error);
+                res.status(400).send(objError);
+            }
+        })
+    })
+})
+app.get("/tasklogs", (req,res,next)=>{
+    let strSessionID = req.query.sessionid || req.body.sessionid;
+    getSessionDetails(strSessionID,function(objSession){
+        pool.query("SELECT * FROM tblTaskLogs WHERE FarmID = ?",objSession.Farm.FarmID, function(error,results){
+            if(!error){
+                res.status(200).send(results);
+            } else {
+                let objError = new Message("Error",error);
+                res.status(400).send(objError);
+            }
+        })
+    })
+})
 app.get("/test", (req,res,next)=>{
     let strFarmID = req.query.farmid || req.body.farmid;
     console.log(strFarmID);
@@ -484,6 +693,59 @@ app.get("/test", (req,res,next)=>{
             res.status(400).send(objError);
         }
         
+    })
+})
+
+app.put("/products", (req,res,next) => {
+    let strSessionID = req.query.sessionid || req.body.sessionid;
+    let strProductID = req.query.productid || req.body.productid;
+    let strShortName = req.query.shortname || req.body.shortname;
+    let strLongName = req.query.longname || req.body.longname;
+    let strDescription = req.query.description || req.body.description;
+    let strStatus = req.query.status || req.body.status;
+    getSessionDetails(strSessionID,function(objSession){
+        pool.query("UPDATE tblProducts SET ShortName = ?, LongName = ?, Description = ?, Status = ? WHERE ProductID = ? AND FarmID = ?",[strShortName,strLongName,strDescription,strStatus,strProductID,objSession.Farm.FarmID], function(error,results){
+            if(!error){
+                let objSuccess = new Message("Success","Product Updated");
+                res.status(200).send(objSuccess)
+            } else {
+                let objError = new Message("Error",error);
+                res.status(400).send(objError);
+            }
+            
+        })
+    })
+})
+
+app.delete("/products", (req,res,next) => {
+    let strSessionID = req.query.sessionid || req.body.sessionid;
+    let strProductID = req.query.productid || req.body.productid;
+    getSessionDetails(strSessionID,function(objSession){
+        pool.query("DELETE FROM tblProducts WHERE ProductID = ? AND FarmID = ?",[strProductID,objSession.Farm.FarmID], function(error,results){
+            if(!error){
+                let objSuccess = new Message("Success","Product Deleted");
+                res.status(200).send(objSuccess)
+            } else {
+                let objError = new Message("Error",error);
+                res.status(400).send(objError);
+            }
+            
+        })
+    })
+})
+app.delete("/sessions", (req,res,next) => {
+    let strSessionID = req.query.sessionid || req.body.sessionid;
+    getSessionDetails(strSessionID,function(objSession){
+        pool.query("DELETE FROM tblSessions WHERE SessionID = ?",objSession.SessionID, function(error,results){
+            if(!error){
+                let objSuccess = new Message("Success","Session Deleted");
+                res.status(200).send(objSuccess)
+            } else {
+                let objError = new Message("Error",error);
+                res.status(400).send(objError);
+            }
+            
+        })
     })
 })
 
