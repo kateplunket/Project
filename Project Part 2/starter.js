@@ -1,3 +1,18 @@
+const express = require('express');
+const mysql = require('mysql');
+const cors = require('cors');
+const bcrypt = require('bcrypt');
+const bodyParser = require('body-Parser');
+const crypto = require('crypto');
+const pool = mysql.createpool({
+    host:'localhost',
+    user:'root',
+    password:'Mickey2023!',
+    database:'swollenfarm'
+})
+
+const HTTP_PORT = 8000;
+
 class Session {
     constructor(sessionID,startDate,userID){
         this.SessionID = sessionID,
@@ -6,6 +21,11 @@ class Session {
     }
 }
 
-let objSession = new Session('abcd1234','2023-04-20','akplunket43@tntech.edu');
+var app = express();
+app.use(cors());
+app.use(exress.json());
+app.use(bodyparser.urlencoded({
+    extended: true
+}))
 
-objSession.SessionID
+
