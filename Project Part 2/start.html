@@ -535,7 +535,7 @@
             $.when(objInsertCallBack).done(function(){
                 $.getJSON('http://localhost:8000/farm', function(result){
                     $.each(result,function(index,harvest){
-                        $('#divFarm').append(farm.FarmID + ' ' + farm.Password);
+                        $('#divFarm').append(harvest.harvestID + ' ' + harvest.product + ' ' + harvest.quantity + ' ' + harvest.UnitofMeasure);
                     })
                     console.log(result);
                 })
