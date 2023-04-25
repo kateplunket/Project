@@ -238,21 +238,15 @@ app.post("/farmassignment",(req,res,next)=> {
     
     getSessionDetails(strSessionID,function(objSession){
         if(objSession){
-            if(objSession.IsOwner == true){
-                pool.query("INSERT INTO tblFarmAssingments VALUES(?, ?, ?, false)",[strAssignmentID,objSession.Farm.FarmID,strUser], function(error, results){
-                    if(!error){
-                        let objMessage = new Message("AssignmentID",strAssignmentID);
-                        res.status(201).send(objMessage);
-                    } else {
-                        let objMessage = new Message("Error",error);
-                        res.status(400).send(objMessage);
-                    }
-                })
-            }
-            else {
-                let objError = new Message("Error","Only Owners Are Authorized For This Function ");
-                res.status(401).send(objError);
-            }
+            pool.query("INSERT INTO tblFarmAssingments VALUES(?, ?, ?, false)",[strAssignmentID,objSession.Farm.FarmID,strUser], function(error, results){
+                if(!error){
+                    let objMessage = new Message("AssignmentID",strAssignmentID);
+                    res.status(201).send(objMessage);
+                } else {
+                    let objMessage = new Message("Error",error);
+                    res.status(400).send(objMessage);
+                }
+            })
         } else {
             let objError = new Message("Error","Bad Session");
             res.status(401).send(objError);
@@ -270,21 +264,15 @@ app.post("/position",(req,res,next)=> {
     let strEffectiveDate = req.query.effectivedate || req.body.effectivedate;
     getSessionDetails(strSessionID,function(objSession){
         if(objSession){
-            if(objSession.IsOwner == true){
-                pool.query("INSERT INTO tblPosition VALUES(?, ?, ?, ?, ?, ?)",[strEntry,strUser,strTitle,strPayRate,strEffectiveDate,objSession.Farm.FarmID], function(error, results){
-                    if(!error){
-                        let objMessage = new Message("PositionID",strEntry);
-                        res.status(201).send(objMessage);
-                    } else {
-                        let objMessage = new Message("Error",error);
-                        res.status(400).send(objMessage);
-                    }
-                })
-            }
-            else {
-                let objError = new Message("Error","Only Owners Are Authorized For This Function ");
-                res.status(401).send(objError);
-            }
+            pool.query("INSERT INTO tblPosition VALUES(?, ?, ?, ?, ?, ?)",[strEntry,strUser,strTitle,strPayRate,strEffectiveDate,objSession.Farm.FarmID], function(error, results){
+                if(!error){
+                    let objMessage = new Message("PositionID",strEntry);
+                    res.status(201).send(objMessage);
+                } else {
+                    let objMessage = new Message("Error",error);
+                    res.status(400).send(objMessage);
+                }
+            })
         } else {
             let objError = new Message("Error","Bad Session");
             res.status(401).send(objError);
@@ -292,6 +280,72 @@ app.post("/position",(req,res,next)=> {
         
     })
     
+})
+app.post("/tasks",(req,res,next)=> {
+    let strSessionID = req.query.sessionid || req.body.sessionid;
+    let strTaskID = uuidv4();
+    let strTaskName = req.query.taskname || req.body.taskname;
+    getSessionDetails(strSessionID,function(objSession){
+        if(objSession){
+            pool.query("INSERT INTO tblTasks VALUES(?, ?, ?)",[strTaskID,strTaskName,objSession.Farm.FarmID], function(error, results){
+                if(!error){
+                    let objMessage = new Message("TaskID",strTaskID);
+                    res.status(201).send(objMessage);
+                } else {
+                    let objMessage = new Message("Error",error);
+                    res.status(400).send(objMessage);
+                }
+            })
+        } else {
+            let objError = new Message("Error","Bad Session");
+            res.status(401).send(objError);
+        }
+        
+    })
+})    
+app.post("/unitofmeasure",(req,res,next)=> {
+    let strSessionID = req.query.sessionid || req.body.sessionid;
+    let strUnitID = uuidv4();
+    let strDescription = req.query.description || req.body.description;
+    getSessionDetails(strSessionID,function(objSession){
+        if(objSession){
+            pool.query("INSERT INTO tblUnitOfMeasure VALUES(?, ?, ?)",[strUnitID,strDescription,objSession.Farm.FarmID], function(error, results){
+                if(!error){
+                    let objMessage = new Message("UnitID",strUnitID);
+                    res.status(201).send(objMessage);
+                } else {
+                    let objMessage = new Message("Error",error);
+                    res.status(400).send(objMessage);
+                }
+            })
+        } else {
+            let objError = new Message("Error","Bad Session");
+            res.status(401).send(objError);
+        }
+        
+    })
+})
+app.post('/Sessions', (req,res,next) => {
+    let strSessionID = uuidv4();
+    let strUser = req.query.user || req.body.user;
+    let strStartDateTime = req.query.startdatetime || req.body.startdatetime;
+    getSessionDetails(strSessionID,function(objSession){
+        if(objSession){
+            pool.query("INSERT INTO tblSessions VALUES(?, ?, ?, ?)",[strSessionID,strUser,strStartDateTime,objSession.Farm.FarmID], function(error, results){
+                if(!error){
+                    let objMessage = new Message("SessionID",strSessionID);
+                    res.status(201).send(objMessage);
+                } else {
+                    let objMessage = new Message("Error",error);
+                    res.status(400).send(objMessage);
+                }
+            })
+        } else {
+            let objError = new Message("Error","Bad Session");
+            res.status(401).send(objError);
+        }
+        
+    })
 })
 app.get("/tasks", (req,res,next) => {
     let strSessionID = req.query.sessionid || req.body.sessionid;
@@ -325,6 +379,90 @@ app.get("/harvests", (req,res,next) => {
     let strSessionID = req.query.sessionid || req.body.sessionid;
     getSessionDetails(strSessionID,function(objSession){
         pool.query("SELECT * FROM tblHarvests WHERE FarmID = ?",objSession.Farm.FarmID, function(error,results){
+            if(!error){
+                res.status(200).send(results)
+            } else {
+                let objError = new Message("Error",error);
+                res.status(400).send(objError);
+            }
+            
+        })
+    })
+})
+app.get("/positions", (req,res,next) => {
+    let strSessionID = req.query.sessionid || req.body.sessionid;
+    getSessionDetails(strSessionID,function(objSession){
+        pool.query("SELECT * FROM tblPositions WHERE FarmID = ?",objSession.Farm.FarmID, function(error,results){
+            if(!error){
+                res.status(200).send(results)
+            } else {
+                let objError = new Message("Error",error);
+                res.status(400).send(objError);
+            }
+            
+        })
+    })
+})
+app.get("/farmassignment", (req,res,next) => {
+    let strSessionID = req.query.sessionid || req.body.sessionid;
+    getSessionDetails(strSessionID,function(objSession){
+        pool.query("SELECT * FROM tblFarmAssignment WHERE FarmID = ?",objSession.Farm.FarmID, function(error,results){
+            if(!error){
+                res.status(200).send(results)
+            } else {
+                let objError = new Message("Error",error);
+                res.status(400).send(objError);
+            }
+            
+        })
+    })
+})
+app.get("/farms", (req,res,next) => {
+    let strSessionID = req.query.sessionid || req.body.sessionid;
+    getSessionDetails(strSessionID,function(objSession){
+        pool.query("SELECT * FROM tblFarm WHERE FarmID = ?",objSession.Farm.FarmID, function(error,results){
+            if(!error){
+                res.status(200).send(results)
+            } else {
+                let objError = new Message("Error",error);
+                res.status(400).send(objError);
+            }
+            
+        })
+    })
+})
+app.get("/users", (req,res,next) => {
+    let strSessionID = req.query.sessionid || req.body.sessionid;
+    getSessionDetails(strSessionID,function(objSession){
+        pool.query("SELECT * FROM tblUsers WHERE FarmID = ?",objSession.Farm.FarmID, function(error,results){
+            if(!error){
+                res.status(200).send(results)
+            } else {
+                let objError = new Message("Error",error);
+                res.status(400).send(objError);
+            }
+            
+        })
+    })
+})
+app.get("/sessions", (req,res,next) => {
+    let strSessionID = req.query.sessionid || req.body.sessionid;
+    getSessionDetails(strSessionID,function(objSession){
+            pool.query("SELECT * FROM tblSessions WHERE UserID = ?",objSession.User.UserID, function(error,results){
+                if(!error){
+                    res.status(200).send(results)
+                } else {
+                    let objError = new Message("Error",error);
+                    res.status(400).send(objError);
+                }
+                
+            })
+    })
+})
+app.get("/products", (req,res,next) => {
+    let strSessionID = req.query.sessionid || req.body.sessionid;
+    getSessionDetails(strSessionID,function(objSession){
+        pool.query("SELECT * FROM tblProducts WHERE FarmID = ?",objSession.Farm.FarmID, function(error,results){
             if(!error){
                 res.status(200).send(results)
             } else {
@@ -402,6 +540,97 @@ function getUserBySessionID(strSessionID,callback){
             if(results.length > 0){
                 console.log(results);
                 callback(new User(results[0].Email,results[0].FirstName,results[0].LastName,results[0].MobileNumber,null,null));
+            } else {
+                callback(null);
+            }
+        } else {
+          callback(null);
+        }
+    })
+}
+function getHarvestByID(strHarvestID,callback){
+    pool.query('SELECT * FROM tblHarvests WHERE HarvestID = ?',[strHarvestID], function(error, results){
+        if(!error){
+            if(results.length > 0){
+                callback(new Harvest(results[0].HarvestID,results[0].HarvestName,results[0].HarvestDate,results[0].HarvestTime,results[0].HarvestNotes,results[0].FarmID));
+            } else {
+                callback(null);
+            }
+        } else {
+          callback(null);
+        }
+    })
+}
+function getPositionByEntryID(strEntryID,callback){
+    pool.query('SELECT * FROM tblPositions WHERE EntryID = ?',[strEntryID], function(error, results){
+        if(!error){
+            if(results.length > 0){
+                callback(new Position(results[0].EntryID,results[0].HarvestID,results[0].PositionName,results[0].PositionQuantity,results[0].PositionUnitOfMeasure,results[0].PositionNotes));
+            } else {
+                callback(null);
+            }
+        } else {
+          callback(null);
+        }
+    })
+}
+function getProductsByID(strProductID,callback){
+    pool.query('SELECT * FROM tblProducts WHERE ProductID = ?',[strProductID], function(error, results){
+        if(!error){
+            if(results.length > 0){
+                callback(new Product(results[0].ProductID,results[0].ProductName,results[0].ProductQuantity,results[0].ProductUnitOfMeasure,results[0].ProductNotes));
+            } else {
+                callback(null);
+            }
+        } else {
+          callback(null);
+        }
+    })
+}
+function getRawMaterialsByID(strRawMaterialID,callback){
+    pool.query('SELECT * FROM tblRawMaterials WHERE RawMaterialID = ?',[strRawMaterialID], function(error, results){
+        if(!error){
+            if(results.length > 0){
+                callback(new RawMaterial(results[0].RawMaterialID,results[0].RawMaterialName,results[0].RawMaterialQuantity,results[0].RawMaterialUnitOfMeasure,results[0].RawMaterialNotes));
+            } else {
+                callback(null);
+            }
+        } else {
+          callback(null);
+        }
+    })
+}
+function getTaskLogByID(strTaskLogID,callback){
+    pool.query('SELECT * FROM tblTaskLogs WHERE TaskLogID = ?',[strTaskLogID], function(error, results){
+        if(!error){
+            if(results.length > 0){
+                callback(new TaskLog(results[0].TaskLogID,results[0].HarvestID,results[0].TaskLogName,results[0].TaskLogNotes));
+            } else {
+                callback(null);
+            }
+        } else {
+          callback(null);
+        }
+    })
+}
+function getTasksByID(strTaskID,callback){
+    pool.query('SELECT * FROM tblTasks WHERE TaskID = ?',[strTaskID], function(error, results){
+        if(!error){
+            if(results.length > 0){
+                callback(new Task(results[0].TaskID,results[0].TaskName,results[0].TaskNotes));
+            } else {
+                callback(null);
+            }
+        } else {
+          callback(null);
+        }
+    })
+}
+function getUnitOfMeasureByAbbreviation(strAbbreviation,callback){
+    pool.query('SELECT * FROM tblUnitOfMeasure WHERE Abbreviation = ?',[strAbbreviation], function(error, results){
+        if(!error){
+            if(results.length > 0){
+                callback(new UnitOfMeasure(results[0].Abbreviation,results[0].UnitOfMeasureName));
             } else {
                 callback(null);
             }
