@@ -474,26 +474,28 @@
             $.when(objInsertCallBack).done(function(){
                 $.getJSON('http://localhost:8000/user', function(result){
                     $.each(result,function(index,user){
-                        $('#divFarm').append(user.strFirstName + ' ' + user.strLastName + ' ' + user.strEmail + ' ' + user.strPhone);
+                        $('#divFarm').append(user.FirstName + ' ' + user.strLastName + ' ' + user.strEmail + ' ' + user.strPhone);
                     })
                     console.log(result);
                 })
             })
         })
-
+//create place for these input in divfarm
         $(document).on('click', '#btnCreateNewProduct', function(){
-            let strFarmID = $('#txtLoginFarmID').val();
-            let strPassword = $('#txtLoginFarmPassword').val();
+            let strProductID = $('#txtProductID').val()
+            let strShortName = $('#txtProductShort').val()
+            let strLongName = $('#txtProductLong').val()
+            let strDescription = $('#txtProductDespcription').val()
 
             var objInsertResult;
-            var objInsertCallBack = $.post('http://localhost:8000/farm?email=' + strFarmID + '&password=' + strPassword, function(result){
+            var objInsertCallBack = $.post('http://localhost:8000/product?productID=' + strProductID + '&SName=' + strShortName + '&LName=' + strLongName + '&description' + strDescription, function(result){
                 objInsertResult = result;
             })
 
             $.when(objInsertCallBack).done(function(){
-                $.getJSON('http://localhost:8000/farm', function(result){
-                    $.each(result,function(index,farm){
-                        $('#divFarm').append(farm.FarmID + ' ' + farm.Password);
+                $.getJSON('http://localhost:8000/product', function(result){
+                    $.each(result,function(index,product){
+                        $('#divFarm').append(product.productID + ' ' + product.shortname + ' '  + product.longname + ' '  + product.decription);
                     })
                     console.log(result);
                 })
@@ -501,36 +503,38 @@
         })
 
         $(document).on('click', '#btnCreateNewTask', function(){
-            let strFarmID = $('#txtLoginFarmID').val();
-            let strPassword = $('#txtLoginFarmPassword').val();
+            let strTaskLogID = $('#txtTaskID').val();
+            let strTask = $('#txtTask').val();
 
             var objInsertResult;
-            var objInsertCallBack = $.post('http://localhost:8000/farm?email=' + strFarmID + '&password=' + strPassword, function(result){
+            var objInsertCallBack = $.post('http://localhost:8000/task?tasklogID=' + strTaskLogID + '&task=' + strTask, function(result){
                 objInsertResult = result;
             })
 
             $.when(objInsertCallBack).done(function(){
-                $.getJSON('http://localhost:8000/farm', function(result){
-                    $.each(result,function(index,farm){
-                        $('#divFarm').append(farm.FarmID + ' ' + farm.Password);
+                $.getJSON('http://localhost:8000/task', function(result){
+                    $.each(result,function(index,task){
+                        $('#divFarm').append(task.tasklogID + ' ' + task.task);
                     })
                     console.log(result);
                 })
             })
         })
 
-        $(document).on('click', '#btnCreateNewProduct', function(){
-            let strFarmID = $('#txtLoginFarmID').val();
-            let strPassword = $('#txtLoginFarmPassword').val();
+        $(document).on('click', '#btnCreateNewHarvest', function(){
+            let strHarvestID = $('#txtHarvestID').val()
+            let strProduct = $('#txtHarvestProduct').val()
+            let strQuantity = $('txtHarvestQuantity').val()
+            let strUnitofMeasure = $('#txtUnitofMeasure').val()
 
             var objInsertResult;
-            var objInsertCallBack = $.post('http://localhost:8000/farm?email=' + strFarmID + '&password=' + strPassword, function(result){
+            var objInsertCallBack = $.post('http://localhost:8000/harvest?harvestID=' + strHarvestID + '&product=' + strProduct + '&quantity= ' + strQuantity + '&unitofmeasure=' + strUnitofMeasure, function(result){
                 objInsertResult = result;
             })
 
             $.when(objInsertCallBack).done(function(){
                 $.getJSON('http://localhost:8000/farm', function(result){
-                    $.each(result,function(index,farm){
+                    $.each(result,function(index,harvest){
                         $('#divFarm').append(farm.FarmID + ' ' + farm.Password);
                     })
                     console.log(result);
