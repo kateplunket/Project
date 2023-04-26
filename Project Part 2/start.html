@@ -58,8 +58,8 @@
                             <input class="form-control" id="txtCreateEmail" placeholder="" type="email">
                         </div>
                         <div class="form-group">
-                            <label for="txtCreatePhone" class="form-label mt-4">Phone Number</label>
-                            <input class="form-control" id="txtCreatePhone" placeholder="" type="email">
+                            <label for="txtCreatePreferredName" class="form-label mt-4">Preferred Name</label>
+                            <input class="form-control" id="txtCreatePreferredName" placeholder="" type="text">
                         </div>
                         <div class="form-group">
                             <label for="txtCreatePassword" class="form-label mt-4">Password</label>
@@ -101,6 +101,14 @@
                             <input class="form-control" id="txtFarmName" placeholder="" type="text">
                         </div>
                         <div class="form-group">
+                            <label for="txtFarmPreferredName" class="form-label mt-4">Preferred Name</label>
+                            <input class="form-control" id="txtFarmZip" placeholder="" type="text">
+                        </div>
+                        <div class="form-group">
+                            <label for="txtFarmEmail" class="form-label mt-4">Email</label>
+                            <input class="form-control" id="txtFarmEmail" placeholder="" type="email">
+                        </div>
+                        <div class="form-group">
                             <label for="txtAddressLine1" class="form-label mt-4">Street Address</label>
                             <input class="form-control" id="txtAddressLine1" placeholder="" type="text">
                         </div>
@@ -119,6 +127,10 @@
                         <div class="form-group">
                             <label for="txtFarmZip" class="form-label mt-4">Zip</label>
                             <input class="form-control" id="txtFarmZip" placeholder="" type="text">
+                        </div>
+                        <div class="form-group">
+                            <label for="txtFarmPassword" class="form-label mt-4">Password</label>
+                            <input class="form-control" id="txtFarmPassword" placeholder="" type="password">
                         </div>
                         <button class="btn col-12 mt-4" type="button" id="btnRegisterFarm" style="background-color: #C98143">Register Farm</button>
                         <button class="btn col-12 mt-2 btnSwap" type="button" style="background-color: #D49C7F">Back To Login</button>
@@ -180,11 +192,13 @@
                 <div class="card col-md-6 col-md-4 offset-md-1">
                     <div class="card-head">
                         <h3 class="col-12 text-center mt-1">Track Your Employees</h3>
+                        <h2 class="col-10 text-center mt-1">Add current employees with thier UserID or register new employees!</h2>
                     </div>
                     <div class="card-body">
                         <form>
                             <input id="txtUserID" type="text" class="form-control mt-2" placeholder="UserID" aria-label="enter UserID">
-                            <button class="btn col-12 mt-4" type="button" id="btnCreateNewUser" style="background-color: #C98143">Add to Farm</button>    
+                            <button class="btn col-12 mt-4" type="button" id="btnAddUser" style="background-color: #C98143">Add to Farm</button> 
+                            <button class="btn col-12 mt-4" type="button" id="btnCreateNewUser" style="background-color: #C98143">Register New User</button>       
                         </form>
                     </div>
                 </div>
@@ -195,14 +209,13 @@
                 <div class="card col-md-6 col-md-4 offset-md-1">
                     <div class="card-head">
                         <h3 class="col-12 text-center mt-1">Track Your Products</h3>
+                        <h2 class="col-10 text-center mt-1">Add existing products with their ProductID or register a new product to start tracking it!</h2>
                     </div>
                     <div class="card-body">
-                        <ul id="listProduct">
-                            <li id="product1" onclick="showInfo(this)">ex. Corn</li>
-                        </ul>
                         <form>
-                            <input id="txtProduct" type="text" class="form-control mt-2" placeholder="ex. Corn" aria-label="enter Products">
-                            <button class="btn col-12 mt-4" type="button" id="btnCreateNewProduct" style="background-color: #C98143">Add to Products</button>    
+                            <input id="txtProduct" type="text" class="form-control mt-2" placeholder="Corn42" aria-label="enter ProductID">
+                            <button class="btn col-12 mt-4" type="button" id="btnAddProduct" style="background-color: #C98143">Add to Products</button>    
+                            <button class="btn col-12 mt-4" type="button" id="btnCreateNewProduct" style="background-color: #C98143">Create New Project</button>    
                         </form>
                     </div>
                 </div>
@@ -213,14 +226,20 @@
                 <div class="card col-md-6 col-md-4 offset-md-1">
                     <div class="card-head">
                         <h3 class="col-12 text-center mt-1">Track Your Tasks</h3>
+                        <h2 class="col-10 text-center mt-1">Add existing Tasks with their TaskID or register a new product to start tracking it!</h2>
                     </div>
                     <div class="card-body">
-                        <ul id="listProduct">
-                            <li id="product1" onclick="showInfo(this)">ex.Milk the Cow</li>
-                        </ul>
                         <form>
-                            <input id="txtProduct" type="text" class="form-control mt-2" placeholder="ex. Corn" aria-label="enter Products">
-                            <button class="btn col-12 mt-4" type="button" id="btnCreateNewTask" style="background-color: #C98143">Add to Products</button>    
+                            <input id="txtTask" type="text" class="form-control mt-2" placeholder="Cleaning-Kate" aria-label="enter taskID">
+                            <button class="btn col-12 mt-4" type="button" id="btnAddTask" style="background-color: #C98143">Add to Products</button>    
+                            <button class="btn col-12 mt-4" type="button" id="btnCreateNewTask" style="background-color: #C98143">Register New Product</button>    
+                        </form>
+                    </div>
+                    <div class="card-body">
+                        <form>
+                            <button class="btn col-12 mt-4" type="button" id="btnStartTask" style="background-color: #C98143">Start Task</button>    
+                            <button class="btn col-12 mt-4" type="button" id="btnEndTask" style="background-color: #C98143">End Task</button>    
+                            <button class="btn col-12 mt-4" type="button" id="btnTimeTask" style="background-color: #C98143">Enter Task Times Manually</button>    
                         </form>
                     </div>
                 </div>
@@ -231,14 +250,13 @@
                 <div class="card col-md-6 col-md-4 offset-md-1">
                     <div class="card-head">
                         <h3 class="col-12 text-center mt-1">Track Your Materials</h3>
+                        <h2 class="col-10 text-center mt-1">Add existing raw materials using their MaterialID or register new inventory!</h2>
                     </div>
                     <div class="card-body">
-                        <ul id="listProduct">
-                            <li id="product1" onclick="showInfo(this)">ex.Hay</li>
-                        </ul>
                         <form>
-                            <input id="txtProduct" type="text" class="form-control mt-2" placeholder="ex. Corn" aria-label="enter Products">
-                            <button class="btn col-12 mt-4" type="button" id="btnCreateNewmaterials" style="background-color: #C98143">Add to Products</button>    
+                            <input id="txtProduct" type="text" class="form-control mt-2" placeholder="Wood24" aria-label="enter MaterialID">                            
+                            <button class="btn col-12 mt-4" type="button" id="btnAddMaterials" style="background-color: #C98143">Add to Materials/button>    
+                            <button class="btn col-12 mt-4" type="button" id="btnCreateNewmaterials" style="background-color: #C98143">Register Materials</button>    
                         </form>
                     </div>
                 </div>
@@ -249,14 +267,13 @@
                 <div class="card col-md-6 col-md-4 offset-md-1">
                     <div class="card-head">
                         <h3 class="col-12 text-center mt-1">Track Your Harvest</h3>
+                        <h2 class="col-12 text-center mt-1">Add pasts harvests with their HarvestID or register the weight and cost of your latest harvest!</h2>
                     </div>
                     <div class="card-body">
-                        <ul id="listProduct">
-                            <li id="product1" onclick="showInfo(this)">ex.2021 Harvest</li>
-                        </ul>
                         <form>
-                            <input id="txtProduct" type="text" class="form-control mt-2" placeholder="ex. Corn" aria-label="enter Products">
-                            <button class="btn col-12 mt-4" type="button" id="btnCreateNewHarvest" style="background-color: #C98143">Add to Products</button>    
+                            <input id="txtHarvest" type="text" class="form-control mt-2" placeholder="Harvest2023" aria-label="enter HarvestID">
+                            <button class="btn col-12 mt-4" type="button" id="btnAddHarvest" style="background-color: #C98143">Add a Harvest</button>    
+                            <button class="btn col-12 mt-4" type="button" id="btnCreateNewHarvest" style="background-color: #C98143">Register Harvest</button>    
                         </form>
                     </div>
                 </div>
@@ -285,6 +302,174 @@
     </div>
     </div>
 
+
+    <div id="divCreateProduct" style="background-color: #989F8B; display:none;">
+        <div class="col-12 col-md-6 d-flex justify-content-center align-items-center vh-100">
+            <div class="card col-12 col-md-10 offset-md-4">
+                <div class="card-head">
+                    <h3 class="col-12 text-center mt-1">Create User Account</h3>
+                </div>
+                <div class="card-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="txtCreateFirstName" class="form-label mt-4">First Name</label>
+                            <input class="form-control" id="txtCreateFirstName" placeholder="" type="text">
+                        </div>
+                        <div class="form-group">
+                            <label for="txtCreateLastName" class="form-label mt-4">Last Name</label>
+                            <input class="form-control" id="txtCreateLastName" placeholder="" type="text">
+                        </div>
+                        <div class="form-group">
+                            <label for="txtCreateEmail" class="form-label mt-4">Email</label>
+                            <input class="form-control" id="txtCreateEmail" placeholder="" type="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="txtCreatePreferredName" class="form-label mt-4">Preferred Name</label>
+                            <input class="form-control" id="txtCreatePreferredName" placeholder="" type="text">
+                        </div>
+                        <div class="form-group">
+                            <label for="txtCreatePassword" class="form-label mt-4">Password</label>
+                            <input class="form-control" id="txtCreatePassword" placeholder="" type="password">
+                        </div>
+                        <button class="btn col-12 mt-4" type="button" id="btnRegisterUser" style="background-color: #C98143">Register User</button>
+                        <button class="btn col-12 mt-2 btnSwap" type="button" style="background-color: #D49C7F">Back To Login</button>
+                    </form>
+                </div>
+            </div>
+            <div class="d-none d-md-block col-6  d-flex justify-content-center align-items-center vh-100">
+                <h2 class="text-center mt-5" style="background-color: #C98143">Let's Get Registered</h2>
+                <div style="display:flex; justify-content: center; align-items: center;">
+                    <img src="farm2.jpeg" alt="Chickens" class="p-5">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="divCreateTask" style="background-color: #989F8B; display:none;">
+        <div class="col-12 col-md-6 d-flex justify-content-center align-items-center vh-100">
+            <div class="card col-12 col-md-10 offset-md-4">
+                <div class="card-head">
+                    <h3 class="col-12 text-center mt-1">Create User Account</h3>
+                </div>
+                <div class="card-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="txtCreateFirstName" class="form-label mt-4">First Name</label>
+                            <input class="form-control" id="txtCreateFirstName" placeholder="" type="text">
+                        </div>
+                        <div class="form-group">
+                            <label for="txtCreateLastName" class="form-label mt-4">Last Name</label>
+                            <input class="form-control" id="txtCreateLastName" placeholder="" type="text">
+                        </div>
+                        <div class="form-group">
+                            <label for="txtCreateEmail" class="form-label mt-4">Email</label>
+                            <input class="form-control" id="txtCreateEmail" placeholder="" type="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="txtCreatePreferredName" class="form-label mt-4">Preferred Name</label>
+                            <input class="form-control" id="txtCreatePreferredName" placeholder="" type="text">
+                        </div>
+                        <div class="form-group">
+                            <label for="txtCreatePassword" class="form-label mt-4">Password</label>
+                            <input class="form-control" id="txtCreatePassword" placeholder="" type="password">
+                        </div>
+                        <button class="btn col-12 mt-4" type="button" id="btnRegisterUser" style="background-color: #C98143">Register User</button>
+                        <button class="btn col-12 mt-2 btnSwap" type="button" style="background-color: #D49C7F">Back To Login</button>
+                    </form>
+                </div>
+            </div>
+            <div class="d-none d-md-block col-6  d-flex justify-content-center align-items-center vh-100">
+                <h2 class="text-center mt-5" style="background-color: #C98143">Let's Get Registered</h2>
+                <div style="display:flex; justify-content: center; align-items: center;">
+                    <img src="farm2.jpeg" alt="Chickens" class="p-5">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="divCreateMaterial" style="background-color: #989F8B; display:none;">
+        <div class="col-12 col-md-6 d-flex justify-content-center align-items-center vh-100">
+            <div class="card col-12 col-md-10 offset-md-4">
+                <div class="card-head">
+                    <h3 class="col-12 text-center mt-1">Create User Account</h3>
+                </div>
+                <div class="card-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="txtCreateFirstName" class="form-label mt-4">First Name</label>
+                            <input class="form-control" id="txtCreateFirstName" placeholder="" type="text">
+                        </div>
+                        <div class="form-group">
+                            <label for="txtCreateLastName" class="form-label mt-4">Last Name</label>
+                            <input class="form-control" id="txtCreateLastName" placeholder="" type="text">
+                        </div>
+                        <div class="form-group">
+                            <label for="txtCreateEmail" class="form-label mt-4">Email</label>
+                            <input class="form-control" id="txtCreateEmail" placeholder="" type="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="txtCreatePreferredName" class="form-label mt-4">Preferred Name</label>
+                            <input class="form-control" id="txtCreatePreferredName" placeholder="" type="text">
+                        </div>
+                        <div class="form-group">
+                            <label for="txtCreatePassword" class="form-label mt-4">Password</label>
+                            <input class="form-control" id="txtCreatePassword" placeholder="" type="password">
+                        </div>
+                        <button class="btn col-12 mt-4" type="button" id="btnRegisterUser" style="background-color: #C98143">Register User</button>
+                        <button class="btn col-12 mt-2 btnSwap" type="button" style="background-color: #D49C7F">Back To Login</button>
+                    </form>
+                </div>
+            </div>
+            <div class="d-none d-md-block col-6  d-flex justify-content-center align-items-center vh-100">
+                <h2 class="text-center mt-5" style="background-color: #C98143">Let's Get Registered</h2>
+                <div style="display:flex; justify-content: center; align-items: center;">
+                    <img src="farm2.jpeg" alt="Chickens" class="p-5">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="divCreateHarvest" style="background-color: #989F8B; display:none;">
+        <div class="col-12 col-md-6 d-flex justify-content-center align-items-center vh-100">
+            <div class="card col-12 col-md-10 offset-md-4">
+                <div class="card-head">
+                    <h3 class="col-12 text-center mt-1">Create User Account</h3>
+                </div>
+                <div class="card-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="txtCreateFirstName" class="form-label mt-4">First Name</label>
+                            <input class="form-control" id="txtCreateFirstName" placeholder="" type="text">
+                        </div>
+                        <div class="form-group">
+                            <label for="txtCreateLastName" class="form-label mt-4">Last Name</label>
+                            <input class="form-control" id="txtCreateLastName" placeholder="" type="text">
+                        </div>
+                        <div class="form-group">
+                            <label for="txtCreateEmail" class="form-label mt-4">Email</label>
+                            <input class="form-control" id="txtCreateEmail" placeholder="" type="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="txtCreatePreferredName" class="form-label mt-4">Preferred Name</label>
+                            <input class="form-control" id="txtCreatePreferredName" placeholder="" type="text">
+                        </div>
+                        <div class="form-group">
+                            <label for="txtCreatePassword" class="form-label mt-4">Password</label>
+                            <input class="form-control" id="txtCreatePassword" placeholder="" type="password">
+                        </div>
+                        <button class="btn col-12 mt-4" type="button" id="btnRegisterUser" style="background-color: #C98143">Register User</button>
+                        <button class="btn col-12 mt-2 btnSwap" type="button" style="background-color: #D49C7F">Back To Login</button>
+                    </form>
+                </div>
+            </div>
+            <div class="d-none d-md-block col-6  d-flex justify-content-center align-items-center vh-100">
+                <h2 class="text-center mt-5" style="background-color: #C98143">Let's Get Registered</h2>
+                <div style="display:flex; justify-content: center; align-items: center;">
+                    <img src="farm2.jpeg" alt="Chickens" class="p-5">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
  <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -299,18 +484,37 @@
             $('#divCreateFarm').slideToggle();
         });
     })
-    $('#btnNewUser').on('click',function(){
+    $('#btnCreateNewUser').on('click',function(){
         $('#divFarm').slideToggle(function(){
-            $('#divCreateFarm').slideToggle()
+            $('#divCreateUser').slideToggle()
         })
     })
 
+    //login validation
+    $('#btnLogin').on('click',function(){
+        let strFarmID = $('#txtLoginFarmID').val()
+        let strPassward = $('#txtLoginPassword').val()
 
+        $.post('http://localhost:8000/sessions',{FarmID:strFarmID,Password:strPassward},function(result){
+            result = JSON.parse(result)
+            if(result.error){
+                swal({
+                    icon: 'error',
+                    text: '<p> Incorrect FarmID or Password <p>'
+                })
+            } else{
+                sessionStorage.setItem('Simple Session',resultSession.SessionID)
+                $('#divFarm').slideToggle() 
+            }  
+        })
+    })
+
+    //user validation
     $('#btnRegisterUser').on('click',function(){
         let strFirstName = $('#txtCreateFirstName').val()
         let strLastName = $('#txtCreateLastName').val()
         let strEmail = $('#txtCreateEmail').val()
-        let strPhone = $('#txtCreatePhone').val()
+        let strPreferredName = $('#txtCreatePreferredName').val()
         let strPassword = $('#txtCreatePassword').val()
 
         let blnError = false
@@ -328,7 +532,7 @@
             blnError = true
             strErrorMessage += "Please Enter An Email. "
         }
-        if(strPhone.length < 1){
+        if(strPreferredName.length < 1){
             blnError = true
             strErrorMessage += "Please Enter A Phone Number. "
         }
@@ -344,7 +548,7 @@
         }
 
         if(blnError == false){
-            $.post('htpp://localhost:8000/users',{First:strFirstName,Last:strLastName,Email:strEmail,Phone:strPhone,Password:strPassword},function(result){
+            $.post('http://localhost:8000/users',{First:strFirstName,Last:strLastName,Email:strEmail,PreferredName:strPreferredName,Password:strPassword},function(result){
                 result = JSON.parse
                 if(resultError){
                     swal({
@@ -370,6 +574,7 @@
         }
     })
 
+    //farm validation
     $('#btnRegisterFarm').on('click',function(){
         let strFarmID = $('#txtFarmID').val()
         let strFarmName = $('#txtFarmName').val()
@@ -441,45 +646,31 @@
         }
     })
 
-    $(document).on('click', '#btnLogin', function(){
-            let strFarmID = $('#txtLoginFarmID').val();
-            let strPassword = $('#txtLoginFarmPassword').val();
-
-            var objInsertResult;
-            var objInsertCallBack = $.post('http://localhost:8000/farm?email=' + strFarmID + '&password=' + strPassword, function(result){
-                objInsertResult = result;
-            })
-
-            $.when(objInsertCallBack).done(function(){
-                $.getJSON('http://localhost:8000/farm', function(result){
-                    $.each(result,function(index,farm){
-                        $('#divFarm').append(farm.FarmID + ' ' + farm.Password);
-                    })
-                    console.log(result);
-                })
-            })
-        })
+    //employee tracker table
 
         $(document).on('click', '#btnRegisterUser', function(){
             let strFirstName = $('#txtCreateFirstName').val()
             let strLastName = $('#txtCreateLastName').val()
             let strEmail = $('#txtCreateEmail').val()
-            let strPhone = $('#txtCreatePhone').val()            
+            let strPreferredName = $('#txtCreatePreferredName').val()            
 
             var objInsertResult;
-            var objInsertCallBack = $.post('http://localhost:8000/user?FName=' + strFirstName + '&LName=' + strLastName + '&Email='+ strEmail + '&Phone=' + strPhone, function(result){
+            var objInsertCallBack = $.post('http://localhost:8000/user?FirstName=' + strFirstName + '&LastName=' + strLastName + '&Email='+ strEmail + '&PreferredName=' + strPreferredName, function(result){
                 objInsertResult = result;
             })
 
             $.when(objInsertCallBack).done(function(){
-                $.getJSON('http://localhost:8000/user', function(result){
+                $.getJSON('http://localhost:8000/user',{session:objInsertResult}, function(result){
                     $.each(result,function(index,user){
-                        $('#divFarm').append(user.FirstName + ' ' + user.strLastName + ' ' + user.strEmail + ' ' + user.strPhone);
+                        $('#divFarm').append(user.FirstName + ' ' + user.LastName + ' ' + user.Email + ' ' + user.PreferredName);
                     })
-                    console.log(result);
+                    console.log(result)
+                        
                 })
             })
         })
+
+        //product tracker table
 //create place for these input in divfarm
         $(document).on('click', '#btnCreateNewProduct', function(){
             let strProductID = $('#txtProductID').val()
@@ -492,16 +683,32 @@
                 objInsertResult = result;
             })
 
-            $.when(objInsertCallBack).done(function(){
-                $.getJSON('http://localhost:8000/product', function(result){
-                    $.each(result,function(index,product){
-                        $('#divFarm').append(product.productID + ' ' + product.shortname + ' '  + product.longname + ' '  + product.decription);
-                    })
-                    console.log(result);
-                })
-            })
-        })
+        $.when(objInsertCallBack).done(function(){
+            $.getJSON('http://localhost:8000/user',{session:objInsertResult}, function(result){
+                var table = $('<table>');
+                var headerRow = $('<tr>').append(
+                    $('<th>').text('First Name'),
+                    $('<th>').text('Last Name'),
+                    $('<th>').text('Email'),
+                    $('<th>').text('Preferred Name')
+                );
+                table.append(headerRow);
 
+        $.each(result,function(index,user){
+            var row = $('<tr>').append(
+                $('<td>').text(user.FirstName),
+                $('<td>').text(user.LastName),
+                $('<td>').text(user.Email),
+                $('<td>').text(user.PreferredName)
+            );
+            table.append(row);
+        });
+         $('#divFarm').append(table);
+        });
+    });
+})
+
+        //Task tracker table
         $(document).on('click', '#btnCreateNewTask', function(){
             let strTaskLogID = $('#txtTaskID').val();
             let strTask = $('#txtTask').val();
@@ -521,6 +728,7 @@
             })
         })
 
+        //harvest tracker table
         $(document).on('click', '#btnCreateNewHarvest', function(){
             let strHarvestID = $('#txtHarvestID').val()
             let strProduct = $('#txtHarvestProduct').val()
@@ -542,18 +750,8 @@
             })
         })
     
+        //way to generate report
 
-    function showInfo(item) {
-			// Get the corresponding info element
-			var info = document.getElementById(item.id + "-info");
-			if (info.classList.contains("hidden")) {
-				// Show the info element
-				info.classList.remove("hidden");
-			} else {
-				// Hide the info element
-				info.classList.add("hidden");
-			}
-		}
  </script>
 
 </body>

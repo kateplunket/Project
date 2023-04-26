@@ -79,7 +79,7 @@ app.listen(HTTP_PORT, () => {
 });
 //End Step Three
 // Step Four Users
-app.post("/users", (req,res,next) => {
+app.post("/user", (req,res,next) => {
     let strFirstName = req.query.firstname || req.body.firstname;
     let strLastName = req.query.lastname || req.body.lastname;
     let strPreferredName = req.query.preferredname || req.body.preferredname;
@@ -88,11 +88,18 @@ app.post("/users", (req,res,next) => {
     // call the hash method of bcrypt against the password to encrypt and store with a salt
     // notice the use of .then as a promise due to it being async
     bcrypt.hash(strPassword, 10).then(hash => {
-        strPassword = hash;
-        pool.query('INSERT INTO tblUsers VALUES(?, ?, ?, ?, ?,SYSDATE())',[strEmail, strFirstName, strLastName, strPreferredName, strPassword], function(error, results){
+        pool.query('INSERT INTO tblUsers VALUES(?, ?, ?, ?, ?,SYSDATE())',[strEmail, strFirstName, strLastName, strPreferredName, hash], function(error, results){
             if(!error){
-                let objMessage = new Message("Success","New User Created");
-                res.status(201).send(objMessage);
+                let strSession = uuidv4();
+                pool.query('INSERT INTO tblSessions VALUES(?, ?, ?, ?, ?,SYSDATE())',[strEmail, strFirstName, strLastName, strPreferredName, hash], function(error, results){
+                    if(!error){
+                        let objMessage = new Message("SessionID",strSession);
+                        res.status(201).send(objMessage);
+                    } else {
+                        let objMessage = new Message("Error",error);
+                        res.status(400).send(objMessage);
+                    }
+                })
             } else {
                 let objMessage = new Message("Error",error);
                 res.status(400).send(objMessage);
@@ -431,7 +438,7 @@ app.get("/farms", (req,res,next) => {
         })
     })
 })
-app.get("/users", (req,res,next) => {
+app.get("/user", (req,res,next) => {
     let strSessionID = req.query.sessionid || req.body.sessionid;
     getSessionDetails(strSessionID,function(objSession){
         pool.query("SELECT * FROM tblUsers WHERE FarmID = ?",objSession.Farm.FarmID, function(error,results){
