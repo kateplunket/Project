@@ -1,4 +1,5 @@
-/* My table structure was created in MySQL Workbench with these scripts: 
+// My table structure was created in MySql workbench with these scripts (see below)
+/*
 CREATE TABLE tblSessions (
     SessionID varchar(80),
     UserID varchar(250),
@@ -143,7 +144,7 @@ class Session {
         this.LastUsedDateTime = datLastUsedDateTime;
     }
 }
-class User {
+class Users {
     constructor(strEmail,strFirstName,strLastName,strMobileNumber,objFarm,blnOwner){
         this.Email = strEmail;
         this.FirstName = strFirstName;
@@ -153,7 +154,7 @@ class User {
         this.FarmOwner = blnOwner;
     }
 }
-class Task {
+class Tasks {
     constructor(strTaskID,strTaskName,strNotes,strStatus){
         this.TaskID = strTaskID;
         this.TaskName = strTaskName;
@@ -224,7 +225,7 @@ class Farm {
         this.ZIPCode = strZIP;
     }
 }
-class Product {
+class Products {
     constructor(strProductID,strShortName,strLongName,strDescription,strStatus,objFarm){
         this.ProductID = strProductID;
         this.ShortName = strShortName;
@@ -716,6 +717,212 @@ app.put("/products", (req,res,next) => {
         })
     })
 })
+app.put("/sessions", (req,res,next) => {
+    let strSessionID = req.query.sessionid || req.body.sessionid;
+    let strUserID = req.query.userid || req.body.userid;
+    let strStatus = req.query.status || req.body.status;
+    getSessionDetails(strSessionID,function(objSession){
+        pool.query("UPDATE tblSessions SET Status = ? WHERE SessionID = ? AND UserID = ?",[strStatus,strSessionID,strUserID], function(error,results){
+            if(!error){
+                let objSuccess = new Message("Success","Session Updated");
+                res.status(200).send(objSuccess)
+            } else {
+                let objError = new Message("Error",error);
+                res.status(400).send(objError);
+            }
+            
+        })
+    })
+
+})
+app.put("/rawmaterials", (req,res,next) => {
+    let strSessionID = req.query.sessionid || req.body.sessionid;
+    let strMaterialID = req.query.materialid || req.body.materialid;
+    let strDescription = req.query.description || req.body.description;
+    let strRelatedProduct = req.query.relatedproduct || req.body.relatedproduct;
+    let strRecordedByUser = req.query.recordedbyuser || req.body.recordedbyuser;
+    let strRecordedDateTime = req.query.recordeddatetime || req.body.recordeddatetime;
+    let strQuantity = req.query.quantity || req.body.quantity;
+    let strUnitOfMeasure = req.query.unitofmeasure || req.body.unitofmeasure;
+    let strCost = req.query.cost || req.body.cost;
+    let strStatus = req.query.status || req.body.status;
+    getSessionDetails(strSessionID,function(objSession){
+        pool.query("UPDATE tblRawMaterials SET Description = ?, RelatedProduct = ?, RecordedByUser = ?, RecordedDateTime = ?, Quantity = ?, UnitOfMeasure = ?, Cost = ?, Status = ? WHERE MaterialID = ? AND FarmID = ?",[strDescription,strRelatedProduct,strRecordedByUser,strRecordedDateTime,strQuantity,strUnitOfMeasure,strCost,strStatus,strMaterialID,objSession.Farm.FarmID], function(error,results){
+            if(!error){
+                let objSuccess = new Message("Success","Raw Material Updated");
+                res.status(200).send(objSuccess)
+            } else {
+                let objError = new Message("Error",error);
+                res.status(400).send(objError);
+            }
+            
+        })
+    })
+})
+app.put("/tasklog", (req,res,next) => {
+    let strSessionID = req.query.sessionid || req.body.sessionid;
+    let strTaskLogID = req.query.tasklogid || req.body.tasklogid;
+    let strTaskID = req.query.taskid || req.body.taskid;
+    let strUser = req.query.user || req.body.user;
+    let strLogDateTime = req.query.logdatetime || req.body.logdatetime;
+    let strMinutes = req.query.minutes || req.body.minutes;
+    let strStatus = req.query.status || req.body.status;
+    getSessionDetails(strSessionID,function(objSession){
+        pool.query("UPDATE tblTaskLogs SET TaskID = ?, User = ?, LogDateTime = ?, Minutes = ?, Status = ? WHERE TaskLogID = ? AND FarmID = ?",[strTaskID,strUser,strLogDateTime,strMinutes,strStatus,strTaskLogID,objSession.Farm.FarmID], function(error,results){
+            if(!error){
+                let objSuccess = new Message("Success","Task Log Updated");
+                res.status(200).send(objSuccess)
+            } else {
+                let objError = new Message("Error",error);
+                res.status(400).send(objError);
+            }
+            
+        })
+    })
+})
+app.put("/tasks", (req,res,next) => {
+    let strSessionID = req.query.sessionid || req.body.sessionid;
+    let strTaskID = req.query.taskid || req.body.taskid;
+    let strNotes = req.query.notes || req.body.notes;
+    let strStatus = req.query.status || req.body.status;
+    getSessionDetails(strSessionID,function(objSession){
+        pool.query("UPDATE tblTasks SET Notes = ?, Status = ? WHERE TaskID = ? AND FarmID = ?",[strNotes,strStatus,strTaskID,objSession.Farm.FarmID], function(error,results){
+            if(!error){
+                let objSuccess = new Message("Success","Task Updated");
+                res.status(200).send(objSuccess)
+            } else {
+                let objError = new Message("Error",error);
+                res.status(400).send(objError);
+            }
+            
+        })
+    })
+})
+app.put("/users", (req,res,next) => {
+    let strSessionID = req.query.sessionid || req.body.sessionid;
+    let strUserID = req.query.userid || req.body.userid;
+    let strFirstName = req.query.firstname || req.body.firstname;
+    let strLastName = req.query.lastname || req.body.lastname;
+    let strEmail = req.query.email || req.body.email;
+    let strPassword = req.query.password || req.body.password;
+    let strStatus = req.query.status || req.body.status;
+    getSessionDetails(strSessionID,function(objSession){
+        pool.query("UPDATE tblUsers SET FirstName = ?, LastName = ?, Email = ?, Password = ?, Status = ? WHERE UserID = ? AND FarmID = ?",[strFirstName,strLastName,strEmail,strPassword,strStatus,strUserID,objSession.Farm.FarmID], function(error,results){
+            if(!error){
+                let objSuccess = new Message("Success","User Updated");
+                res.status(200).send(objSuccess)
+            } else {
+                let objError = new Message("Error",error);
+                res.status(400).send(objError);
+            }
+            
+        })
+    })
+})
+app.put("/farm", (req,res,next) => {
+    let strSessionID = req.query.sessionid || req.body.sessionid;
+    let strFarmName = req.query.farmname || req.body.farmname;
+    let strStreetAddress1 = req.query.streetaddress1 || req.body.streetaddress1;
+    let strStreetAddress2 = req.query.streetaddress2 || req.body.streetaddress2;
+    let strCity = req.query.city || req.body.city;
+    let strState = req.query.state || req.body.state;
+    let strZip = req.query.zip || req.body.zip;
+    let strStatus = req.query.status || req.body.status;
+    getSessionDetails(strSessionID,function(objSession){
+        pool.query("UPDATE tblFarms SET FarmName = ?, StreetAddress1 = ?, StreetAddress2 = ?, City = ?, State = ?, Zip = ?, Status = ? WHERE FarmID = ?",[strFarmName,strStreetAddress1,strStreetAddress2,strCity,strState,strZip,strStatus,objSession.Farm.FarmID], function(error,results){
+            if(!error){
+                let objSuccess = new Message("Success","Farm Updated");
+                res.status(200).send(objSuccess)
+            } else {
+                let objError = new Message("Error",error);
+                res.status(400).send(objError);
+            }
+            
+        })
+    })
+})
+app.put("/harvests", (req,res,next) => {
+    let strSessionID = req.query.sessionid || req.body.sessionid;
+    let strHarvestID = req.query.harvestid || req.body.harvestid;
+    let strProduct = req.query.product || req.body.product;
+    let strUser = req.query.user || req.body.user;
+    let strHarvestDateTime = req.query.harvestdatetime || req.body.harvestdatetime;
+    let strQuantity = req.query.quantity || req.body.quantity;
+    let strUnitOfMeasure = req.query.unitofmeasure || req.body.unitofmeasure;
+    let strStatus = req.query.status || req.body.status;
+    getSessionDetails(strSessionID,function(objSession){
+        pool.query("UPDATE tblHarvests SET Product = ?, User = ?, HarvestDateTime = ?, Quantity = ?, UnitOfMeasure = ?, Status = ? WHERE HarvestID = ? AND FarmID = ?",[strProduct,strUser,strHarvestDateTime,strQuantity,strUnitOfMeasure,strStatus,strHarvestID,objSession.Farm.FarmID], function(error,results){
+            if(!error){
+                let objSuccess = new Message("Success","Harvest Updated");
+                res.status(200).send(objSuccess)
+            } else {
+                let objError = new Message("Error",error);
+                res.status(400).send(objError);
+            }
+            
+        })
+    })
+})
+app.put("/position", (req,res,next) => {
+    let strSessionID = req.query.sessionid || req.body.sessionid;
+    let strEntryID = req.query.entryid || req.body.entryid;
+    let strTitle = req.query.title || req.body.title;
+    let strPayRate = req.query.payrate || req.body.payrate;
+    let strEffectiveDateTime = req.query.effectivedatetime || req.body.effectivedatetime;
+    let strStatus = req.query.status || req.body.status;
+    getSessionDetails(strSessionID,function(objSession){
+        pool.query("UPDATE tblPositions SET Title = ?, PayRate = ?, EffectiveDateTime = ?, Status = ? WHERE EntryID = ? AND FarmID = ?",[strTitle,strPayRate,strEffectiveDateTime,strStatus,strEntryID,objSession.Farm.FarmID], function(error,results){
+            if(!error){
+                let objSuccess = new Message("Success","Position Updated");
+                res.status(200).send(objSuccess)
+            } else {
+                let objError = new Message("Error",error);
+                res.status(400).send(objError);
+            }
+            
+        })
+    })
+})
+app.put("/unitofmeasure", (req,res,next) => {
+    let strSessionID = req.query.sessionid || req.body.sessionid;
+    let strAbbreviation = req.query.abbreviation || req.body.abbreviation;
+    let strDescription = req.query.description || req.body.description;
+    let strStatus = req.query.status || req.body.status;
+    getSessionDetails(strSessionID,function(objSession){
+        pool.query("UPDATE tblUnitOfMeasure SET Description = ?, Status = ? WHERE Abbreviation = ? AND FarmID = ?",[strDescription,strStatus,strAbbreviation,objSession.Farm.FarmID], function(error,results){
+            if(!error){
+                let objSuccess = new Message("Success","Unit of Measure Updated");
+                res.status(200).send(objSuccess)
+            } else {
+                let objError = new Message("Error",error);
+                res.status(400).send(objError);
+            }
+            
+        })
+    })
+})
+app.put("/farmassignment", (req,res,next) => {
+    let strSessionID = req.query.sessionid || req.body.sessionid;
+    let strAssignmentID = req.query.assignmentid || req.body.assignmentid;
+    let strUser = req.query.user || req.body.user;
+    let strStatus = req.query.status || req.body.status;
+    getSessionDetails(strSessionID,function(objSession){
+        pool.query("UPDATE tblFarmAssignments SET User = ?, Status = ? WHERE AssignmentID = ? AND FarmID = ?",[strUser,strStatus,strAssignmentID,objSession.Farm.FarmID], function(error,results){
+            if(IsOwner(objSession)){
+                if(!error){
+                    let objSuccess = new Message("Success","Farm Assignment Updated");
+                    res.status(200).send(objSuccess)
+                } else {
+                    let objError = new Message("Error",error);
+                    res.status(400).send(objError);
+                }
+            } else {
+                let objError = new Message("Error","You are not authorized to perform this action");
+                res.status(400).send(objError);
+            }
+        })
+    })
+})
 
 app.delete("/products", (req,res,next) => {
     let strSessionID = req.query.sessionid || req.body.sessionid;
@@ -745,6 +952,149 @@ app.delete("/sessions", (req,res,next) => {
                 res.status(400).send(objError);
             }
             
+        })
+    })
+})
+app.delete("/harvests", (req,res,next) => {
+    let strSessionID = req.query.sessionid || req.body.sessionid;
+    let strHarvestID = req.query.harvestid || req.body.harvestid;
+    getSessionDetails(strSessionID,function(objSession){
+        pool.query("DELETE FROM tblHarvests WHERE HarvestID = ? AND FarmID = ?",[strHarvestID,objSession.Farm.FarmID], function(error,results){
+            if(!error){
+                let objSuccess = new Message("Success","Harvest Deleted");
+                res.status(200).send(objSuccess)
+            } else {
+                let objError = new Message("Error",error);
+                res.status(400).send(objError);
+            }
+            
+        })
+    })
+})
+app.delete("/positions", (req,res,next) => {
+    let strSessionID = req.query.sessionid || req.body.sessionid;
+    let strEntryID = req.query.entryid || req.body.entryid;
+    getSessionDetails(strSessionID,function(objSession){
+        pool.query("DELETE FROM tblPositions WHERE EntryID = ? AND FarmID = ?",[strEntryID,objSession.Farm.FarmID], function(error,results){
+            if(!error){
+                let objSuccess = new Message("Success","Position Deleted");
+                res.status(200).send(objSuccess)
+            } else {
+                let objError = new Message("Error",error);
+                res.status(400).send(objError);
+            }
+            
+        })
+    })
+})
+app.delete("/unitofmeasure", (req,res,next) => {
+    let strSessionID = req.query.sessionid || req.body.sessionid;
+    let strAbbreviation = req.query.abbreviation || req.body.abbreviation;
+    getSessionDetails(strSessionID,function(objSession){
+        pool.query("DELETE FROM tblUnitOfMeasure WHERE Abbreviation = ? AND FarmID = ?",[strAbbreviation,objSession.Farm.FarmID], function(error,results){
+            if(!error){
+                let objSuccess = new Message("Success","Unit of Measure Deleted");
+                res.status(200).send(objSuccess)
+            } else {
+                let objError = new Message("Error",error);
+                res.status(400).send(objError);
+            }
+            
+        })
+    })
+})
+app.delete("/farmassignment", (req,res,next) => {
+    let strSessionID = req.query.sessionid || req.body.sessionid;
+    let strAssignmentID = req.query.assignmentid || req.body.assignmentid;
+    getSessionDetails(strSessionID,function(objSession){
+        pool.query("DELETE FROM tblFarmAssignments WHERE AssignmentID = ? AND FarmID = ?",[strAssignmentID,objSession.Farm.FarmID], function(error,results){
+            if(IsOwner(objSession)){
+                if(!error){
+                    let objSuccess = new Message("Success","Farm Assignment Deleted");
+                    res.status(200).send(objSuccess)
+                } else {
+                    let objError = new Message("Error",error);
+                    res.status(400).send(objError);
+                }
+            } else {
+                let objError = new Message("Error","You are not authorized to perform this action");
+                res.status(400).send(objError);
+            }
+            
+        })
+    })
+})
+app.delete("/farms", (req,res,next) => {
+    let strSessionID = req.query.sessionid || req.body.sessionid;
+    getSessionDetails(strSessionID,function(objSession){
+        pool.query("DELETE FROM tblFarms WHERE FarmID = ?",objSession.Farm.FarmID, function(error,results){
+            if(!error){
+                let objSuccess = new Message("Success","Farm Deleted");
+                res.status(200).send(objSuccess)
+            } else {
+                let objError = new Message("Error",error);
+                res.status(400).send(objError);
+            }
+        })
+    })
+})
+app.delete("/users", (req,res,next) => {
+    let strSessionID = req.query.sessionid || req.body.sessionid;
+    let strEmail = req.query.email || req.body.email;
+    getSessionDetails(strSessionID,function(objSession){
+        pool.query("DELETE FROM tblUsers WHERE Email = ?AND FarmID = ?",[strEmail,objSession.Farm.FarmID], function(error,results){
+            if(!error){
+                let objSuccess = new Message("Success","User Deleted");
+                res.status(200).send(objSuccess)
+            } else {
+                let objError = new Message("Error",error);
+                res.status(400).send(objError);
+            }
+        })
+    })
+})
+app.delete("/tasks", (req,res,next) => {
+    let strSessionID = req.query.sessionid || req.body.sessionid;
+    let strTaskID = req.query.taskid || req.body.taskid;
+    getSessionDetails(strSessionID,function(objSession){
+        pool.query("DELETE FROM tblTasks WHERE TaskID = ? AND FarmID = ?",[strTaskID,objSession.Farm.FarmID], function(error,results){
+            if(!error){
+                let objSuccess = new Message("Success","Task Deleted");
+                res.status(200).send(objSuccess)
+            } else {
+                let objError = new Message("Error",error);
+                res.status(400).send(objError);
+            }
+        })
+    })
+})
+app.delete("/tasklog", (req,res,next) => {
+    let strSessionID = req.query.sessionid || req.body.sessionid;
+    let strTaskLogID = req.query.tasklogid || req.body.tasklogid;
+    getSessionDetails(strSessionID,function(objSession){
+        pool.query("DELETE FROM tblTaskLog WHERE TaskLogID = ? AND FarmID = ?",[strTaskLogID,objSession.Farm.FarmID], function(error,results){
+            if(!error){
+                let objSuccess = new Message("Success","Task Log Deleted");
+                res.status(200).send(objSuccess)
+            } else {
+                let objError = new Message("Error",error);
+                res.status(400).send(objError);
+            }
+        })
+    })    
+})
+app.delete("/rawmaterials", (req,res,next) => {
+    let strSessionID = req.query.sessionid || req.body.sessionid;
+    let strMaterialID = req.query.materialid || req.body.materialid;
+    getSessionDetails(strSessionID,function(objSession){
+        pool.query("DELETE FROM tblRawMaterials WHERE MaterialID = ? AND FarmID = ?",[strMaterialID,objSession.Farm.FarmID], function(error,results){
+            if(!error){
+                let objSuccess = new Message("Success","Raw Material Deleted");
+                res.status(200).send(objSuccess)
+            } else {
+                let objError = new Message("Error",error);
+                res.status(400).send(objError);
+            }
         })
     })
 })
