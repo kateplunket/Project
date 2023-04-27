@@ -303,7 +303,7 @@ app.post("/farm", (req,res,next) => {
     let strPreferredName = req.query.preferredname || req.body.preferredname;
     let strEmail = req.query.email || req.body.email;
     let strPassword = req.query.password || req.body.password;
-    pool.query('INSERT INTO tblFarms VALUES(?, ?, ?, ?, ?,?,?)',[strFarmID, strFarmName, strStreetAddress1, strStreetAddress2, strCity,strState,strZIP], function(error, results){
+    pool.query('INSERT INTO tblFarms VALUES(?, ?, ?, ?, ?, ?, ?)',[strFarmID, strFarmName, strStreetAddress1, strStreetAddress2, strCity,strState,strZIP], function(error, results){
         if(!error){
             bcrypt.hash(strPassword, 10).then(hash => {
                 strPassword = hash;
