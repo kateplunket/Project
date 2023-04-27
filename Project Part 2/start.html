@@ -37,47 +37,6 @@
             </div>
         </div>
     </div>
-    <div id="divCreateUser" style="background-color: #989F8B; display:none;">
-        <div class="col-12 col-md-6 d-flex justify-content-center align-items-center vh-100">
-            <div class="card col-12 col-md-10 offset-md-4">
-                <div class="card-head">
-                    <h3 class="col-12 text-center mt-1">Create User Account</h3>
-                </div>
-                <div class="card-body">
-                    <form>
-                        <div class="form-group">
-                            <label for="txtCreateFirstName" class="form-label mt-4">First Name</label>
-                            <input class="form-control" id="txtCreateFirstName" placeholder="" type="text">
-                        </div>
-                        <div class="form-group">
-                            <label for="txtCreateLastName" class="form-label mt-4">Last Name</label>
-                            <input class="form-control" id="txtCreateLastName" placeholder="" type="text">
-                        </div>
-                        <div class="form-group">
-                            <label for="txtCreateEmail" class="form-label mt-4">Email</label>
-                            <input class="form-control" id="txtCreateEmail" placeholder="" type="email">
-                        </div>
-                        <div class="form-group">
-                            <label for="txtCreatePreferredName" class="form-label mt-4">Preferred Name</label>
-                            <input class="form-control" id="txtCreatePreferredName" placeholder="" type="text">
-                        </div>
-                        <div class="form-group">
-                            <label for="txtCreatePassword" class="form-label mt-4">Password</label>
-                            <input class="form-control" id="txtCreatePassword" placeholder="" type="password">
-                        </div>
-                        <button class="btn col-12 mt-4" type="button" id="btnRegisterUser" style="background-color: #C98143">Register User</button>
-                        <button class="btn col-12 mt-2 btnSwap" type="button" style="background-color: #D49C7F">Back To Login</button>
-                    </form>
-                </div>
-            </div>
-            <div class="d-none d-md-block col-6  d-flex justify-content-center align-items-center vh-100">
-                <h2 class="text-center mt-5" style="background-color: #C98143">Let's Get Registered</h2>
-                <div style="display:flex; justify-content: center; align-items: center;">
-                    <img src="farm2.jpeg" alt="Chickens" class="p-5">
-                </div>
-            </div>
-        </div>
-    </div>
     <div id="divCreateFarm" style="background-color: #989F8B; display:none;">
         <div class="d-none d-md-block col-6  d-flex justify-content-center align-items-center">
             <h2 class="text-center mt-5">Let's Get Registered</h2>
@@ -187,29 +146,136 @@
             <div class="card-header with-border">
                 <h3 class="card-title"><i class="fas mr-2"></i>Farm Profile</h3>
             </div>
-        <div id="tblUsers">
+            <div class="d-flex flex-column flex-shrink-0 p-3" style="width: 280px; background-color: #989F8B;">
+                <a class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                  <svg class="bi pe-none me-2" width="40" height="32"><use></use></svg>
+                  <span class="fs-4">Sidebar</span>
+                </a>
+                <hr>
+                <ul class="nav nav-pills flex-column mb-auto">
+                  <li class="nav-item">
+                    <a type="button" class="btn text-white" aria-current="page">
+                      <svg class="bi pe-none me-2" width="16" height="16"><use></use></svg>
+                      Home
+                    </a>
+                  </li>
+                  <li>
+                    <a type="button" id="btnSideReports" class="btn text-white">
+                      <svg class="bi pe-none me-2" width="16" height="16"><use></use></svg>
+                      Reports
+                    </a>
+                  </li>
+                  <li>
+                    <a type="button" id="btnSideUser" class="btn text-white">
+                      <svg class="bi pe-none me-2" width="16" height="16"><use></use></svg>
+                      Users
+                    </a>
+                  </li>
+                  <li>
+                    <a type="button" id="btnSideProducts" class="btn text-white">
+                      <svg class="bi pe-none me-2" width="16" height="16"><use></use></svg>
+                      Products
+                    </a>
+                  </li>
+                  <li>
+                    <a type="button" id="btnSideTasks" class="btn text-white">
+                      <svg class="bi pe-none me-2" width="16" height="16"><use></use></svg>
+                      Tasks
+                    </a>
+                  </li>
+                  <li>
+                    <a type="button" id="btnSideMaterials" class="btn text-white">
+                      <svg class="bi pe-none me-2" width="16" height="16"><use></use></svg>
+                      Materials
+                    </a>
+                  </li>
+                  <li>
+                    <a type="button" id="btnSideHarvest" class="btn text-white">
+                      <svg class="bi pe-none me-2" width="16" height="16"><use></use></svg>
+                      Harvest
+                    </a>
+                  </li>
+                </ul>
+                <hr>
+                <div class="dropdown">
+                  <a class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="hippo.png" alt="" width="32" height="32" class="me-2">
+                    <strong>User</strong>
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+                    <li><a class="dropdown-item">New project...</a></li>
+                    <li><a class="dropdown-item">Settings</a></li>
+                    <li><a class="dropdown-item">Profile</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item">Sign out</a></li>
+                  </ul>
+                </div>
+              </div>
+
+        <div id="tblUsers" style="display:none">
             <div form-control>
-                <div class="card col-md-6 col-md-4 offset-md-1">
+                <div class="card col-md-12 col-md-6">
                     <div class="card-head">
-                        <h3 class="col-12 text-center mt-1">Track Your Employees</h3>
-                        <h2 class="col-10 text-center mt-1">Add current employees with thier UserID or register new employees!</h2>
+                        <h3 class="col-md-12 mt-1">Track Your Employees</h3>
+                        <h5 class="col-5 mt-1">Add current employees with thier UserID or register new employees!</h5>
                     </div>
                     <div class="card-body">
                         <form>
-                            <input id="txtUserID" type="text" class="form-control mt-2" placeholder="UserID" aria-label="enter UserID">
-                            <button class="btn col-12 mt-4" type="button" id="btnAddUser" style="background-color: #C98143">Add to Farm</button> 
-                            <button class="btn col-12 mt-4" type="button" id="btnCreateNewUser" style="background-color: #C98143">Register New User</button>       
+                            <input id="txtUserID" type="text" class="form-control col-md-6 mt-2" placeholder="UserID" aria-label="enter UserID">
+                            <button class="btn col-md-4 mt-4" type="button" id="btnAddUser" style="background-color: #C98143">Add to Farm</button> 
+                            <button class="btn col-md-4 mt-4" type="button" id="btnCreateNewUser" style="background-color: #C98143">Register New User</button>       
                         </form>
                     </div>
                 </div>
+                    <div id="divCreateUser" style="background-color: #989F8B; display:none;">
+                        <div class="col-12 col-md-6 d-flex justify-content-center align-items-center vh-100">
+                            <div class="card col-12 col-md-10 offset-md-4">
+                                <div class="card-head">
+                                    <h3 class="col-12 text-center mt-1">Create User Account</h3>
+                                </div>
+                                <div class="card-body">
+                                    <form>
+                                        <div class="form-group">
+                                            <label for="txtCreateFirstName" class="form-label mt-4">First Name</label>
+                                            <input class="form-control" id="txtCreateFirstName" placeholder="" type="text">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="txtCreateLastName" class="form-label mt-4">Last Name</label>
+                                            <input class="form-control" id="txtCreateLastName" placeholder="" type="text">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="txtCreateEmail" class="form-label mt-4">Email</label>
+                                            <input class="form-control" id="txtCreateEmail" placeholder="" type="email">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="txtCreatePreferredName" class="form-label mt-4">Preferred Name</label>
+                                            <input class="form-control" id="txtCreatePreferredName" placeholder="" type="text">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="txtCreatePassword" class="form-label mt-4">Password</label>
+                                            <input class="form-control" id="txtCreatePassword" placeholder="" type="password">
+                                        </div>
+                                        <button class="btn col-12 mt-4" type="button" id="btnRegisterUser" style="background-color: #C98143">Register User</button>
+                                        <button class="btn col-12 mt-2 btnSwap" type="button" style="background-color: #D49C7F">Back To Login</button>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="d-none d-md-block col-6  d-flex justify-content-center align-items-center vh-100">
+                                <h2 class="text-center mt-5" style="background-color: #C98143">Let's Get Registered</h2>
+                                <div style="display:flex; justify-content: center; align-items: center;">
+                                    <img src="farm2.jpeg" alt="Chickens" class="p-5">
+                                </div>
+                            </div>
+                        </div>
+                    </div>                
             </div>
         </div>
-        <div id="tblProducts">
+        <div id="tblProducts" style="display:none">
             <div form-control>
                 <div class="card col-md-6 col-md-4 offset-md-1">
                     <div class="card-head">
                         <h3 class="col-12 text-center mt-1">Track Your Products</h3>
-                        <h2 class="col-10 text-center mt-1">Add existing products with their ProductID or register a new product to start tracking it!</h2>
+                        <h5 class="col-10 text-center mt-1">Add existing products with their ProductID or register a new product to start tracking it!</h5>
                     </div>
                     <div class="card-body">
                         <form>
@@ -219,14 +285,81 @@
                         </form>
                     </div>
                 </div>
+                <div id="divCreateProduct" style="background-color: #989F8B; display:none;">
+                    <div class="col-12 col-md-6 d-flex justify-content-center align-items-center vh-100">
+                        <div class="card col-12 col-md-10 offset-md-4">
+                            <div class="card-head">
+                                <h3 class="col-12 text-center mt-1">Add a new product to your farm!</h3>
+                            </div>
+                            <div class="card-body">
+                                <form>
+                                    <div class="form-group">
+                                        <label for="txtProductID" class="form-label mt-4">ProductID</label>
+                                        <input class="form-control" id="txtProductID" placeholder="" type="text">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="txtProductShortName" class="form-label mt-4">Short Name</label>
+                                        <input class="form-control" id="txtProductShortName" placeholder="" type="text">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="txtProductLongName" class="form-label mt-4">Long name</label>
+                                        <input class="form-control" id="txtProductLongName" placeholder="" type="text">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="txtProductDescription" class="form-label mt-4">Descriptions</label>
+                                        <input class="form-control" id="txtProductDescription" placeholder="" type="text">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="txtProductStatus" class="form-label mt-4">Status</label>
+                                        <div class="list-group">
+                                            <label class="list-group-item d-flex gap-2">
+                                              <input class="form-check-input flex-shrink-0" type="checkbox" value="" checked="">
+                                              <span>
+                                                Finished
+                                              </span>
+                                            </label>
+                                            <label class="list-group-item d-flex gap-2">
+                                              <input class="form-check-input flex-shrink-0" type="checkbox" value="">
+                                              <span>
+                                                In Progress
+                                              </span>
+                                            </label>
+                                            <label class="list-group-item d-flex gap-2">
+                                              <input class="form-check-input flex-shrink-0" type="checkbox" value="">
+                                              <span>
+                                                Not Started
+                                              </span>
+                                            </label>
+                                            <label class="list-group-item d-flex gap-2">
+                                                <input class="form-check-input flex-shrink-0" type="checkbox" value="">
+                                                <span>
+                                                  Other
+                                                </span>
+                                                <input>
+                                              </label>  
+                                          </div>
+                                    </div>
+                                    <button class="btn col-12 mt-4" type="button" id="btnRegisterProduct" style="background-color: #C98143">Create Product</button>
+                                    <button class="btn col-12 mt-2" type="button" style="background-color: #D49C7F">Back to Dashboard</button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="d-none d-md-block col-6  d-flex justify-content-center align-items-center vh-100">
+                            <h2 class="text-center mt-5" style="background-color: #C98143">Let's Get Registered</h2>
+                            <div style="display:flex; justify-content: center; align-items: center;">
+                                <img src="farm2.jpeg" alt="Chickens" class="p-5">
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div id="tblTasks">
+        <div id="tblTasks" style="display:none">
             <div form-control>
                 <div class="card col-md-6 col-md-4 offset-md-1">
                     <div class="card-head">
                         <h3 class="col-12 text-center mt-1">Track Your Tasks</h3>
-                        <h2 class="col-10 text-center mt-1">Add existing Tasks with their TaskID or register a new product to start tracking it!</h2>
+                        <h5 class="col-10 text-center mt-1">Add existing Tasks with their TaskID or register a new product to start tracking it!</h5>
                     </div>
                     <div class="card-body">
                         <form>
@@ -243,14 +376,80 @@
                         </form>
                     </div>
                 </div>
+                <div id="divCreateTask" style="background-color: #989F8B; display:none;">
+                    <div class="col-12 col-md-6 d-flex justify-content-center align-items-center vh-100">
+                        <div class="card col-12 col-md-10 offset-md-4">
+                            <div class="card-head">
+                                <h3 class="col-12 text-center mt-1">Create User Account</h3>
+                            </div>
+                            <div class="card-body">
+                                <form>
+                                    <div class="form-group">
+                                        <label for="txtTaskID" class="form-label mt-4">TaskID</label>
+                                        <input class="form-control" id="txtTaskID" placeholder="" type="text">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="txtTaskName" class="form-label mt-4">Task Name</label>
+                                        <input class="form-control" id="txtTaskName" placeholder="" type="text">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="txtTaskNotes" class="form-label mt-4">Notes</label>
+                                        <input class="form-control" id="txtTaskNotes" placeholder="" type="text">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="txtCreatePreferredName" class="form-label mt-4">Preferred Name</label>
+                                        <input class="form-control" id="txtCreatePreferredName" placeholder="" type="text">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="txtTaskStatus" class="form-label mt-4">Status</label>
+                                        <div class="list-group">
+                                            <label class="list-group-item d-flex gap-2">
+                                              <input class="form-check-input flex-shrink-0" type="checkbox" value="" checked="">
+                                              <span>
+                                                Finished
+                                              </span>
+                                            </label>
+                                            <label class="list-group-item d-flex gap-2">
+                                              <input class="form-check-input flex-shrink-0" type="checkbox" value="">
+                                              <span>
+                                                In Progress
+                                              </span>
+                                            </label>
+                                            <label class="list-group-item d-flex gap-2">
+                                              <input class="form-check-input flex-shrink-0" type="checkbox" value="">
+                                              <span>
+                                                Not Started
+                                              </span>
+                                            </label>
+                                            <label class="list-group-item d-flex gap-2">
+                                                <input class="form-check-input flex-shrink-0" type="checkbox" value="">
+                                                <span>
+                                                  Other
+                                                </span>
+                                                <input>
+                                              </label>  
+                                          </div>
+                                    </div>
+                                    <button class="btn col-12 mt-4" type="button" id="btnRegisterTask" style="background-color: #C98143">Create Task</button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="d-none d-md-block col-6  d-flex justify-content-center align-items-center vh-100">
+                            <h2 class="text-center mt-5" style="background-color: #C98143">Let's Get Registered</h2>
+                            <div style="display:flex; justify-content: center; align-items: center;">
+                                <img src="farm2.jpeg" alt="Chickens" class="p-5">
+                            </div>
+                        </div>
+                    </div>
+                </div>            
             </div>
         </div>
-        <div id="tblMaterials">
+        <div id="tblMaterials" style="display:none">
             <div form-control>
                 <div class="card col-md-6 col-md-4 offset-md-1">
                     <div class="card-head">
                         <h3 class="col-12 text-center mt-1">Track Your Materials</h3>
-                        <h2 class="col-10 text-center mt-1">Add existing raw materials using their MaterialID or register new inventory!</h2>
+                        <h5 class="col-10 text-center mt-1">Add existing raw materials using their MaterialID or register new inventory!</h5>
                     </div>
                     <div class="card-body">
                         <form>
@@ -260,14 +459,55 @@
                         </form>
                     </div>
                 </div>
+                <div id="divCreateMaterial" style="background-color: #989F8B; display:none;">
+                    <div class="col-12 col-md-6 d-flex justify-content-center align-items-center vh-100">
+                        <div class="card col-12 col-md-10 offset-md-4">
+                            <div class="card-head">
+                                <h3 class="col-12 text-center mt-1">Create User Account</h3>
+                            </div>
+                            <div class="card-body">
+                                <form>
+                                    <div class="form-group">
+                                        <label for="txtCreateFirstName" class="form-label mt-4">First Name</label>
+                                        <input class="form-control" id="txtCreateFirstName" placeholder="" type="text">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="txtCreateLastName" class="form-label mt-4">Last Name</label>
+                                        <input class="form-control" id="txtCreateLastName" placeholder="" type="text">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="txtCreateEmail" class="form-label mt-4">Email</label>
+                                        <input class="form-control" id="txtCreateEmail" placeholder="" type="email">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="txtCreatePreferredName" class="form-label mt-4">Preferred Name</label>
+                                        <input class="form-control" id="txtCreatePreferredName" placeholder="" type="text">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="txtCreatePassword" class="form-label mt-4">Password</label>
+                                        <input class="form-control" id="txtCreatePassword" placeholder="" type="password">
+                                    </div>
+                                    <button class="btn col-12 mt-4" type="button" id="btnRegisterMaterials" style="background-color: #C98143">Add Materials</button>
+                                    <button class="btn col-12 mt-2 btnSwap" type="button" style="background-color: #D49C7F">Back To Login</button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="d-none d-md-block col-6  d-flex justify-content-center align-items-center vh-100">
+                            <h2 class="text-center mt-5" style="background-color: #C98143">Let's Get Registered</h2>
+                            <div style="display:flex; justify-content: center; align-items: center;">
+                                <img src="farm2.jpeg" alt="Chickens" class="p-5">
+                            </div>
+                        </div>
+                    </div>
+                </div>            
             </div>
         </div>
-        <div id="tblHarvest">
+        <div id="tblHarvest" style="display:none">
             <div form-control>
                 <div class="card col-md-6 col-md-4 offset-md-1">
                     <div class="card-head">
                         <h3 class="col-12 text-center mt-1">Track Your Harvest</h3>
-                        <h2 class="col-12 text-center mt-1">Add pasts harvests with their HarvestID or register the weight and cost of your latest harvest!</h2>
+                        <h5 class="col-12 text-center mt-1">Add pasts harvests with their HarvestID or register the weight and cost of your latest harvest!</h5>
                     </div>
                     <div class="card-body">
                         <form>
@@ -277,9 +517,50 @@
                         </form>
                     </div>
                 </div>
+                <div id="divCreateHarvest" style="background-color: #989F8B; display:none;">
+                    <div class="col-12 col-md-6 d-flex justify-content-center align-items-center vh-100">
+                        <div class="card col-12 col-md-10 offset-md-4">
+                            <div class="card-head">
+                                <h3 class="col-12 text-center mt-1">Create User Account</h3>
+                            </div>
+                            <div class="card-body">
+                                <form>
+                                    <div class="form-group">
+                                        <label for="txtCreateFirstName" class="form-label mt-4">First Name</label>
+                                        <input class="form-control" id="txtCreateFirstName" placeholder="" type="text">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="txtCreateLastName" class="form-label mt-4">Last Name</label>
+                                        <input class="form-control" id="txtCreateLastName" placeholder="" type="text">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="txtCreateEmail" class="form-label mt-4">Email</label>
+                                        <input class="form-control" id="txtCreateEmail" placeholder="" type="email">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="txtCreatePreferredName" class="form-label mt-4">Preferred Name</label>
+                                        <input class="form-control" id="txtCreatePreferredName" placeholder="" type="text">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="txtCreatePassword" class="form-label mt-4">Password</label>
+                                        <input class="form-control" id="txtCreatePassword" placeholder="" type="password">
+                                    </div>
+                                    <button class="btn col-12 mt-4" type="button" id="btnRegisterUser" style="background-color: #C98143">Register User</button>
+                                    <button class="btn col-12 mt-2 btnSwap" type="button" style="background-color: #D49C7F">Back To Login</button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="d-none d-md-block col-6  d-flex justify-content-center align-items-center vh-100">
+                            <h2 class="text-center mt-5" style="background-color: #C98143">Let's Get Registered</h2>
+                            <div style="display:flex; justify-content: center; align-items: center;">
+                                <img src="farm2.jpeg" alt="Chickens" class="p-5">
+                            </div>
+                        </div>
+                    </div>
+                </div>            
             </div>
         </div>
-        <div id="farmReport">
+        <div id="farmReport" style="display:none">
             <div form-control>
                 <div class="card col-md-6 col-md-4 offset-md-1">
                     <div class="card-head">
@@ -294,231 +575,10 @@
                 </div>
             </div>
         </div>
-        <div class="d-none d-md-block col-6  d-flex justify-content-center align-items-center vh-100">
-            <div style="display:flex; justify-content: center; align-items: center;">
-                <img src="farm5.jpeg" alt="Hippo Logo" class="p-5">
-            </div>
-        </div>
     </div>
     </div>
 
 
-    <div id="divCreateProduct" style="background-color: #989F8B; display:none;">
-        <div class="col-12 col-md-6 d-flex justify-content-center align-items-center vh-100">
-            <div class="card col-12 col-md-10 offset-md-4">
-                <div class="card-head">
-                    <h3 class="col-12 text-center mt-1">Add a new product to your farm!</h3>
-                </div>
-                <div class="card-body">
-                    <form>
-                        <div class="form-group">
-                            <label for="txtProductID" class="form-label mt-4">ProductID</label>
-                            <input class="form-control" id="txtProductID" placeholder="" type="text">
-                        </div>
-                        <div class="form-group">
-                            <label for="txtProductShortName" class="form-label mt-4">Short Name</label>
-                            <input class="form-control" id="txtProductShortName" placeholder="" type="text">
-                        </div>
-                        <div class="form-group">
-                            <label for="txtProductLongName" class="form-label mt-4">Long name</label>
-                            <input class="form-control" id="txtProductLongName" placeholder="" type="text">
-                        </div>
-                        <div class="form-group">
-                            <label for="txtProductDescription" class="form-label mt-4">Descriptions</label>
-                            <input class="form-control" id="txtProductDescription" placeholder="" type="text">
-                        </div>
-                        <div class="form-group">
-                            <label for="txtProductStatus" class="form-label mt-4">Status</label>
-                            <div class="list-group">
-                                <label class="list-group-item d-flex gap-2">
-                                  <input class="form-check-input flex-shrink-0" type="checkbox" value="" checked="">
-                                  <span>
-                                    Finished
-                                  </span>
-                                </label>
-                                <label class="list-group-item d-flex gap-2">
-                                  <input class="form-check-input flex-shrink-0" type="checkbox" value="">
-                                  <span>
-                                    In Progress
-                                  </span>
-                                </label>
-                                <label class="list-group-item d-flex gap-2">
-                                  <input class="form-check-input flex-shrink-0" type="checkbox" value="">
-                                  <span>
-                                    Not Started
-                                  </span>
-                                </label>
-                                <label class="list-group-item d-flex gap-2">
-                                    <input class="form-check-input flex-shrink-0" type="checkbox" value="">
-                                    <span>
-                                      Other
-                                    </span>
-                                    <input>
-                                  </label>  
-                              </div>
-                        </div>
-                        <button class="btn col-12 mt-4" type="button" id="btnRegisterProduct" style="background-color: #C98143">Create Product</button>
-                        <button class="btn col-12 mt-2" type="button" style="background-color: #D49C7F">Back to Dashboard</button>
-                    </form>
-                </div>
-            </div>
-            <div class="d-none d-md-block col-6  d-flex justify-content-center align-items-center vh-100">
-                <h2 class="text-center mt-5" style="background-color: #C98143">Let's Get Registered</h2>
-                <div style="display:flex; justify-content: center; align-items: center;">
-                    <img src="farm2.jpeg" alt="Chickens" class="p-5">
-                </div>
-            </div>
-        </div>
-    </div>
-    <div id="divCreateTask" style="background-color: #989F8B; display:none;">
-        <div class="col-12 col-md-6 d-flex justify-content-center align-items-center vh-100">
-            <div class="card col-12 col-md-10 offset-md-4">
-                <div class="card-head">
-                    <h3 class="col-12 text-center mt-1">Create User Account</h3>
-                </div>
-                <div class="card-body">
-                    <form>
-                        <div class="form-group">
-                            <label for="txtTaskID" class="form-label mt-4">TaskID</label>
-                            <input class="form-control" id="txtTaskID" placeholder="" type="text">
-                        </div>
-                        <div class="form-group">
-                            <label for="txtTaskName" class="form-label mt-4">Task Name</label>
-                            <input class="form-control" id="txtTaskName" placeholder="" type="text">
-                        </div>
-                        <div class="form-group">
-                            <label for="txtTaskNotes" class="form-label mt-4">Notes</label>
-                            <input class="form-control" id="txtTaskNotes" placeholder="" type="text">
-                        </div>
-                        <div class="form-group">
-                            <label for="txtCreatePreferredName" class="form-label mt-4">Preferred Name</label>
-                            <input class="form-control" id="txtCreatePreferredName" placeholder="" type="text">
-                        </div>
-                        <div class="form-group">
-                            <label for="txtTaskStatus" class="form-label mt-4">Status</label>
-                            <div class="list-group">
-                                <label class="list-group-item d-flex gap-2">
-                                  <input class="form-check-input flex-shrink-0" type="checkbox" value="" checked="">
-                                  <span>
-                                    Finished
-                                  </span>
-                                </label>
-                                <label class="list-group-item d-flex gap-2">
-                                  <input class="form-check-input flex-shrink-0" type="checkbox" value="">
-                                  <span>
-                                    In Progress
-                                  </span>
-                                </label>
-                                <label class="list-group-item d-flex gap-2">
-                                  <input class="form-check-input flex-shrink-0" type="checkbox" value="">
-                                  <span>
-                                    Not Started
-                                  </span>
-                                </label>
-                                <label class="list-group-item d-flex gap-2">
-                                    <input class="form-check-input flex-shrink-0" type="checkbox" value="">
-                                    <span>
-                                      Other
-                                    </span>
-                                    <input>
-                                  </label>  
-                              </div>
-                        </div>
-                        <button class="btn col-12 mt-4" type="button" id="btnRegisterUser" style="background-color: #C98143">Register User</button>
-                        <button class="btn col-12 mt-2 btnSwap" type="button" style="background-color: #D49C7F">Back To Login</button>
-                    </form>
-                </div>
-            </div>
-            <div class="d-none d-md-block col-6  d-flex justify-content-center align-items-center vh-100">
-                <h2 class="text-center mt-5" style="background-color: #C98143">Let's Get Registered</h2>
-                <div style="display:flex; justify-content: center; align-items: center;">
-                    <img src="farm2.jpeg" alt="Chickens" class="p-5">
-                </div>
-            </div>
-        </div>
-    </div>
-    <div id="divCreateMaterial" style="background-color: #989F8B; display:none;">
-        <div class="col-12 col-md-6 d-flex justify-content-center align-items-center vh-100">
-            <div class="card col-12 col-md-10 offset-md-4">
-                <div class="card-head">
-                    <h3 class="col-12 text-center mt-1">Create User Account</h3>
-                </div>
-                <div class="card-body">
-                    <form>
-                        <div class="form-group">
-                            <label for="txtCreateFirstName" class="form-label mt-4">First Name</label>
-                            <input class="form-control" id="txtCreateFirstName" placeholder="" type="text">
-                        </div>
-                        <div class="form-group">
-                            <label for="txtCreateLastName" class="form-label mt-4">Last Name</label>
-                            <input class="form-control" id="txtCreateLastName" placeholder="" type="text">
-                        </div>
-                        <div class="form-group">
-                            <label for="txtCreateEmail" class="form-label mt-4">Email</label>
-                            <input class="form-control" id="txtCreateEmail" placeholder="" type="email">
-                        </div>
-                        <div class="form-group">
-                            <label for="txtCreatePreferredName" class="form-label mt-4">Preferred Name</label>
-                            <input class="form-control" id="txtCreatePreferredName" placeholder="" type="text">
-                        </div>
-                        <div class="form-group">
-                            <label for="txtCreatePassword" class="form-label mt-4">Password</label>
-                            <input class="form-control" id="txtCreatePassword" placeholder="" type="password">
-                        </div>
-                        <button class="btn col-12 mt-4" type="button" id="btnRegisterUser" style="background-color: #C98143">Register User</button>
-                        <button class="btn col-12 mt-2 btnSwap" type="button" style="background-color: #D49C7F">Back To Login</button>
-                    </form>
-                </div>
-            </div>
-            <div class="d-none d-md-block col-6  d-flex justify-content-center align-items-center vh-100">
-                <h2 class="text-center mt-5" style="background-color: #C98143">Let's Get Registered</h2>
-                <div style="display:flex; justify-content: center; align-items: center;">
-                    <img src="farm2.jpeg" alt="Chickens" class="p-5">
-                </div>
-            </div>
-        </div>
-    </div>
-    <div id="divCreateHarvest" style="background-color: #989F8B; display:none;">
-        <div class="col-12 col-md-6 d-flex justify-content-center align-items-center vh-100">
-            <div class="card col-12 col-md-10 offset-md-4">
-                <div class="card-head">
-                    <h3 class="col-12 text-center mt-1">Create User Account</h3>
-                </div>
-                <div class="card-body">
-                    <form>
-                        <div class="form-group">
-                            <label for="txtCreateFirstName" class="form-label mt-4">First Name</label>
-                            <input class="form-control" id="txtCreateFirstName" placeholder="" type="text">
-                        </div>
-                        <div class="form-group">
-                            <label for="txtCreateLastName" class="form-label mt-4">Last Name</label>
-                            <input class="form-control" id="txtCreateLastName" placeholder="" type="text">
-                        </div>
-                        <div class="form-group">
-                            <label for="txtCreateEmail" class="form-label mt-4">Email</label>
-                            <input class="form-control" id="txtCreateEmail" placeholder="" type="email">
-                        </div>
-                        <div class="form-group">
-                            <label for="txtCreatePreferredName" class="form-label mt-4">Preferred Name</label>
-                            <input class="form-control" id="txtCreatePreferredName" placeholder="" type="text">
-                        </div>
-                        <div class="form-group">
-                            <label for="txtCreatePassword" class="form-label mt-4">Password</label>
-                            <input class="form-control" id="txtCreatePassword" placeholder="" type="password">
-                        </div>
-                        <button class="btn col-12 mt-4" type="button" id="btnRegisterUser" style="background-color: #C98143">Register User</button>
-                        <button class="btn col-12 mt-2 btnSwap" type="button" style="background-color: #D49C7F">Back To Login</button>
-                    </form>
-                </div>
-            </div>
-            <div class="d-none d-md-block col-6  d-flex justify-content-center align-items-center vh-100">
-                <h2 class="text-center mt-5" style="background-color: #C98143">Let's Get Registered</h2>
-                <div style="display:flex; justify-content: center; align-items: center;">
-                    <img src="farm2.jpeg" alt="Chickens" class="p-5">
-                </div>
-            </div>
-        </div>
-    </div>
 
 
 
@@ -526,28 +586,72 @@
  <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
  <script>
-    $('#btnLogin').on('click',function(){
-        $('#divHome').slideToggle(function(){
-            $('#divFarm').slideToggle()
-        });
-    })
+
     $('#btnCreate').on('click',function(){
         $('#divHome').slideToggle(function(){
             $('#divCreateFarm').slideToggle();
         });
     })
-    $('#btnCreateNewUser').on('click',function(){
-        $('#divFarm').slideToggle(function(){
+
+    $('#btnSideUser').on('click',function(){
+        $('#tblUsers').slideToggle()
+    })
+        $('#btnCreateNewUser').on('click',function(){
             $('#divCreateUser').slideToggle()
         })
+        
+    $('#btnSideProducts').on('click',function(){
+        $('#tblProducts').slideToggle()
     })
+        $('#btnCreateNewProduct').on('click',function(){
+            $('#divCreateProduct').slideToggle()
+        })
+
+    $('#btnSideTasks').on('click',function(){
+        $('#tblTasks').slideToggle()
+    })
+        $('#btnCreateNewTask').on('click',function(){
+            $('#divCreateTask').slideToggle()
+        })
+
+    $('#btnSideMaterials').on('click',function(){
+        $('#tblMaterials').slideToggle()
+    })
+        $('#btnCreateNewMaterials').on('click',function(){
+            $('#divCreateMaterials').slideToggle()
+        })
+
+    $('#btnSideHarvest').on('click',function(){
+        $('#tblHarvest').slideToggle()
+    })
+        $('btnCreateNewHarvest').on('click',function(){
+            $('#divCreateNewHarvest').slideToggle()
+        })
 
     //login validation
     $('#btnLogin').on('click',function(){
         let strFarmID = $('#txtLoginFarmID').val()
-        let strPassward = $('#txtLoginPassword').val()
+        let strPassword = $('#txtLoginPassword').val()
 
-        $.post('http://localhost:8000/sessions',{FarmID:strFarmID,Password:strPassward},function(result){
+        let blnError = false
+        let strErrorMessage = ''
+
+        if(strFarmID.length < 1){
+            blnError = true
+            strErrorMessage = 'Please Enter a FarmID'
+        }
+        if(strPassword.length < 1){
+            blnError = true
+            strErrorMessage = 'Please Enter a Password'
+        }
+        if(blnError == true){
+            swal({
+                icon: "error",
+                text: strErrorMessage
+            });
+        }
+
+        $.post('http://localhost:8000/sessions',{FarmID:strFarmID,Password:strPassword},function(result){
             result = JSON.parse(result)
             if(result.error){
                 swal({
