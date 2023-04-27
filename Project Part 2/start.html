@@ -307,32 +307,58 @@
         <div class="col-12 col-md-6 d-flex justify-content-center align-items-center vh-100">
             <div class="card col-12 col-md-10 offset-md-4">
                 <div class="card-head">
-                    <h3 class="col-12 text-center mt-1">Create User Account</h3>
+                    <h3 class="col-12 text-center mt-1">Add a new product to your farm!</h3>
                 </div>
                 <div class="card-body">
                     <form>
                         <div class="form-group">
-                            <label for="txtCreateFirstName" class="form-label mt-4">First Name</label>
-                            <input class="form-control" id="txtCreateFirstName" placeholder="" type="text">
+                            <label for="txtProductID" class="form-label mt-4">ProductID</label>
+                            <input class="form-control" id="txtProductID" placeholder="" type="text">
                         </div>
                         <div class="form-group">
-                            <label for="txtCreateLastName" class="form-label mt-4">Last Name</label>
-                            <input class="form-control" id="txtCreateLastName" placeholder="" type="text">
+                            <label for="txtProductShortName" class="form-label mt-4">Short Name</label>
+                            <input class="form-control" id="txtProductShortName" placeholder="" type="text">
                         </div>
                         <div class="form-group">
-                            <label for="txtCreateEmail" class="form-label mt-4">Email</label>
-                            <input class="form-control" id="txtCreateEmail" placeholder="" type="email">
+                            <label for="txtProductLongName" class="form-label mt-4">Long name</label>
+                            <input class="form-control" id="txtProductLongName" placeholder="" type="text">
                         </div>
                         <div class="form-group">
-                            <label for="txtCreatePreferredName" class="form-label mt-4">Preferred Name</label>
-                            <input class="form-control" id="txtCreatePreferredName" placeholder="" type="text">
+                            <label for="txtProductDescription" class="form-label mt-4">Descriptions</label>
+                            <input class="form-control" id="txtProductDescription" placeholder="" type="text">
                         </div>
                         <div class="form-group">
-                            <label for="txtCreatePassword" class="form-label mt-4">Password</label>
-                            <input class="form-control" id="txtCreatePassword" placeholder="" type="password">
+                            <label for="txtProductStatus" class="form-label mt-4">Status</label>
+                            <div class="list-group">
+                                <label class="list-group-item d-flex gap-2">
+                                  <input class="form-check-input flex-shrink-0" type="checkbox" value="" checked="">
+                                  <span>
+                                    Finished
+                                  </span>
+                                </label>
+                                <label class="list-group-item d-flex gap-2">
+                                  <input class="form-check-input flex-shrink-0" type="checkbox" value="">
+                                  <span>
+                                    In Progress
+                                  </span>
+                                </label>
+                                <label class="list-group-item d-flex gap-2">
+                                  <input class="form-check-input flex-shrink-0" type="checkbox" value="">
+                                  <span>
+                                    Not Started
+                                  </span>
+                                </label>
+                                <label class="list-group-item d-flex gap-2">
+                                    <input class="form-check-input flex-shrink-0" type="checkbox" value="">
+                                    <span>
+                                      Other
+                                    </span>
+                                    <input>
+                                  </label>  
+                              </div>
                         </div>
-                        <button class="btn col-12 mt-4" type="button" id="btnRegisterUser" style="background-color: #C98143">Register User</button>
-                        <button class="btn col-12 mt-2 btnSwap" type="button" style="background-color: #D49C7F">Back To Login</button>
+                        <button class="btn col-12 mt-4" type="button" id="btnRegisterProduct" style="background-color: #C98143">Create Product</button>
+                        <button class="btn col-12 mt-2" type="button" style="background-color: #D49C7F">Back to Dashboard</button>
                     </form>
                 </div>
             </div>
@@ -353,24 +379,50 @@
                 <div class="card-body">
                     <form>
                         <div class="form-group">
-                            <label for="txtCreateFirstName" class="form-label mt-4">First Name</label>
-                            <input class="form-control" id="txtCreateFirstName" placeholder="" type="text">
+                            <label for="txtTaskID" class="form-label mt-4">TaskID</label>
+                            <input class="form-control" id="txtTaskID" placeholder="" type="text">
                         </div>
                         <div class="form-group">
-                            <label for="txtCreateLastName" class="form-label mt-4">Last Name</label>
-                            <input class="form-control" id="txtCreateLastName" placeholder="" type="text">
+                            <label for="txtTaskName" class="form-label mt-4">Task Name</label>
+                            <input class="form-control" id="txtTaskName" placeholder="" type="text">
                         </div>
                         <div class="form-group">
-                            <label for="txtCreateEmail" class="form-label mt-4">Email</label>
-                            <input class="form-control" id="txtCreateEmail" placeholder="" type="email">
+                            <label for="txtTaskNotes" class="form-label mt-4">Notes</label>
+                            <input class="form-control" id="txtTaskNotes" placeholder="" type="text">
                         </div>
                         <div class="form-group">
                             <label for="txtCreatePreferredName" class="form-label mt-4">Preferred Name</label>
                             <input class="form-control" id="txtCreatePreferredName" placeholder="" type="text">
                         </div>
                         <div class="form-group">
-                            <label for="txtCreatePassword" class="form-label mt-4">Password</label>
-                            <input class="form-control" id="txtCreatePassword" placeholder="" type="password">
+                            <label for="txtTaskStatus" class="form-label mt-4">Status</label>
+                            <div class="list-group">
+                                <label class="list-group-item d-flex gap-2">
+                                  <input class="form-check-input flex-shrink-0" type="checkbox" value="" checked="">
+                                  <span>
+                                    Finished
+                                  </span>
+                                </label>
+                                <label class="list-group-item d-flex gap-2">
+                                  <input class="form-check-input flex-shrink-0" type="checkbox" value="">
+                                  <span>
+                                    In Progress
+                                  </span>
+                                </label>
+                                <label class="list-group-item d-flex gap-2">
+                                  <input class="form-check-input flex-shrink-0" type="checkbox" value="">
+                                  <span>
+                                    Not Started
+                                  </span>
+                                </label>
+                                <label class="list-group-item d-flex gap-2">
+                                    <input class="form-check-input flex-shrink-0" type="checkbox" value="">
+                                    <span>
+                                      Other
+                                    </span>
+                                    <input>
+                                  </label>  
+                              </div>
                         </div>
                         <button class="btn col-12 mt-4" type="button" id="btnRegisterUser" style="background-color: #C98143">Register User</button>
                         <button class="btn col-12 mt-2 btnSwap" type="button" style="background-color: #D49C7F">Back To Login</button>
