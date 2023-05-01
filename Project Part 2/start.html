@@ -15,6 +15,7 @@
 
 </head>
 <body>
+    
     <div id="divHome" class="col-12 row" style="background-color: #989F8B">
         <div class="container my-5"  style="background-color: #C98143">
             <div class="p-5 text-center bg-body-tertiary rounded-3">
@@ -66,8 +67,16 @@
                             <input class="form-control" id="txtFarmName" placeholder="" type="text">
                         </div>
                         <div class="form-group">
+                            <label for="txtFarmFirstName" class="form-label mt-4">First Name</label>
+                            <input class="form-control" id="txtFarmFirstName" placeholder="" type="text">
+                        </div>
+                        <div class="form-group">
+                            <label for="txtFarmLastName" class="form-label mt-4">Last Name</label>
+                            <input class="form-control" id="txtFarmLastName" placeholder="" type="text">
+                        </div>
+                        <div class="form-group">
                             <label for="txtFarmPreferredName" class="form-label mt-4">Preferred Name</label>
-                            <input class="form-control" id="txtFarmZip" placeholder="" type="text">
+                            <input class="form-control" id="txtFarmPreferredName" placeholder="" type="text">
                         </div>
                         <div class="form-group">
                             <label for="txtFarmEmail" class="form-label mt-4">Email</label>
@@ -346,7 +355,6 @@
                                           </div>
                                     </div>
                                     <button class="btn col-12 mt-4" type="button" id="btnRegisterProduct" style="background-color: #C98143">Create Product</button>
-                                    <button class="btn col-12 mt-2" type="button" style="background-color: #D49C7F">Back to Dashboard</button>
                                 </form>
                             </div>
                         </div>
@@ -376,9 +384,9 @@
                     </div>
                     <div class="card-body">
                         <form>
-                            <button class="btn col-12 mt-4" type="button" id="btnStartTask" style="background-color: #C98143">Start Task</button>    
+                            <button class="btn col-12 mt-4" type="button" id="btnStartTask" style="background-color: #989F8B">Start Task</button>    
                             <button class="btn col-12 mt-4" type="button" id="btnEndTask" style="background-color: #C98143">End Task</button>    
-                            <button class="btn col-12 mt-4" type="button" id="btnTimeTask" style="background-color: #C98143">Enter Task Times Manually</button>    
+                            <button class="btn col-12 mt-4" type="button" id="btnTimeTask" style="background-color: #D49C7F">Enter Task Times Manually</button>    
                         </form>
                     </div>
                 </div>
@@ -386,7 +394,7 @@
                     <div class="col-12 col-md-6 d-flex justify-content-center align-items-center vh-100">
                         <div class="card col-12 col-md-10 offset-md-4">
                             <div class="card-head">
-                                <h3 class="col-12 text-center mt-1">Create User Account</h3>
+                                <h3 class="col-12 text-center mt-1">Add a Task</h3>
                             </div>
                             <div class="card-body">
                                 <form>
@@ -440,12 +448,6 @@
                                 </form>
                             </div>
                         </div>
-                        <div class="d-none d-md-block col-6  d-flex justify-content-center align-items-center vh-100">
-                            <h2 class="text-center mt-5" style="background-color: #C98143">Let's Get Registered</h2>
-                            <div style="display:flex; justify-content: center; align-items: center;">
-                                <img src="farm2.jpeg" alt="Chickens" class="p-5">
-                            </div>
-                        </div>
                     </div>
                 </div>            
             </div>
@@ -469,39 +471,24 @@
                     <div class="col-12 col-md-6 d-flex justify-content-center align-items-center vh-100">
                         <div class="card col-12 col-md-10 offset-md-4">
                             <div class="card-head">
-                                <h3 class="col-12 text-center mt-1">Create User Account</h3>
+                                <h3 class="col-12 text-center mt-1">Add Materials</h3>
                             </div>
                             <div class="card-body">
                                 <form>
                                     <div class="form-group">
-                                        <label for="txtCreateFirstName" class="form-label mt-4">First Name</label>
-                                        <input class="form-control" id="txtCreateFirstName" placeholder="" type="text">
+                                        <label for="txtCreateMaterialID" class="form-label mt-4">MaterialID/label>
+                                        <input class="form-control" id="txtCreateMaterialID" placeholder="" type="text">
                                     </div>
                                     <div class="form-group">
-                                        <label for="txtCreateLastName" class="form-label mt-4">Last Name</label>
-                                        <input class="form-control" id="txtCreateLastName" placeholder="" type="text">
+                                        <label for="txtCreateDescription" class="form-label mt-4">Description</label>
+                                        <input class="form-control" id="txtCreateDescription" placeholder="" type="text">
                                     </div>
                                     <div class="form-group">
                                         <label for="txtCreateEmail" class="form-label mt-4">Email</label>
                                         <input class="form-control" id="txtCreateEmail" placeholder="" type="email">
                                     </div>
-                                    <div class="form-group">
-                                        <label for="txtCreatePreferredName" class="form-label mt-4">Preferred Name</label>
-                                        <input class="form-control" id="txtCreatePreferredName" placeholder="" type="text">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="txtCreatePassword" class="form-label mt-4">Password</label>
-                                        <input class="form-control" id="txtCreatePassword" placeholder="" type="password">
-                                    </div>
                                     <button class="btn col-12 mt-4" type="button" id="btnRegisterMaterials" style="background-color: #C98143">Add Materials</button>
-                                    <button class="btn col-12 mt-2 btnSwap" type="button" style="background-color: #D49C7F">Back To Login</button>
                                 </form>
-                            </div>
-                        </div>
-                        <div class="d-none d-md-block col-6  d-flex justify-content-center align-items-center vh-100">
-                            <h2 class="text-center mt-5" style="background-color: #C98143">Let's Get Registered</h2>
-                            <div style="display:flex; justify-content: center; align-items: center;">
-                                <img src="farm2.jpeg" alt="Chickens" class="p-5">
                             </div>
                         </div>
                     </div>
@@ -532,11 +519,11 @@
                             <div class="card-body">
                                 <form>
                                     <div class="form-group">
-                                        <label for="txtCreateFirstName" class="form-label mt-4">First Name</label>
-                                        <input class="form-control" id="txtCreateFirstName" placeholder="" type="text">
+                                        <label for="txtCreateHarvestID" class="form-label mt-4">HarvestID</label>
+                                        <input class="form-control" id="txtCreateHarvestID" placeholder="" type="text">
                                     </div>
                                     <div class="form-group">
-                                        <label for="txtCreateLastName" class="form-label mt-4">Last Name</label>
+                                        <label for="txtCreateL" class="form-label mt-4">Last Name</label>
                                         <input class="form-control" id="txtCreateLastName" placeholder="" type="text">
                                     </div>
                                     <div class="form-group">
@@ -551,15 +538,8 @@
                                         <label for="txtCreatePassword" class="form-label mt-4">Password</label>
                                         <input class="form-control" id="txtCreatePassword" placeholder="" type="password">
                                     </div>
-                                    <button class="btn col-12 mt-4" type="button" id="btnRegisterUser" style="background-color: #C98143">Register User</button>
-                                    <button class="btn col-12 mt-2 btnSwap" type="button" style="background-color: #D49C7F">Back To Login</button>
+                                    <button class="btn col-12 mt-4" type="button" id="btnRegisterHarvest" style="background-color: #C98143">Register Harvest</button>
                                 </form>
-                            </div>
-                        </div>
-                        <div class="d-none d-md-block col-6  d-flex justify-content-center align-items-center vh-100">
-                            <h2 class="text-center mt-5" style="background-color: #C98143">Let's Get Registered</h2>
-                            <div style="display:flex; justify-content: center; align-items: center;">
-                                <img src="farm2.jpeg" alt="Chickens" class="p-5">
                             </div>
                         </div>
                     </div>
@@ -738,40 +718,57 @@
 
     //farm validation
     $('#btnRegisterFarm').on('click',function(){
-        let strFarmID = $('#txtFarmID').val()
-        let strFarmName = $('#txtFarmName').val()
-        let strAddress1 = $('#txtAddressLine1').val()
-        let strAddress2 = $('#txtAddressLine2').val()
-        let strCity = $('#txtFarmCity').val()
-        let strState = $('#txtFarmState').val()
-        let strZip = $('#txtFarmZip').val()
+        let strfarmID = $('#txtFarmID').val()
+        let strfarmname = $('#txtFarmName').val()
+        let strstreetaddress1 = $('#txtAddressLine1').val()
+        let strstreetaddress2 = $('#txtAddressLine2').val()
+        let strcity = $('#txtFarmCity').val()
+        let strstate = $('#txtFarmState').val()
+        let strzip = $('#txtFarmZip').val()
+        let strfirstname = $('#txtFarmFirstName').val()
+        let strlastname = $('#txtFarmLastName').val()
+        let strpreferredname = $('#txtFarmPreferredName').val() 
+        let stremail = $('#txtFarmEmail').val()
+        let strpassword = $('#txtFarmPassword').val()
 
         let blnError = false
         let strErrorMessage = ''
 
-        if(strFarmID.length < 1){
+        if(strfarmID.length < 1){
             blnError = true
             strErrorMessage += "Please Enter A Farm ID."
         }
-        if(strFarmName.length < 1){
+        if(strfarmname.length < 1){
             blnError = true
             strErrorMessage += " Please Enter A Farm Name."
         }
-        if(strAddress1.length < 1){
+        if(strstreetaddress1.length < 1){
             blnError = true
             strErrorMessage += " Please Enter An Address."
         }
-        if(strCity.length < 1){
+        if(strstreetaddress2.length < 1){
+            blnError = true
+            strErrorMessage += " Please Enter An Address."
+        }
+        if(strcity.length < 1){
             blnError = true
             strErrorMessage += " Please Enter A City."
         }
-        if(strState.length < 1){
+        if(strstate.length < 1){
             blnError = true
             strErrorMessage += " Please Enter A State."
         }
-        if(strZip.length < 1){
+        if(strzip.length < 1){
             blnError = true
             strErrorMessage += " Please Enter A Zip."
+        }
+        if(strfirstname.length < 1){
+            blnError = true
+            strErrorMessage += " Please Enter A First Name."
+        }
+        if(strlastname.length < 1){
+            blnError = true
+            strErrorMessage += " Please Enter A Last Name."
         }
         if(blnError == true){
             swal({
@@ -781,8 +778,8 @@
         }
 
         if(blnError == false){
-            $.post('http://localhost:8000/farm',{FarmID:strFarmID,FarmName:strFarmName,StreetAddress1:strAddress1,StreetAddress2:strAddress2,
-                City:strCity,State:strState,Zip:strZip},function(result){
+            $.post('http://localhost:8000/farm',{farmID:strfarmID,farmname:strfarmname,streetaddress1:strstreetaddress1,streetaddress2:strstreetaddress2,
+                city:strcity,state:strstate,zip:strzip,email:stremail,firstname:strfirstname,lastname:strlastname,preferredname:strpreferredname,password:strpassword},function(result){
                 result = JSON.parse
                 if(resultError){
                     swal({
@@ -790,7 +787,7 @@
                         text: '<p> User Creation Error <p>'
                     })
                 } else{
-                    $.post('http://localhost:8000/farm',{FarmID,strFarmID},function(){
+                    $.post('http://localhost:8000/farm',{farmID,strfarmID},function(){
                         result = JSON.parse
                         if(resultError){
                             swal({

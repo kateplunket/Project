@@ -290,6 +290,44 @@ app.post("/user", (req,res,next) => {
         })
     })
 })
+
+// using express and node.js, create a route for sessions that takes email and password and inserts a record to the tblSessions table
+
+app.post("/session", (req,res,next) => {
+    let strEmail = req.query.email || req.body.email;
+    let strPassword = req.query.password || req.body.password;
+    pool.query('SELECT * FROM tblUsers WHERE Email = ?',[strEmail], function(error, results){
+        if(!error){
+            if(results.length > 0){
+                bcrypt.compare(strPassword, results[0].Password).then(match => {
+                    if(match){
+                        let strSession = uuidv4();
+                        pool.query('INSERT INTO tblSessions VALUES(?, ?, ?, ?, ?,SYSDATE())',[results[0].Email, results[0].FirstName, results[0].LastName, results[0].PreferredName, strSession], function(error, results){
+                            if(!error){
+                                let objMessage = new Message("SessionID",strSession);
+                                res.status(201).send(objMessage);
+                            } else {
+                                let objMessage = new Message("Error",error);
+                                res.status(400).send(objMessage);
+                            }
+                        })
+                    } else {
+                        let objMessage = new Message("Error","Invalid Password");
+                        res.status(400).send(objMessage);
+                    }   
+                })
+            } else {
+                let objMessage = new Message("Error","Invalid Email");
+                res.status(400).send(objMessage);
+            }
+        } else {
+            let objMessage = new Message("Error",error);
+            res.status(400).send(objMessage);
+        }
+    })
+})
+// End Step Four Users
+
 app.post("/farm", (req,res,next) => {
     let strStreetAddress1 = req.query.streetaddress1 || req.body.streetaddress1;
     let strStreetAddress2 = req.query.streetaddress2 || req.body.streetaddress2;
