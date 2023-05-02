@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SimpleAg</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+</head>
+<body class="bg-dark">
+    <div class="col-12" id="divLogin" style="">
+        <div class="col-12 d-flex align-items-center justify-content-center vh-100">
+            <div class="card col-12 col-md-6 col-lg-4 px-4 py-4">
+                <form class="col-12">
+                    <div class="form-group">
+                        <label class="form-label" for="txtLoginEmail">Email</label>
+                        <input type="text" class="form-control mb-2" id="txtLoginEmail">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="txtLoginPassword">Password</label>
+                        <input type="password" class="form-control mb-4" id="txtLoginPassword">
+                    </div>
+                    <button type="button" class="btn btn-success col-12 mb-2" id="btnLoginLogin">Login</button>
+                    <button type="button" class="btn btn-outline-secondary col-12" id="btnLoginRegister">Register Account</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-12" id="divRegister" style="display:none;">
+        <div class="col-12 d-flex align-items-center justify-content-center vh-100">
+            <div class="card col-12 col-md-6 col-lg-4 px-4 py-4">
+                <div class="col-12 row" id="divRegisterChoice">
+                    <button class="btn btn-lg btn-outline-primary p-5" type="button" id="btnNewFarm">Register a New Farm</button>
+                    <button class="btn btn-lg btn-outline-warning p-5" type="button" id="btnNewUser">Register a New User</button>
+                </div>
+                <form class="col-12" id="divRegisterFarm"style="display:none;">
+                    <div class="form-group">
+                        <label class="form-label" for="txtRegisterFarmFirstName">First Name</label>
+                        <input type="text" class="form-control mb-2" id="txtRegisterFarmFirstName">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="txtRegisterFarmLastName">Last Name</label>
+                        <input type="text" class="form-control mb-2" id="txtRegisterFarmLastName">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="txtRegisterFarmMobile">Mobile Number</label>
+                        <input type="tel" class="form-control mb-2" id="txtRegisterFarmMobile">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="txtRegisterFarmEmail">Email</label>
+                        <input type="text" class="form-control mb-2" id="txtRegisterFarmEmail">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="txtRegisterFarmPassword">Password</label>
+                        <input type="password" class="form-control mb-4" id="txtRegisterFarmPassword">
+                    </div>
+
+                    <!-- Add form items for farm info here -->
+                    <div class="form-group">
+                        <label class="form-label" for="txtRegisterFarmStreet1">Street Address 1</label>
+                        <input type="text" class="form-control mb-4" id="txtRegisterFarmStreet1">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="txtRegisterFarmStreet2">Street Address 2</label>
+                        <input type="text" class="form-control mb-4" id="txtRegisterFarmStreet2">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="txtRegisterFarmCity">City</label>
+                        <input type="text" class="form-control mb-4" id="txtRegisterFarmCity">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="txtRegisterFarmState">State</label>
+                        <input type="text" class="form-control mb-4" maxlength="2" id="txtRegisterFarmState">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="txtRegisterFarmZip">ZIP</label>
+                        <input type="text" class="form-control mb-4" id="txtRegisterFarmZip">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="txtRegisterFarmFarmName">Farm Name</label>
+                        <input type="text" class="form-control mb-4" id="txtRegisterFarmFarmName">
+                    </div>
+                    <button type="button" class="btn btn-success col-12 mb-2" id="btnRegisterFarmCreate">Login</button>
+                    <button type="button" class="btn btn-outline-secondary col-12" id="btnRegisterFarmCancel">Register Account</button>
+                </form>
+                <form class="col-12" id="divRegisterUser" style="display:none;">
+                    <div class="form-group">
+                        <label class="form-label" for="txtRegisterUserFirstName">First Name</label>
+                        <input type="text" class="form-control mb-2" id="txtRegisterUserFirstName">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="txtRegisterUserLastName">Last Name</label>
+                        <input type="text" class="form-control mb-2" id="txtRegisterUserLastName">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="txtRegisterUserMobile">Mobile Number</label>
+                        <input type="tel" class="form-control mb-2" id="txtRegisterUserMobile">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="txtRegisterUserEmail">Email</label>
+                        <input type="text" class="form-control mb-2" id="txtRegisterUserEmail">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="txtRegisterUserPassword">Password</label>
+                        <input type="password" class="form-control mb-4" id="txtLoginPassword">
+                    </div>
+                    <button type="button" class="btn btn-success col-12 mb-2" id="btnRegisterUserCreate">Create User</button>
+                    <button type="button" class="btn btn-outline-secondary col-12" id="btnRegisterUserCancel">Cancel</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+    <div class="col-12" id="divMain" style="display:none;">
+        <div class="col-12 d-flex justify-content-around align-items-top mb-3 mt-5">
+            <div class="col-5 text-bg-primary card" id="divMainTasks">
+                <div class="card-header">Task Log</div>
+                <div class="card-body">
+                  <h5 class="card-title">In Process Tasks</h5>
+                  <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Task</th><th>StartTime</th><th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Seeding</td><td>11:07</td><td><button class="btn btn-sm btn-secondary" type="button">Finish</button></td></tr>
+                        <tr><td>Harvesting</td><td>14:52</td><td><button class="btn btn-sm btn-secondary" type="button">Finish</button></td></tr>
+
+                    </tbody>
+                  </table>
+                  <h5 class="card-title">Start New Task</h5>
+                  <form>
+                    <label class="form-label" for="selTaskLogTask">Task</label>
+                    <select class="form-control mb-3" id="selTaskLogTask">
+                        <option value="weeding">Weeding</option>
+                    </select>
+                    <button class="btn btn-secondary col-12" type="button" id="btnTaskStart">Record Task</button>
+                  </form>
+                </div>
+            </div>
+            <div class="col-5 text-bg-success card" id="divMainHarvests">
+                <div class="card-header">Harvests</div>
+                <div class="card-body">
+                  <h5 class="card-title">Record Harvest</h5>
+                  <form>
+                    <label class="form-label" for="selHarvestProduct">Product</label>
+                    <select class="form-control mb-3" id="selHarvestProduct">
+                        <option value="Apple">Apple</option>
+                    </select>
+                    <label class="form-label" for="txtHarvestQty">Quantity</label>
+                    <input type="number" class="form-control mb-3" id="txtHarvestQty">
+                    <label class="form-label" for="selHarvestUnit">Unit</label>
+                    <select class="form-control mb-4" id="selHarvestUnit">
+                        <option value="kg">Kilogram</option>
+                    </select>
+                    <button class="btn bg-white col-12" type="button" id="btnAddHarvest">Record Harvest</button>
+                  </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 d-flex justify-content-around align-items-top">
+            <div class="col-5 text-bg-warning card" id="divMainMaterials">
+                <div class="card-header">Materials</div>
+                <div class="card-body">
+                  <h5 class="card-title">Record Materials</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+            </div>
+            <div class="col-5 text-bg-info card" id="divAdmin">
+                <div class="card-header">
+                    <ul class="nav nav-pills card-header-pills">
+                        <li class="nav-item">
+                          <a class="nav-link active" href="#">Admin</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#">Products</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link">People</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link">Units</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link">Reports</a>
+                        </li>
+                      </ul>
+
+                </div>
+                <div class="card-body">
+                    <div id="divAdminMain">
+                        <h5 class="card-title">Welcome Farm Owner!</h5>
+                        <p class="card-text">User this card to administer your basic pick lists and to add new workers to your farm family.</p>      
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        // variables used throughout application
+        // constant for the baseline url of node server
+        const strBaseURL = 'http://localhost:8000/';
+        var strSessionID;
+        // end variables
+
+        // show registration page when option selected from login
+        $('#btnLoginRegister').on('click',function(){
+            $('#divLogin').slideToggle(function(){
+                $('#divRegister').slideToggle();
+            })
+        })
+
+        // if the user chooses to register new farm, display new farm form
+        $('#btnNewFarm').on('click',function(){
+            $('#divRegisterChoice').slideUp(function(){
+                $('#divRegisterFarm').slideDown();
+            })
+        })
+        // if the user chooses to register new user, display new user form
+        $('#btnNewUser').on('click',function(){
+            $('#divRegisterChoice').slideUp(function(){
+                $('#divRegisterUser').slideDown();
+            })
+        })
+
+        
+        $('#btnLoginLogin').on('click',function(){
+            // Verify data exists in the fields on the form and then make a post to
+            // /sessions with email and password
+            let strError = '';
+            let blnError = false;
+
+            //check the value of the email after removing all leading and trailing whitespace
+            //is at least 6 characters long.  In prod I would use a regular expression to verify
+            //it is a true email format
+            if($('#txtLoginEmail').val().trim().length() < 6){
+                blnError = true;
+                strError += '<p>You must enter a username/email to login</p>';
+            }
+            //check the length of the password meets a minimum 8 characts; again in Prod a regular
+            //express is the better way to go
+            if($('#txtLoginPassword').val().length() < 8){
+                blnError = true;
+                strError += '<p>You must enter a password to login</p>';
+            }
+
+            //check if error exists, if so show a sweet alert else login
+            if(blnError == true){
+                Swal.fire({
+                    title: "Errors Found",
+                    html: strError,
+                    icon: 'error'
+                })
+            } else {
+                //perform a login by posting to /sessions with your email and password
+                $.post(strBaseURL + 'sessions',{email:$('#txtLoginEmail').val().trim(),password:$('#txtLoginPassword').val()},function(results){
+                    // check if we get an error, if so show a sweet alert
+                    if(results.Error){
+                        Swal.fire({
+                            title: "Login Failed",
+                            text: results.Error,
+                            icon: 'error'
+                        })
+                    } else {
+                        // if not an error set sessionstorage to your sessionid 
+                        sessionStorage.setItem('SwollenAgSession',results.SessionID)
+                        strSessionID = results.SessionID;
+                        // clear your text boxes of login
+                        $('#txtLoginEmail').val('');
+                        $('#txtLoginPassword').val('')
+                        //slide login away and show the home 
+                        $('#divLogin').slideToggle(function(){
+                            $('#divMain').slideToggle();
+                        })
+                        // retrieve sessions details to verify if user is owner
+                        $.getJSON(strBaseURL + 'sessions',{sessionid:strSessionID},function(objSession){
+                            if(objSession.User.Farm.FarmOwner == "false"){
+                                $('#divAdmin').slideUp();
+                            }
+                        })
+                    }
+                })
+            }
+        })
+    
+        
+        $('#btnRegisterFarmCreate').on('click',function(){
+            let strError = '';
+            let blnError = false;
+            // validate all info is there for the user similar to how I did in the login
+
+            // ENd validate info
+            if(blnError == true){
+                Swal.fire({
+                    title: "Errors Found",
+                    html: strError,
+                    icon: 'error'
+                })
+            } else {
+                // New farm should be created via a post to /farm
+                $.post('farm',{streetaddress1:$('#txtRegisterFarmStreet1').val(''),streetaddress2:$('#txtRegisterFarmStreet2').val(''),city:$('#txtRegisterFarmCity').val(''),state:$('#txtRegisterFarmStae').val(''),zip:$('#txtRegisterFarmZip').val(''),farmname:$('#txtRegisterFarmFarmName').val(''),firstname:$('#txtRegisterFarmFirstName').val(''),lastname:$('#txtRegisterFarmLastName').val(''),email:$('#txtRegisterFarmEmail').val(''),mobile:$('#txtRegisterFarmMobile').val(''),password:$('#txtRegisterFarmPassword').val('')},function(results){
+                    if(results.Error){
+                        Swal.fire({
+                            title: "Create Farm Failed",
+                            text: results.Error,
+                            icon: 'error'
+                        })
+                    } else {
+                        sessionStorage.setItem('SwollenAgSession',results.SessionID)
+                        strSessionID = results.SessionID;
+                        $('#divRegister').slideToggle(function(){
+                            $('#divMain').slideToggle();
+                        })
+                    }
+                })
+            }
+
+        })
+
+        $('#btnRegisterUserCreate').on('click',function(){
+            let strError = '';
+            let blnError = false;
+            // validate all info is there for the user similar to how I did in the login
+
+
+            if(blnError == true){
+                Swal.fire({
+                    title: "Errors Found",
+                    html: strError,
+                    icon: 'error'
+                })
+            } else {
+                // New users should be created via a post to /users
+                $.post('users',{firstname:$('#txtRegisterUserFirstName').val(''),lastname:$('#txtRegisterUserLastName').val(''),email:$('#txtRegisterUserEmail').val(''),mobile:$('#txtRegisterUserMobile').val(''),password:$('#txtRegisterUserPassword').val('')},function(results){
+                    if(results.Error){
+                        Swal.fire({
+                            title: "Login Failed",
+                            text: results.Error,
+                            icon: 'error'
+                        })
+                    } else {
+                        $('#divRegister').slideToggle(function(){
+                            $('#divMain').slideToggle();
+                            $('#divAdmin').slideUp();
+                            $('#divMainTasks').slideUp();
+                            $('#divMainHarvests').slideUp();
+                            $('#divMainMaterials').slideUp();
+                        })
+                        
+                    }
+                })
+            }
+
+        })
+    
+        $('btnLogout').on('click',function(){
+            $.ajax({
+                url: strBaseURL + 'sessions',
+                type: 'DELETE',
+                data: {sessionid:strSessionID},
+                success: function(result) {
+                    sessionStorage.removeItem('SwollenAgSession');
+                    strSessionID = '';
+                    $('#divMain').slideToggle(function(){
+                        $('#divLogin').slideToggle();
+                    })
+                }
+            });
+        })
+    </script>
+</body>
+</html>
