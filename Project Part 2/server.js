@@ -270,11 +270,12 @@ app.post("/users", (req,res,next) => {
     let strPassword = req.query.password || req.body.password;
     // call the hash method of bcrypt against the password to encrypt and store with a salt
     // notice the use of .then as a promise due to it being async
+    console.log(strPassword)
     bcrypt.hash(strPassword, 10).then(hash => {
-        pool.query('INSERT INTO tblUsers VALUES(?, ?, ?, null, ?)',[strFirstName, strLastName, strEmail, hash], function(error, results){
+        pool.query('INSERT INTO tblUsers VALUES(?, ?, ?, ?, ?)',[strFirstName, strLastName, strEmail,'9999999999', hash], function(error, results){
             if(!error){
                 let strSession = uuidv4();
-                pool.query('INSERT INTO tblSessions VALUES(?, ?, ?, ?, ?,SYSDATE())',[strEmail, strFirstName, strLastName, strPreferredName, hash], function(error, results){
+                pool.query('INSERT INTO tblSessions VALUES(?,SYSDATE(), ?)',[strSession,strEmail], function(error, results){
                     if(!error){
                         let objMessage = new Message("SessionID",strSession);
                         res.status(201).send(objMessage);
@@ -296,8 +297,10 @@ app.post("/users", (req,res,next) => {
 app.post("/sessions",(req,res,next) => {
     let strEmail = req.query.email || req.body.email;
     let strPassword = req.query.password || req.body.password;
-    
+    console.log(strEmail)
+    console.log(strPassword)
     pool.query('SELECT Password FROM tblUsers WHERE Email = ?', strEmail, function(error, results){
+        console.log(results)
         if(!error){
             bcrypt.compare(strPassword, results[0].Password)
             .then(outcome => {

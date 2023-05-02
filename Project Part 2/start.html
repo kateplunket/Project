@@ -377,8 +377,8 @@
                                         <input class="form-control" id="txtTaskNotes" placeholder="" type="text">
                                     </div>
                                     <div class="form-group">
-                                        <label for="txtCreatePreferredName" class="form-label mt-4">Preferred Name</label>
-                                        <input class="form-control" id="txtCreatePreferredName" placeholder="" type="text">
+                                        <label for="txtCreatePreferredNametask" class="form-label mt-4">Preferred Name</label>
+                                        <input class="form-control" id="txtCreatePreferredNametask" placeholder="" type="text">
                                     </div>
                                     <div class="form-group">
                                         <label for="txtTaskStatus" class="form-label mt-4">Status</label>
@@ -450,8 +450,8 @@
                                         <input class="form-control" id="txtCreateDescription" placeholder="" type="text">
                                     </div>
                                     <div class="form-group">
-                                        <label for="txtCreateEmail" class="form-label mt-4">Email</label>
-                                        <input class="form-control" id="txtCreateEmail" placeholder="" type="email">
+                                        <label for="txtCreateEmailMaterial" class="form-label mt-4">Email</label>
+                                        <input class="form-control" id="txtCreateEmailMaterial" placeholder="" type="email">
                                     </div>
                                     <button class="btn col-12 mt-4" type="button" id="btnRegisterMaterials" style="background-color: #C98143">Add Materials</button>
                                 </form>
@@ -489,20 +489,20 @@
                                         <input class="form-control" id="txtCreateHarvestID" placeholder="" type="text">
                                     </div>
                                     <div class="form-group">
-                                        <label for="txtCreateL" class="form-label mt-4">Last Name</label>
-                                        <input class="form-control" id="txtCreateLastName" placeholder="" type="text">
+                                        <label for="txtCreateLastHarvest" class="form-label mt-4">Last Name</label>
+                                        <input class="form-control" id="txtCreateLastNameHarvest" placeholder="" type="text">
                                     </div>
                                     <div class="form-group">
                                         <label for="txtCreateEmail" class="form-label mt-4">Email</label>
-                                        <input class="form-control" id="txtCreateEmail" placeholder="" type="email">
+                                        <input class="form-control" id="txtCreateEmailHarvest" placeholder="" type="email">
                                     </div>
                                     <div class="form-group">
                                         <label for="txtCreatePreferredName" class="form-label mt-4">Preferred Name</label>
-                                        <input class="form-control" id="txtCreatePreferredName" placeholder="" type="text">
+                                        <input class="form-control" id="txtCreatePreferredNameHarvest" placeholder="" type="text">
                                     </div>
                                     <div class="form-group">
                                         <label for="txtCreatePassword" class="form-label mt-4">Password</label>
-                                        <input class="form-control" id="txtCreatePassword" placeholder="" type="password">
+                                        <input class="form-control" id="txtCreatePasswordHarvest" placeholder="" type="password">
                                     </div>
                                     <button class="btn col-12 mt-4" type="button" id="btnRegisterHarvest" style="background-color: #C98143">Register Harvest</button>
                                 </form>
@@ -697,8 +697,8 @@
         }
         if(blnError == true){
             swal({
-                title: "Incorrect Login Details",
-                icon: "error"
+                icon: "error",
+                text: "Incorrect Login Details"
             });
         }
         $.post('http://localhost:8000/sessions',{email:strEmail,password:strPassword},function(result){
@@ -754,27 +754,15 @@
         }
 
         if(blnError == false){
-            $.post('http://localhost:8000/users',{firstname:strFirstName,lastname:strLastName,preferredname:strPreferredName,email:strEmai,password:strPassword},function(result){
-                result = JSON.parse()
-                if(resultError){
+            $.post('http://localhost:8000/users',{firstname:strFirstName,lastname:strLastName,preferredname:strPreferredName,email:strEmail,password:strPassword},function(result){
+                if(result.Type=='Error'){
                     swal({
                         icon: 'error',
                         text: '<p> User Creation Error <p>'
                     })
                 } else{
-                    $.post('http://localhost:8000/users',{email:strEmail,firstname:strFirstName,lastname:strLastName,preferredname:strPreferredName,password:strPassword},function(){
-                        result = JSON.parse()
-                        if(resultError){
-                            swal({
-                                icon: 'error',
-                                text: '<p> Please Return to Login, User Creation Failed <p>'
-                            })
-                        }
-                        if(resultSucess){
-                            sessionStorage.setItem('Simple Session',resultSession.SessionID)
-                            $('#divUserFarmID').slideToggle()
-                        }
-                    })
+                        sessionStorage.setItem('Simple Session',result.Message)
+                        $('#divUserFarmID').slideToggle()
                 }
             })
         }
