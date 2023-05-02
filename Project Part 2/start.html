@@ -480,7 +480,7 @@
                     <div class="col-12 col-md-6 d-flex justify-content-center align-items-center vh-100">
                         <div class="card col-12 col-md-10 offset-md-4">
                             <div class="card-head">
-                                <h3 class="col-12 text-center mt-1">Create User Account</h3>
+                                <h3 class="col-12 text-center mt-1">Register Harvest</h3>
                             </div>
                             <div class="card-body">
                                 <form>
@@ -920,6 +920,96 @@
             if(strProductDescription.length < 1){
                 blnError = true
                 strErrorMessage += " Please Enter A Description."
+            }
+            if(blnError == true){
+                swal({
+                    icon: 'error',
+                    text: strErrorMessage
+                })
+            }
+        })
+
+        $('#btnRegisterTask').on('click',function(){
+            let strTaskID = $('#txtTaskID').val()
+            let strTaskName = $('#txtTaskName').val()
+            let strTaskNotes = $('#txtTaskNotes').val()
+            let strTaskPreferredName = $('#txtTaskPreferredName').val()
+
+            if(strTaskID.length < 1){
+                blnError = true
+                strErrorMessage += "Please Enter A Task ID."
+            }
+            if(strTaskName.length < 1){
+                blnError = true
+                strErrorMessage += " Please Enter A Task Name."
+            }
+            if(strTaskNotes.length < 1){
+                blnError = true
+                strErrorMessage += " Please Enter Notes."
+            }
+            if(strPreferredName.length < 1){
+                blnError = true
+                strErrorMessage += " Please Enter A Preferred Name."
+            }
+            if(blnError == true){
+                swal({
+                    icon: 'error',
+                    text: strErrorMessage
+                })
+            }
+        })
+
+        $('#btnRegisterMaterials').on('click',function(){
+            let strMaterialID = $('#txtCreateMaterialID').val()
+            let strMaterialDescription = $('#txtCreateMaterialDescription').val()
+            let strCreateEmail = $('#txtCreateEmail').val()
+
+            if(strMaterialID.length < 1){
+                blnError = true
+                strErrorMessage += "Please Enter A Material ID."
+            }
+            if(strMaterialName.length < 1){
+                blnError = true
+                strErrorMessage += " Please Enter A Description."
+            }
+            if(strMaterialDescription.length < 1){
+                blnError = true
+                strErrorMessage += " Please Enter An Email."
+            }
+            if(blnError == true){
+                swal({
+                    icon: 'error',
+                    text: strErrorMessage
+                })
+            }
+        })
+
+        $('btnRegisterHarvest').on('click',function(){
+            let strHarvestID = $('#txtCreateHarvestID').val()
+            let StrLName = $('#txtCreateL').val()
+            let strCreateEmail = $('#txtCreateEmail').val()
+            let strCreatePreferredName = $('#txtCreatePreferredName').val()
+            let strPassword = $('#txtCreatePassword').val()
+
+            if(strHarvestID.length < 1){
+                blnError = true
+                strErrorMessage += "Please Enter A Harvest ID."
+            }
+            if(strLName.length < 1){
+                blnError = true
+                strErrorMessage += " Please Enter A Last Name."
+            }
+            if(strCreateEmail.length < 1){
+                blnError = true
+                strErrorMessage += " Please Enter An Email."
+            }
+            if(strCreatePreferredName.length < 1){
+                blnError = true
+                strErrorMessage += " Please Enter A Preferred Name."
+            }
+            if(strPassword.length < 1){
+                blnError = true
+                strErrorMessage += " Please Enter A Password."
             }
             if(blnError == true){
                 swal({
