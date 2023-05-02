@@ -921,7 +921,7 @@
             }
         })
 
-        $('#')
+        
         //farm ID validation
         $('btnFarmUserID').on('click',function(){
             let strfarmID = $('#txtUserFarmID').val()
@@ -1093,9 +1093,9 @@
         $('btnRegisterHarvest').on('click',function(){
             let strHarvestID = $('#txtCreateHarvestID').val()
             let StrLName = $('#txtCreateL').val()
-            let strCreateEmail = $('#txtCreateEmail').val()
+            let strCreateHarvestQuantity = $('#txtCreateHarvestQuantity').val()
             let strCreatePreferredName = $('#txtCreatePreferredName').val()
-            let strPassword = $('#txtCreatePassword').val()
+            let strHarvestUnit = $('#txtCreateHarvestUnit').val()
 
             if(strHarvestID.length < 1){
                 blnError = true
@@ -1105,17 +1105,17 @@
                 blnError = true
                 strErrorMessage += " Please Enter A Last Name."
             }
-            if(strCreateEmail.length < 1){
+            if(strCreateHarvestQuantity.length < 1){
                 blnError = true
-                strErrorMessage += " Please Enter An Email."
+                strErrorMessage += " Please Enter A Quantity."
             }
             if(strCreatePreferredName.length < 1){
                 blnError = true
                 strErrorMessage += " Please Enter A Preferred Name."
             }
-            if(strPassword.length < 1){
+            if(strHarvestUnit.length < 1){
                 blnError = true
-                strErrorMessage += " Please Enter A Password."
+                strErrorMessage += " Please Enter A Unit."
             }
             if(blnError == true){
                 swal({
