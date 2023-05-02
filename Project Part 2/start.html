@@ -679,6 +679,7 @@
 
 
     //login validation
+
     $('#btnLogin').on('click',function(){
         let strEmail = $('#txtLoginEmail').val()
         let strPassword = $('#txtLoginPassword').val()
@@ -696,11 +697,10 @@
         }
         if(blnError == true){
             swal({
-                icon: "error",
-                text: strErrorMessage
+                title: "Incorrect Login Details",
+                icon: "error"
             });
         }
-
         $.post('http://localhost:8000/sessions',{email:strEmail,password:strPassword},function(result){
             result = JSON.parse(result)
             if(result.error){
@@ -712,8 +712,8 @@
                 sessionStorage.setItem('swollenfarm',resultSession.SessionID)
                 $('#divFarm').slideToggle() 
             }  
-        })
-    })
+        })    
+})
 
     //user validation
     $('#btnRegisterUser').on('click',function(){
