@@ -328,7 +328,7 @@ app.post("/sessions", (req,res,next) => {
 })
 // End Step Four Users
 
-app.post("/farm", (req,res,next) => {
+app.post("/farms", (req,res,next) => {
     let strStreetAddress1 = req.query.streetaddress1 || req.body.streetaddress1;
     let strStreetAddress2 = req.query.streetaddress2 || req.body.streetaddress2;
     let strCity = req.query.city || req.body.city;
