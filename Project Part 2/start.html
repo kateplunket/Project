@@ -227,7 +227,7 @@
                 </div>
               </div>
 
-        <div id="tblUsers" style="display:none" class="col-3">
+        <div id="tblUsers" style="display:none">
             <div form-control>
                 <div class="card col-md-12 col-md-6">
                     <div class="card-head">
@@ -247,11 +247,12 @@
                     <div style="display:flex; justify-content: center; align-items: center;">
                     <img src="farm2.jpeg" alt="Chickens" class="p-5">
                     </div>
+                </div>
             </div>
         </div>
-        <div id="tblProducts" style="display:none" class="col-3">
+        <div id="tblProducts" style="display:none">
             <div form-control>
-                <div class="card col-md-6 col-md-4 offset-md-1">
+                <div class="card float-right">
                     <div class="card-head">
                         <h3 class="col-12 text-center mt-1">Track Your Products</h3>
                         <h5 class="col-10 text-center mt-1">Add existing products with their ProductID or register a new product to start tracking it!</h5>
@@ -332,7 +333,7 @@
                 </div>
             </div>
         </div>
-        <div id="tblTasks" style="display:none" class="col-3">
+        <div id="tblTasks" style="display:none">
             <div form-control>
                 <div class="card col-md-6 col-md-4 offset-md-1">
                     <div class="card-head">
@@ -417,7 +418,7 @@
                 </div>            
             </div>
         </div>
-        <div id="tblMaterials" style="display:none" class="col-3">
+        <div id="tblMaterials" style="display:none">
             <div form-control>
                 <div class="card col-md-6 col-md-4 offset-md-1">
                     <div class="card-head">
@@ -460,7 +461,7 @@
                 </div>            
             </div>
         </div>
-        <div id="tblHarvest" style="display:none" class="col-3">
+        <div id="tblHarvest" style="display:none">
             <div form-control>
                 <div class="card col-md-6 col-md-4 offset-md-1">
                     <div class="card-head">
@@ -511,7 +512,7 @@
                 </div>            
             </div>
         </div>
-        <div id="farmReport" style="display:none" class="col-3">
+        <div id="farmReport" style="display:none">
             <div form-control>
                 <div class="card col-md-6 col-md-4 offset-md-1">
                     <div class="card-head">
@@ -528,9 +529,8 @@
         </div>
     </div>
     </div>
-    </div>
-    <div id="divregistration" style="display:none">
-        <div class="container my-5"  style="background-color: #C98143">
+    <div id="divregistration" style="display:none; background-color: #989F8B" class="vh-100">
+        <div class="container my-5 justify-content-center"  style="background-color: #C98143">
             <div class="p-5 text-center bg-body-tertiary rounded-3">
               <h1 class="text-body-emphasis">Register Account</h1>
               <p class="lead"></p>
@@ -582,7 +582,7 @@
             </div>
         </div>
     </div>
-    <div id="divUserFarmId" style="display:none">
+    <div id="divUserFarmId" style="display:none; background-color: #989F8B">
         <div class="container my-5"  style="background-color: #C98143">
             <div class="p-5 text-center bg-body-tertiary rounded-3">
               <h1 class="text-body-emphasis">Enter Farm ID</h1>
@@ -630,9 +630,12 @@
     $('#btnSideUser').on('click',function(){
         $('#tblUsers').slideToggle()
     })
-        $('#btnCreateNewUser').on('click',function(){
-            $('#divCreateUser').slideToggle()
+
+     $('#btnCreateNewUser').on('click',function(){
+        $('#divFarm').slideToggle(function(){
+            $('#divHome').slideToggle()
         })
+     })
         
     $('#btnSideProducts').on('click',function(){
         $('#tblProducts').slideToggle()
@@ -674,6 +677,7 @@
         });
     })
 
+
     //login validation
 
     $('#btnLogin').on('click',function(){
@@ -702,7 +706,7 @@
             if(result.error){
                 swal({
                     icon: 'error',
-                    text: '<p> Incorrect FarmID or Password <p>'
+                    text: '<p> Incorrect Email or Password <p>'
                 })
             } else{
                 sessionStorage.setItem('swollenfarm',resultSession.SessionID)
@@ -843,7 +847,8 @@
                     })
                 } else{
                     sessionStorage.setItem('Simple Session',result.Message)
-                     $('#divFarm').slideToggle()
+                    $('#divCreateFarm').slideToggle()
+                        $('#divFarm').slideToggle()
                 }
             })
         }
