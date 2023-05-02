@@ -605,7 +605,7 @@
  <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
  <script>
-
+    
     $('#btnCreate').on('click',function(){
         $('#divHome').slideToggle(function(){
             $('#divregistration').slideToggle();
@@ -725,8 +725,6 @@
         }
         if(strLastName.length < 1){
             blnError = true
-            strLastName = 'SMith'
-            print('test')
             strErrorMessage += "Please Enter A Last Name. "
         }
         if(strEmail.length < 1){
