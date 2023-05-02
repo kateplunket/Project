@@ -708,8 +708,8 @@
                 sessionStorage.setItem('swollenfarm',resultSession.SessionID)
                 $('#divFarm').slideToggle() 
             }  
-        })    
-})
+        })     
+    })
 
     //user validation
     $('#btnRegisterUser').on('click',function(){
@@ -803,10 +803,6 @@
             strErrorMessage += " Please Enter A Farm Name."
         }
         if(strstreetaddress1.length < 1){
-            blnError = true
-            strErrorMessage += " Please Enter An Address."
-        }
-        if(strstreetaddress2.length < 1){
             blnError = true
             strErrorMessage += " Please Enter An Address."
         }
