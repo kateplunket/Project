@@ -271,7 +271,7 @@ app.post("/users", (req,res,next) => {
     // call the hash method of bcrypt against the password to encrypt and store with a salt
     // notice the use of .then as a promise due to it being async
     bcrypt.hash(strPassword, 10).then(hash => {
-        pool.query('INSERT INTO tblUsers VALUES(?, ?, ?, ?, ?,SYSDATE())',[strEmail, strFirstName, strLastName, strPreferredName, hash], function(error, results){
+        pool.query('INSERT INTO tblUsers VALUES(?, ?, ?, null, ?)',[strFirstName, strLastName, strEmail, hash], function(error, results){
             if(!error){
                 let strSession = uuidv4();
                 pool.query('INSERT INTO tblSessions VALUES(?, ?, ?, ?, ?,SYSDATE())',[strEmail, strFirstName, strLastName, strPreferredName, hash], function(error, results){
@@ -338,15 +338,17 @@ app.post("/farms", (req,res,next) => {
     let strSession = uuidv4();
     let strAssignmentID = uuidv4();
 
+    console.log(strFarmID);
+
     pool.query('INSERT INTO tblFarms VALUES(?, ?, ?, ?, ?,?,?)',[strFarmID, strFarmName, strStreetAddress1, strStreetAddress2, strCity,strState,strZIP], function(error, results){
         if(!error){
             bcrypt.hash(strPassword, 10).then(hash => {
                 strPassword = hash;
-                pool.query('INSERT INTO tblUsers VALUES(?, ?, ?, ?, ?,SYSDATE())',[strEmail, strFirstName, strLastName, strPreferredName, strPassword], function(error, results){
+                pool.query('INSERT INTO tblUsers VALUES(?, ?, ?, ?, ?)',[strFirstName, strLastName, strEmail,'9999999999', strPassword], function(error, results){
                     if(!error){
-                        pool.query('INSERT INTO tblFarmAssignment VALUES(?, ?, true, ?)',[strAssignmentID, strFarmID, strEmail], function(error, results){
+                        pool.query('INSERT INTO tblFarmAssignment VALUES(?, ?, ?, true)',[strAssignmentID, strFarmID, strEmail], function(error, results){
                             if(!error){
-                                pool.query('INSERT INTO tblSesisons VALUES(?,SYSDATE(),?)',[strSession, strEmail], function(error, results){
+                                pool.query('INSERT INTO tblSessions VALUES(?,SYSDATE(),?)',[strSession, strEmail], function(error, results){
                                     if(!error){
                                         let objMessage = new Message("SessionID",strSession);
                                         res.status(201).send(objMessage);
