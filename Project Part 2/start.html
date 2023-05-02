@@ -897,6 +897,37 @@
                 })
             }
         })
+
+        $('#btnCreateNewProduct').on('click',function(){
+            let strProductID = $('#txtProductID').val()
+            let strProductShortName = $('#txtProductShortName').val()
+            let strProductLongName = $('#txtProductLongName').val()
+            let strProductDescription = $('#txtProductDescription').val()
+
+
+            if(strProductID.length < 1){
+                blnError = true
+                strErrorMessage += "Please Enter A Product ID."
+            }
+            if(strShortName.length < 1){
+                blnError = true
+                strErrorMessage += " Please Enter A Short Name."
+            }
+            if(strLongName.length < 1){
+                blnError = true
+                strErrorMessage += " Please Enter A Long Name."
+            }
+            if(strDescription.length < 1){
+                blnError = true
+                strErrorMessage += " Please Enter A Description."
+            }
+            if(blnError == true){
+                swal({
+                    icon: 'error',
+                    text: strErrorMessage
+                })
+            }
+        })
             //employee tracker table
 
         $(document).on('click', '#btnRegisterUser', function(){
