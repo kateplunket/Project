@@ -585,7 +585,7 @@
     <div id="divUserFarmId" style="display:none; background-color: #989F8B">
         <div class="container my-5"  style="background-color: #C98143">
             <div class="p-5 text-center bg-body-tertiary rounded-3">
-              <h1 class="text-body-emphasis">Enter Farm ID</h1>
+              <h1 class="text-body-emphasis">Enter Farm ID or Create Farm</h1>
               <p class="lead"></p>
             </div>
           </div>
@@ -594,7 +594,8 @@
                 <div class="card-body">
                     <form>
                         <input class="form-control" id="txtUserFarmID" placeholder="FarmID" type="text">
-                        <button class="btn col-12 mt-2" type="button" id="btnFarmDashboard" style="background-color: #C98143">Farm Dashboard</button>
+                        <button class="btn col-12 mt-2" type="button" id="btnRegisterFarmID" style="background-color: #C98143">Farm Dashboard</button>
+                        <button class="btn col-12 mt-2" type="button" id="btnFarmBacktoLogin" style="background-color: #C98143">Create Farm</button>    
                     </form>
                 </div>
             </div>
@@ -605,291 +606,347 @@
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
  <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
- <script>
+    <script>
         const strBaseURL = 'http://localhost:8000/';
         var strSessionID;
 
-    $('#btnCreate').on('click',function(){
-        $('#divHome').slideToggle(function(){
-            $('#divregistration').slideToggle();
-        });
-    })
-
-    $('#btnCreateUser').on('click',function(){
-        $('#divregistration').slideToggle(function(){
-            $('#divCreateUser').slideToggle();
-        });
-    })
-
-    $('#btnCreateFarm').on('click',function(){
-        $('#divregistration').slideToggle(function(){
-            $('#divCreateFarm').slideToggle();
-        });
-    })
-
-    $('#btnSideUser').on('click',function(){
-        $('#tblUsers').slideToggle()
-    })
-
-     $('#btnCreateNewUser').on('click',function(){
-        $('#divFarm').slideToggle(function(){
-            $('#divHome').slideToggle()
-        })
-     })
-        
-    $('#btnSideProducts').on('click',function(){
-        $('#tblProducts').slideToggle()
-    })
-        $('#btnCreateNewProduct').on('click',function(){
-            $('#divCreateProduct').slideToggle()
-        })
-
-    $('#btnSideTasks').on('click',function(){
-        $('#tblTasks').slideToggle()
-    })
-        $('#btnCreateNewTask').on('click',function(){
-            $('#divCreateTask').slideToggle()
-        })
-
-    $('#btnSideMaterials').on('click',function(){
-        $('#tblMaterials').slideToggle()
-    })
-        $('#btnCreateNewMaterials').on('click',function(){
-            $('#divCreateMaterials').slideToggle()
-        })
-
-    $('#btnSideHarvest').on('click',function(){
-        $('#tblHarvest').slideToggle()
-    })
-        $('btnCreateNewHarvest').on('click',function(){
-            $('#divCreateNewHarvest').slideToggle()
-        })
-    
-    $('#btnLoginbtn').on('click',function(){
-        $('#divCreateUser').slideToggle(function(){
-            $('#divHome').slideToggle();
-        });
-    })
-
-    $('#btnLoginbtn2').on('click',function(){
-        $('#divCreateFarm').slideToggle(function(){
-            $('#divHome').slideToggle();
-        });
-    })
-
-
-    //login validation
-
-    $('#btnLogin').on('click',function(){
-        let strEmail = $('#txtLoginEmail').val()
-        let strPassword = $('#txtLoginPassword').val()
-
-        let blnError = false
-        let strErrorMessage = ''
-
-        if(strEmail.length < 1){
-            blnError = true
-            strErrorMessage = 'Please Enter an Email'
-        }
-        if(strPassword.length < 1){
-            blnError = true
-            strErrorMessage = 'Please Enter a Password'
-        }
-        if(blnError == true){
-            swal({
-                icon: "error",
-                text: "Incorrect Login Details"
+        $('#btnCreate').on('click',function(){
+            $('#divHome').slideToggle(function(){
+                $('#divregistration').slideToggle();
             });
-        }
-        $.post('http://localhost:8000/sessions',{email:strEmail,password:strPassword},function(result){
-            result = JSON.parse(result)
-            if(result.error){
+        })
+
+        $('#btnCreateUser').on('click',function(){
+            $('#divregistration').slideToggle(function(){
+                $('#divCreateUser').slideToggle();
+            });
+        })
+
+        $('#btnCreateFarm').on('click',function(){
+            $('#divregistration').slideToggle(function(){
+                $('#divCreateFarm').slideToggle();
+            });
+        })
+
+        $('#btnSideUser').on('click',function(){
+            $('#tblUsers').slideToggle()
+        })
+
+        $('#btnCreateNewUser').on('click',function(){
+            $('#divFarm').slideToggle(function(){
+                $('#divHome').slideToggle()
+            })
+        })
+            
+        $('#btnSideProducts').on('click',function(){
+            $('#tblProducts').slideToggle()
+        })
+            $('#btnCreateNewProduct').on('click',function(){
+                $('#divCreateProduct').slideToggle()
+            })
+
+        $('#btnSideTasks').on('click',function(){
+            $('#tblTasks').slideToggle()
+        })
+            $('#btnCreateNewTask').on('click',function(){
+                $('#divCreateTask').slideToggle()
+            })
+
+        $('#btnSideMaterials').on('click',function(){
+            $('#tblMaterials').slideToggle()
+        })
+            $('#btnCreateNewMaterials').on('click',function(){
+                $('#divCreateMaterials').slideToggle()
+            })
+
+        $('#btnSideHarvest').on('click',function(){
+            $('#tblHarvest').slideToggle()
+        })
+            $('btnCreateNewHarvest').on('click',function(){
+                $('#divCreateNewHarvest').slideToggle()
+            })
+        
+        $('#btnLoginbtn').on('click',function(){
+            $('#divCreateUser').slideToggle(function(){
+                $('#divHome').slideToggle();
+            });
+        })
+
+        $('#btnLoginbtn2').on('click',function(){
+            $('#divCreateFarm').slideToggle(function(){
+                $('#divHome').slideToggle();
+            });
+        })
+
+        $('#btnFarmBacktoLogin').on('click',function(){
+            $('#divUserFarmId').slideToggle(function(){
+                $('#divHome').slideToggle();
+            });
+        })
+
+        //login validation
+
+        $('#btnLogin').on('click',function(){
+            let strEmail = $('#txtLoginEmail').val()
+            let strPassword = $('#txtLoginPassword').val()
+
+            let blnError = false
+            let strErrorMessage = ''
+
+            if(strEmail.length < 1){
+                blnError = true
+                strErrorMessage = 'Please Enter an Email'
+            }
+            if(strPassword.length < 1){
+                blnError = true
+                strErrorMessage = 'Please Enter a Password'
+            }
+            if(blnError == true){
+                swal({
+                    title: "Incorrect Login Details",
+                    icon: "error"
+                });
+            }
+            $.post('http://localhost:8000/sessions',{email:strEmail,password:strPassword},function(result){
+                result = JSON.parse(result)
+                if(result.error){
+                    swal({
+                        icon: 'error',
+                        text: '<p> Incorrect Email or Password <p>'
+                    })
+                } else{
+                    sessionStorage.setItem('swollenfarm',resultSession.SessionID)
+                    $('#divFarm').slideToggle() 
+                }  
+            })     
+        })
+
+        //user validation
+        $('#btnRegisterUser').on('click',function(){
+            let strFirstName = $('#txtCreateFirstName').val()
+            let strLastName = $('#txtCreateLastName').val()
+            let strEmail = $('#txtCreateEmail').val()
+            let strPreferredName = $('#txtCreatePreferredName').val()
+            let strPassword = $('#txtCreatePassword').val()
+
+            let blnError = false
+            let strErrorMessage = ''
+
+            if(strFirstName.length < 1){
+                blnError = true
+                strErrorMessage += "Please Enter A First Name. "
+            }
+            if(strLastName.length < 1){
+                blnError = true
+                strErrorMessage += "Please Enter A Last Name. "
+            }
+            if(strEmail.length < 1){
+                blnError = true
+                strErrorMessage += "Please Enter An Email. "
+            }
+            if(strPreferredName.length < 1){
+                blnError = true
+                strErrorMessage += "Please Enter A Phone Number. "
+            }
+            if(strPassword.length < 1){
+                blnError = true
+                strErrorMessage += "Please Enter A Password. "
+            }
+            if(blnError == true){
+                swal({
+                    icon: "error",
+                    text: strErrorMessage
+                });
+            }
+
+            if(blnError == false){
+                $.post('http://localhost:8000/users',{firstname:strFirstName,lastname:strLastName,preferredname:strPreferredName,email:strEmai,password:strPassword},function(result){
+                    result = JSON.parse()
+                    if(resultError){
+                        swal({
+                            icon: 'error',
+                            text: '<p> User Creation Error <p>'
+                        })
+                    } else{
+                            if(resultSucess){
+                                sessionStorage.setItem('Simple Session',result.Message)
+                                $('#divUserFarmID').slideToggle()
+                            }
+                        }
+                })
+            }
+        })
+
+        //farm register validation
+        $('#btnRegisterFarm').on('click',function(){
+            let strfarmID = $('#txtFarmID').val()
+            let strfarmname = $('#txtFarmName').val()
+            let strstreetaddress1 = $('#txtAddressLine1').val()
+            let strstreetaddress2 = $('#txtAddressLine2').val()
+            let strcity = $('#txtFarmCity').val()
+            let strstate = $('#txtFarmState').val()
+            let strzip = $('#txtFarmZip').val()
+            let strfirstname = $('#txtFarmFirstName').val()
+            let strlastname = $('#txtFarmLastName').val()
+            let strpreferredname = $('#txtFarmPreferredName').val() 
+            let stremail = $('#txtFarmEmail').val()
+            let strpassword = $('#txtFarmPassword').val()
+
+            let blnError = false
+            let strErrorMessage = ''
+
+            if(strfarmID.length < 1){
+                blnError = true
+                strErrorMessage += "Please Enter A Farm ID."
+            }
+            if(strfarmname.length < 1){
+                blnError = true
+                strErrorMessage += " Please Enter A Farm Name."
+            }
+            if(strstreetaddress1.length < 1){
+                blnError = true
+                strErrorMessage += " Please Enter An Address."
+            }
+            if(strcity.length < 1){
+                blnError = true
+                strErrorMessage += " Please Enter A City."
+            }
+            if(strstate.length < 1){
+                blnError = true
+                strErrorMessage += " Please Enter A State."
+            }
+            if(strzip.length < 1){
+                blnError = true
+                strErrorMessage += " Please Enter A Zip."
+            }
+            if(strfirstname.length < 1){
+                blnError = true
+                strErrorMessage += " Please Enter A First Name."
+            }
+            if(strlastname.length < 1){
+                blnError = true
+                strErrorMessage += " Please Enter A Last Name."
+            }
+            if(blnError == true){
                 swal({
                     icon: 'error',
-                    text: '<p> Incorrect Email or Password <p>'
+                    text: strErrorMessage
+                })
+            }
+
+            if(blnError == false){
+                $.post('http://localhost:8000/farms',{farmID:strfarmID,farmname:strfarmname,streetaddress1:strstreetaddress1,streetaddress2:strstreetaddress2,
+                    city:strcity,state:strstate,zip:strzip,email:stremail,firstname:strfirstname,lastname:strlastname,preferredname:strpreferredname,password:strpassword},function(result){
+                    if(result.Type=='Error'){
+                        swal({
+                            icon: 'error',
+                            text: '<p> User Creation Error <p>'
+                        })
+                    } else{
+                        sessionStorage.setItem('Simple Session',result.Message)
+                        $('#divCreateFarm').slideToggle()
+                            $('#divFarm').slideToggle()
+                    }
+                })
+            }
+        })
+
+
+        //farm ID validation
+        $('btnFarmUserID').on('click',function(){
+            let strfarmID = $('#txtUserFarmID').val()
+
+            let blnError = false
+            let strErrorMessage = ''
+
+            if(strfarmID.length < 1){
+                blnError = true
+                strErrorMessage += "Please Enter A Farm ID."
+            }
+            if(blnError == true){
+                swal({
+                    icon: 'error',
+                    text: strErrorMessage
                 })
             } else{
-                sessionStorage.setItem('swollenfarm',resultSession.SessionID)
-                $('#divFarm').slideToggle() 
-            }  
-        })    
-})
+                $.post('http://localhost:8000/farms',{farmID:strfarmID},function(result){
+                    result = JSON.parse
+                    if(resultError){
+                        swal({
+                            icon: 'error',
+                            text: '<p> Unable to add Farm <p>'
+                        })
+                    } else{
+                        $.post('http://localhost:8000/farms',{farmID,strfarmID},function(){
+                            result = JSON.parse
+                            if(resultError){
+                                swal({
+                                    icon: 'error',
+                                    text: '<p> Please Return to Login, Farm ID Failed <p>'
+                                })
+                            }
+                            if(resultSucess){
+                                sessionStorage.setItem('Simple Session',resultSession.SessionID)
+                                $('#divFarm').slideToggle()
+                            }
+                        })
+                    }
+                })
+            }
+        })
 
-    //user validation
-    $('#btnRegisterUser').on('click',function(){
-        let strFirstName = $('#txtCreateFirstName').val()
-        let strLastName = $('#txtCreateLastName').val()
-        let strEmail = $('#txtCreateEmail').val()
-        let strPreferredName = $('#txtCreatePreferredName').val()
-        let strPassword = $('#txtCreatePassword').val()
+        $('#btnRegisterProduct').on('click',function(){
+            let strProductID = $('#txtProductID').val()
+            let strProductShortName = $('#txtProductShortName').val()
+            let strProductLongName = $('#txtProductLongName').val()
+            let strProductDescription = $('#txtProductDescription').val()
 
-        let blnError = false
-        let strErrorMessage = ''
 
-        if(strFirstName.length < 1){
-            blnError = true
-            strErrorMessage += "Please Enter A First Name. "
-        }
-        if(strLastName.length < 1){
-            blnError = true
-            strErrorMessage += "Please Enter A Last Name. "
-        }
-        if(strEmail.length < 1){
-            blnError = true
-            strErrorMessage += "Please Enter An Email. "
-        }
-        if(strPreferredName.length < 1){
-            blnError = true
-            strErrorMessage += "Please Enter A Phone Number. "
-        }
-        if(strPassword.length < 1){
-            blnError = true
-            strErrorMessage += "Please Enter A Password. "
-        }
-        if(blnError == true){
-            swal({
-                icon: "error",
-                text: strErrorMessage
-            });
-        }
-
-        if(blnError == false){
-            $.post('http://localhost:8000/users',{firstname:strFirstName,lastname:strLastName,preferredname:strPreferredName,email:strEmail,password:strPassword},function(result){
-                if(result.Type=='Error'){
-                    swal({
-                        icon: 'error',
-                        text: '<p> User Creation Error <p>'
-                    })
-                } else{
-                        sessionStorage.setItem('Simple Session',result.Message)
-                        $('#divUserFarmID').slideToggle()
+            if(strProductID.length < 1){
+                blnError = true
+                strErrorMessage += "Please Enter A Product ID."
+            }
+            if(strProductShortName.length < 1){
+                blnError = true
+                strErrorMessage += " Please Enter A Short Name."
+            }
+            if(strProductLongName.length < 1){
+                blnError = true
+                strErrorMessage += " Please Enter A Long Name."
+            }
+            if(strProductDescription.length < 1){
+                blnError = true
+                strErrorMessage += " Please Enter A Description."
+            }
+            if(blnError == true){
+                swal({
+                    icon: 'error',
+                    text: strErrorMessage
+                })
                 }
             })
-        }
-    })
+            $(document).on('click', '#btnCreateNewProduct', function(){
+            let strProductID = $('#txtProductID').val()
+            let strShortName = $('#txtProductShort').val()
+            let strLongName = $('#txtProductLong').val()
+            let strDescription = $('#txtProductDespcription').val()
 
-    //farm validation
-    $('#btnRegisterFarm').on('click',function(){
-        let strfarmID = $('#txtFarmID').val()
-        let strfarmname = $('#txtFarmName').val()
-        let strstreetaddress1 = $('#txtAddressLine1').val()
-        let strstreetaddress2 = $('#txtAddressLine2').val()
-        let strcity = $('#txtFarmCity').val()
-        let strstate = $('#txtFarmState').val()
-        let strzip = $('#txtFarmZip').val()
-        let strfirstname = $('#txtFarmFirstName').val()
-        let strlastname = $('#txtFarmLastName').val()
-        let strpreferredname = $('#txtFarmPreferredName').val() 
-        let stremail = $('#txtFarmEmail').val()
-        let strpassword = $('#txtFarmPassword').val()
-
-        let blnError = false
-        let strErrorMessage = ''
-
-        if(strfarmID.length < 1){
-            blnError = true
-            strErrorMessage += "Please Enter A Farm ID."
-        }
-        if(strfarmname.length < 1){
-            blnError = true
-            strErrorMessage += " Please Enter A Farm Name."
-        }
-        if(strstreetaddress1.length < 1){
-            blnError = true
-            strErrorMessage += " Please Enter An Address."
-        }
-        if(strstreetaddress2.length < 1){
-            blnError = true
-            strErrorMessage += " Please Enter An Address."
-        }
-        if(strcity.length < 1){
-            blnError = true
-            strErrorMessage += " Please Enter A City."
-        }
-        if(strstate.length < 1){
-            blnError = true
-            strErrorMessage += " Please Enter A State."
-        }
-        if(strzip.length < 1){
-            blnError = true
-            strErrorMessage += " Please Enter A Zip."
-        }
-        if(strfirstname.length < 1){
-            blnError = true
-            strErrorMessage += " Please Enter A First Name."
-        }
-        if(strlastname.length < 1){
-            blnError = true
-            strErrorMessage += " Please Enter A Last Name."
-        }
-        if(blnError == true){
-            swal({
-                icon: 'error',
-                text: strErrorMessage
+            var objInsertResult;
+            var objInsertCallBack = $.post('http://localhost:8000/products?productID=' + strProductID + '&SName=' + strShortName + '&LName=' + strLongName + '&description' + strDescription, function(result){
+                objInsertResult = result;
             })
-        }
 
-        if(blnError == false){
-            $.post('http://localhost:8000/farms',{farmID:strfarmID,farmname:strfarmname,streetaddress1:strstreetaddress1,streetaddress2:strstreetaddress2,
-                city:strcity,state:strstate,zip:strzip,email:stremail,firstname:strfirstname,lastname:strlastname,preferredname:strpreferredname,password:strpassword},function(result){
-                if(result.Type=='Error'){
-                    swal({
-                        icon: 'error',
-                        text: '<p> User Creation Error <p>'
+            $.when(objInsertCallBack).done(function(){
+                $.getJSON('http://localhost:8000/products',{session:objInsertResult}, function(result){
+                    $.each(result,function(index,product){
+                        $('#divFarm').append(product.ProductID + ' ' + product.ShortName + ' ' + product.LongName + ' ' + product.Description);
                     })
-                } else{
-                    sessionStorage.setItem('Simple Session',result.Message)
-                    $('#divCreateFarm').slideToggle()
-                        $('#divFarm').slideToggle()
-                }
+                    console.log(result)
+                        
+                })
             })
-        }
-    })
-
-
-    //farm ID validation
-    $('btnFarmUserID').on('click',function(){
-        let strfarmID = $('#txtUserFarmID').val()
-
-        let blnError = false
-        let strErrorMessage = ''
-
-        if(strfarmID.length < 1){
-            blnError = true
-            strErrorMessage += "Please Enter A Farm ID."
-        }
-        if(blnError == true){
-            swal({
-                icon: 'error',
-                text: strErrorMessage
-            })
-        } else{
-            $.post('http://localhost:8000/farms',{farmID:strfarmID},function(result){
-                result = JSON.parse
-                if(resultError){
-                    swal({
-                        icon: 'error',
-                        text: '<p> Unable to add Farm <p>'
-                    })
-                } else{
-                    $.post('http://localhost:8000/farms',{farmID,strfarmID},function(){
-                        result = JSON.parse
-                        if(resultError){
-                            swal({
-                                icon: 'error',
-                                text: '<p> Please Return to Login, Farm ID Failed <p>'
-                            })
-                        }
-                        if(resultSucess){
-                            sessionStorage.setItem('Simple Session',resultSession.SessionID)
-                            $('#divFarm').slideToggle()
-                        }
-                    })
-                }
-            })
-        }
-    })
-    //employee tracker table
+        })
+        //employee tracker table
 
         $(document).on('click', '#btnRegisterUser', function(){
             let strFirstName = $('#txtCreateFirstName').val()
@@ -914,18 +971,9 @@
         })
 
         //product tracker table
-//create place for these input in divfarm
-        $(document).on('click', '#btnCreateNewProduct', function(){
-            let strProductID = $('#txtProductID').val()
-            let strShortName = $('#txtProductShort').val()
-            let strLongName = $('#txtProductLong').val()
-            let strDescription = $('#txtProductDespcription').val()
+        //create place for these inputs in divFarm
 
-            var objInsertResult;
-            var objInsertCallBack = $.post('http://localhost:8000/products?productID=' + strProductID + '&SName=' + strShortName + '&LName=' + strLongName + '&description' + strDescription, function(result){
-                objInsertResult = result;
-            })
-
+        
         $.when(objInsertCallBack).done(function(){
             $.getJSON('http://localhost:8000/users',{session:objInsertResult}, function(result){
                 var table = $('<table>');
@@ -936,8 +984,8 @@
                     $('<th>').text('Preferred Name')
                 );
                 table.append(headerRow);
-
-        $.each(result,function(index,user){
+            });
+            $.each(result,function(index,user){
             var row = $('<tr>').append(
                 $('<td>').text(user.FirstName),
                 $('<td>').text(user.LastName),
@@ -946,10 +994,8 @@
             );
             table.append(row);
         });
-         $('#divFarm').append(table);
+        $('#divFarm').append(table);
         });
-    });
-})
 
         //Task tracker table
         $(document).on('click', '#btnCreateNewTask', function(){
@@ -995,7 +1041,7 @@
     
         //way to generate report
 
- </script>
+    </script>
 
 </body>
 </html>

@@ -299,7 +299,7 @@ app.post("/sessions",(req,res,next) => {
     let strPassword = req.query.password || req.body.password;
     console.log(strEmail)
     console.log(strPassword)
-    pool.query('SELECT Password FROM tblUsers WHERE Email = ?', strEmail, function(error, results){
+    pool.query('SELECT `Password` FROM tblUsers WHERE Email = ?', strEmail, function(error, results){
         console.log(results)
         if(!error){
             bcrypt.compare(strPassword, results[0].Password)
