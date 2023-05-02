@@ -341,14 +341,31 @@ app.post("/farms", (req,res,next) => {
     let strPreferredName = req.query.preferredname || req.body.preferredname;
     let strEmail = req.query.email || req.body.email;
     let strPassword = req.query.password || req.body.password;
-    pool.query('INSERT INTO tblFarms VALUES(?, ?, ?, ?, ?, ?, ?)',[strFarmID, strFarmName, strStreetAddress1, strStreetAddress2, strCity,strState,strZIP], function(error, results){
+    let strSession = uuidv4();
+    let strAssignmentID = uuidv4();
+
+    pool.query('INSERT INTO tblFarms VALUES(?, ?, ?, ?, ?,?,?)',[strFarmID, strFarmName, strStreetAddress1, strStreetAddress2, strCity,strState,strZIP], function(error, results){
         if(!error){
             bcrypt.hash(strPassword, 10).then(hash => {
                 strPassword = hash;
                 pool.query('INSERT INTO tblUsers VALUES(?, ?, ?, ?, ?,SYSDATE())',[strEmail, strFirstName, strLastName, strPreferredName, strPassword], function(error, results){
                     if(!error){
-                        let objMessage = new Message("FarmID",strFarmID);
-                        res.status(201).send(objMessage);
+                        pool.query('INSERT INTO tblFarmAssignment VALUES(?, ?, true, ?)',[strAssignmentID, strFarmID, strEmail], function(error, results){
+                            if(!error){
+                                pool.query('INSERT INTO tblSesisons VALUES(?,SYSDATE(),?)',[strSession, strEmail], function(error, results){
+                                    if(!error){
+                                        let objMessage = new Message("SessionID",strSession);
+                                        res.status(201).send(objMessage);
+                                    } else {
+                                        let objMessage = new Message("Error",error);
+                                        res.status(400).send(objMessage);
+                                    }
+                                })
+                            } else {
+                                let objMessage = new Message("Error",error);
+                                res.status(400).send(objMessage);
+                            }
+                        })
                     } else {
                         let objMessage = new Message("Error",error);
                         res.status(400).send(objMessage);

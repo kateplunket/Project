@@ -879,7 +879,7 @@
                 text: strErrorMessage
             })
         } else{
-            $.post('http://localhost:8000/farm',{farmID:strfarmID},function(result){
+            $.post('http://localhost:8000/farms',{farmID:strfarmID},function(result){
                 result = JSON.parse
                 if(resultError){
                     swal({
@@ -887,7 +887,7 @@
                         text: '<p> Unable to add Farm <p>'
                     })
                 } else{
-                    $.post('http://localhost:8000/farm',{farmID,strfarmID},function(){
+                    $.post('http://localhost:8000/farms',{farmID,strfarmID},function(){
                         result = JSON.parse
                         if(resultError){
                             swal({
