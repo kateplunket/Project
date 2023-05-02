@@ -30,10 +30,10 @@
                 </div>
                 <div class="card-body">
                     <form>
-                        <input id="txtLoginFarmID" type="text" class="form-control" placeholder="FarmID" aria-label="Enter FarmID">
+                        <input id="txtLoginEmail" type="text" class="form-control" placeholder="Email" aria-label="Enter Email">
                         <input id="txtLoginPassword" type="password" class="form-control mt-2" placeholder="password" aria-label="Password">
                         <button class="btn col-12 mt-4 btnSwap" type="button" id="btnLogin" style="background-color: #C98143">Login</button>
-                        <button class="btn col-12 mt-2 btnSwap" id="btnCreate" type="button" style="background-color: #D49C7F">Create Farm</button>
+                        <button class="btn col-12 mt-2 btnSwap" id="btnCreate" type="button" style="background-color: #D49C7F">Register Account</button>
                     </form>
                 </div>
             </div>
@@ -107,7 +107,7 @@
                             <input class="form-control" id="txtFarmPassword" placeholder="" type="password">
                         </div>
                         <button class="btn col-12 mt-4" type="button" id="btnRegisterFarm" style="background-color: #C98143">Register Farm</button>
-                        <button class="btn col-12 mt-2 btnSwap" type="button" style="background-color: #D49C7F">Back To Login</button>
+                        <button class="btn col-12 mt-2" id="btnLoginbtn2" type="button" style="background-color: #D49C7F">Back To Login</button>
                     </form>
                 </div>
             </div>
@@ -242,39 +242,6 @@
                         </form>
                     </div>
                 </div>
-                    <div id="divCreateUser" style="background-color: #989F8B; display:none;">
-                        <div class="col-12 col-md-6 d-flex justify-content-center align-items-center vh-100">
-                            <div class="card col-12 col-md-10 offset-md-4">
-                                <div class="card-head">
-                                    <h3 class="col-12 text-center mt-1">Create User Account</h3>
-                                </div>
-                                <div class="card-body">
-                                    <form>
-                                        <div class="form-group">
-                                            <label for="txtCreateFirstName" class="form-label mt-4">First Name</label>
-                                            <input class="form-control" id="txtCreateFirstName" placeholder="" type="text">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="txtCreateLastName" class="form-label mt-4">Last Name</label>
-                                            <input class="form-control" id="txtCreateLastName" placeholder="" type="text">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="txtCreateEmail" class="form-label mt-4">Email</label>
-                                            <input class="form-control" id="txtCreateEmail" placeholder="" type="email">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="txtCreatePreferredName" class="form-label mt-4">Preferred Name</label>
-                                            <input class="form-control" id="txtCreatePreferredName" placeholder="" type="text">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="txtCreatePassword" class="form-label mt-4">Password</label>
-                                            <input class="form-control" id="txtCreatePassword" placeholder="" type="password">
-                                        </div>
-                                        <button class="btn col-12 mt-4" type="button" id="btnRegisterUser" style="background-color: #C98143">Register User</button>
-                                        <button class="btn col-12 mt-2 btnSwap" type="button" style="background-color: #D49C7F">Back To Login</button>
-                                    </form>
-                                </div>
-                            </div>
                             <div class="d-none d-md-block col-6  d-flex justify-content-center align-items-center vh-100">
                                 <h2 class="text-center mt-5" style="background-color: #C98143">Let's Get Registered</h2>
                                 <div style="display:flex; justify-content: center; align-items: center;">
@@ -282,8 +249,6 @@
                                 </div>
                             </div>
                         </div>
-                    </div>                
-            </div>
         </div>
         <div id="tblProducts" style="display:none">
             <div form-control>
@@ -563,9 +528,77 @@
         </div>
     </div>
     </div>
-
-
-
+    <div id="divregistration" style="display:none">
+        <div class="container my-5"  style="background-color: #C98143">
+            <div class="p-5 text-center bg-body-tertiary rounded-3">
+              <h1 class="text-body-emphasis">Register Account</h1>
+              <p class="lead"></p>
+            </div>
+          </div>
+        <div class="col-8 col-md-6 d-flex justify-content-center align-items-center">
+            <div class="card col-12 col-md-10 justify-content-center">
+                <div class="card-body">
+                    <form>
+                        <button class="btn col-12 mt-2" type="button" id="btnCreateUser" style="background-color: #C98143">Create User</button>
+                        <button class="btn col-12 mt-2" id="btnCreateFarm" type="button" style="background-color: #D49C7F">Create Farm</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="divCreateUser" style="background-color: #989F8B; display:none;">
+        <div class="col-12 col-md-6 d-flex justify-content-center align-items-center vh-100">
+            <div class="card col-12 col-md-10 offset-md-4">
+                <div class="card-head">
+                    <h3 class="col-12 text-center mt-1">Create User Account</h3>
+                </div>
+                <div class="card-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="txtCreateFirstName" class="form-label mt-4">First Name</label>
+                            <input class="form-control" id="txtCreateFirstName" placeholder="" type="text">
+                        </div>
+                        <div class="form-group">
+                            <label for="txtCreateLastName" class="form-label mt-4">Last Name</label>
+                            <input class="form-control" id="txtCreateLastName" placeholder="" type="text">
+                        </div>
+                        <div class="form-group">
+                            <label for="txtCreateEmail" class="form-label mt-4">Email</label>
+                            <input class="form-control" id="txtCreateEmail" placeholder="" type="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="txtCreatePreferredName" class="form-label mt-4">Preferred Name</label>
+                            <input class="form-control" id="txtCreatePreferredName" placeholder="" type="text">
+                        </div>
+                        <div class="form-group">
+                            <label for="txtCreatePassword" class="form-label mt-4">Password</label>
+                            <input class="form-control" id="txtCreatePassword" placeholder="" type="password">
+                        </div>
+                        <button class="btn col-12 mt-4" type="button" id="btnRegisterUser" style="background-color: #C98143">Register User</button>
+                        <button class="btn col-12 mt-2" id="btnLoginbtn" type="button" style="background-color: #D49C7F">Back To Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="divUserFarmId" style="display:none">
+        <div class="container my-5"  style="background-color: #C98143">
+            <div class="p-5 text-center bg-body-tertiary rounded-3">
+              <h1 class="text-body-emphasis">Enter Farm ID</h1>
+              <p class="lead"></p>
+            </div>
+          </div>
+        <div class="col-8 col-md-6 d-flex justify-content-center align-items-center">
+            <div class="card col-12 col-md-10 justify-content-center">
+                <div class="card-body">
+                    <form>
+                        <input class="form-control" id="txtUserFarmID" placeholder="FarmID" type="text">
+                        <button class="btn col-12 mt-2" type="button" id="btnFarmDashboard" style="background-color: #C98143">Farm Dashboard</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
@@ -575,6 +608,18 @@
 
     $('#btnCreate').on('click',function(){
         $('#divHome').slideToggle(function(){
+            $('#divregistration').slideToggle();
+        });
+    })
+
+    $('#btnCreateUser').on('click',function(){
+        $('#divregistration').slideToggle(function(){
+                    $('#divCreateUser').slideToggle();
+        });
+    })
+
+    $('#btnCreateFarm').on('click',function(){
+        $('#divregistration').slideToggle(function(){
             $('#divCreateFarm').slideToggle();
         });
     })
@@ -613,18 +658,30 @@
         $('btnCreateNewHarvest').on('click',function(){
             $('#divCreateNewHarvest').slideToggle()
         })
+    
+    $('#btnLoginbtn').on('click',function(){
+        $('#divCreateUser').slideToggle(function(){
+            $('#divHome').slideToggle();
+        });
+    })
+
+    $('#btnLoginbtn2').on('click',function(){
+        $('#divCreateFarm').slideToggle(function(){
+            $('#divHome').slideToggle();
+        });
+    })
 
     //login validation
     $('#btnLogin').on('click',function(){
-        let strFarmID = $('#txtLoginFarmID').val()
+        let strEmail = $('#txtEmail').val()
         let strPassword = $('#txtLoginPassword').val()
 
         let blnError = false
         let strErrorMessage = ''
 
-        if(strFarmID.length < 1){
+        if(strEmail.length < 1){
             blnError = true
-            strErrorMessage = 'Please Enter a FarmID'
+            strErrorMessage = 'Please Enter an Email'
         }
         if(strPassword.length < 1){
             blnError = true
@@ -637,7 +694,7 @@
             });
         }
 
-        $.post('http://localhost:8000/sessions',{FarmID:strFarmID,Password:strPassword},function(result){
+        $.post('http://localhost:8000/sessions',{email:strEmail,password:strPassword},function(result){
             result = JSON.parse(result)
             if(result.error){
                 swal({
@@ -668,6 +725,8 @@
         }
         if(strLastName.length < 1){
             blnError = true
+            strLastName = 'SMith'
+            print('test')
             strErrorMessage += "Please Enter A Last Name. "
         }
         if(strEmail.length < 1){
@@ -690,7 +749,7 @@
         }
 
         if(blnError == false){
-            $.post('http://localhost:8000/users',{First:strFirstName,Last:strLastName,Email:strEmail,PreferredName:strPreferredName,Password:strPassword},function(result){
+            $.post('http://localhost:8000/users',{firstname:strFirstName,lastname:strLastName,preferredname:strPreferredName,email:strEmai,password:strPassword},function(result){
                 result = JSON.parse
                 if(resultError){
                     swal({
@@ -698,7 +757,7 @@
                         text: '<p> User Creation Error <p>'
                     })
                 } else{
-                    $.post('http://localhost:8000/users',{Email:strEmail,Password:strPassword},function(){
+                    $.post('http://localhost:8000/users',{email:strEmail,firstname:strFirstName,lastname:strLastName,preferredname:strPreferredName,password:strPassword},function(){
                         result = JSON.parse
                         if(resultError){
                             swal({
@@ -708,7 +767,7 @@
                         }
                         if(resultSucess){
                             sessionStorage.setItem('Simple Session',resultSession.SessionID)
-                            $('#divUser').slideToggle()
+                            $('#divUserFarmID').slideToggle()
                         }
                     })
                 }
@@ -805,6 +864,48 @@
         }
     })
 
+    //farm ID validation
+    $('btnFarmUserID').on('click',function(){
+        let strfarmID = $('#txtUserFarmID').val()
+
+        let blnError = false
+        let strErrorMessage = ''
+
+        if(strfarmID.length < 1){
+            blnError = true
+            strErrorMessage += "Please Enter A Farm ID."
+        }
+        if(blnError == true){
+            swal({
+                icon: 'error',
+                text: strErrorMessage
+            })
+        } else{
+            $.post('http://localhost:8000/farm',{farmID:strfarmID},function(result){
+                result = JSON.parse
+                if(resultError){
+                    swal({
+                        icon: 'error',
+                        text: '<p> Unable to add Farm <p>'
+                    })
+                } else{
+                    $.post('http://localhost:8000/farm',{farmID,strfarmID},function(){
+                        result = JSON.parse
+                        if(resultError){
+                            swal({
+                                icon: 'error',
+                                text: '<p> Please Return to Login, Farm ID Failed <p>'
+                            })
+                        }
+                        if(resultSucess){
+                            sessionStorage.setItem('Simple Session',resultSession.SessionID)
+                            $('#divFarm').slideToggle()
+                        }
+                    })
+                }
+            })
+        }
+    })
     //employee tracker table
 
         $(document).on('click', '#btnRegisterUser', function(){
