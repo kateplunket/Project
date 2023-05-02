@@ -227,7 +227,7 @@
                 </div>
               </div>
 
-        <div id="tblUsers" style="display:none">
+        <div id="tblUsers" style="display:none" class="col-3">
             <div form-control>
                 <div class="card col-md-12 col-md-6">
                     <div class="card-head">
@@ -242,15 +242,14 @@
                         </form>
                     </div>
                 </div>
-                            <div class="d-none d-md-block col-6  d-flex justify-content-center align-items-center vh-100">
-                                <h2 class="text-center mt-5" style="background-color: #C98143">Let's Get Registered</h2>
-                                <div style="display:flex; justify-content: center; align-items: center;">
-                                    <img src="farm2.jpeg" alt="Chickens" class="p-5">
-                                </div>
-                            </div>
-                        </div>
+             <div class="d-none d-md-block col-6  d-flex justify-content-center align-items-center vh-100">
+                    <h2 class="text-center mt-5" style="background-color: #C98143">Let's Get Registered</h2>
+                    <div style="display:flex; justify-content: center; align-items: center;">
+                    <img src="farm2.jpeg" alt="Chickens" class="p-5">
+                    </div>
+            </div>
         </div>
-        <div id="tblProducts" style="display:none">
+        <div id="tblProducts" style="display:none" class="col-3">
             <div form-control>
                 <div class="card col-md-6 col-md-4 offset-md-1">
                     <div class="card-head">
@@ -333,7 +332,7 @@
                 </div>
             </div>
         </div>
-        <div id="tblTasks" style="display:none">
+        <div id="tblTasks" style="display:none" class="col-3">
             <div form-control>
                 <div class="card col-md-6 col-md-4 offset-md-1">
                     <div class="card-head">
@@ -349,9 +348,10 @@
                     </div>
                     <div class="card-body">
                         <form>
-                            <button class="btn col-12 mt-4" type="button" id="btnStartTask" style="background-color: #989F8B">Start Task</button>    
-                            <button class="btn col-12 mt-4" type="button" id="btnEndTask" style="background-color: #C98143">End Task</button>    
-                            <button class="btn col-12 mt-4" type="button" id="btnTimeTask" style="background-color: #D49C7F">Enter Task Times Manually</button>    
+                            <button class="btn col-8 mt-4" type="button" id="btnStartTask" style="background-color: #989F8B">Start Task</button> 
+                            <input id="txtStartTask" type="text" class="form-control col-4" placeholder="11:30" aria-label="enter start time">   
+                            <button class="btn col-8 mt-4" type="button" id="btnEndTask" style="background-color: #C98143">End Task</button>   
+                            <input id="txtEndTask" type="text" class="form-control col-4" placeholder="12:30" aria-label="enter end time"> 
                         </form>
                     </div>
                 </div>
@@ -417,7 +417,7 @@
                 </div>            
             </div>
         </div>
-        <div id="tblMaterials" style="display:none">
+        <div id="tblMaterials" style="display:none" class="col-3">
             <div form-control>
                 <div class="card col-md-6 col-md-4 offset-md-1">
                     <div class="card-head">
@@ -460,7 +460,7 @@
                 </div>            
             </div>
         </div>
-        <div id="tblHarvest" style="display:none">
+        <div id="tblHarvest" style="display:none" class="col-3">
             <div form-control>
                 <div class="card col-md-6 col-md-4 offset-md-1">
                     <div class="card-head">
@@ -511,7 +511,7 @@
                 </div>            
             </div>
         </div>
-        <div id="farmReport" style="display:none">
+        <div id="farmReport" style="display:none" class="col-3">
             <div form-control>
                 <div class="card col-md-6 col-md-4 offset-md-1">
                     <div class="card-head">
@@ -526,6 +526,7 @@
                 </div>
             </div>
         </div>
+    </div>
     </div>
     </div>
     <div id="divregistration" style="display:none">
@@ -605,6 +606,8 @@
  <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
  <script>
+        const strBaseURL = 'http://localhost:8000/';
+        var strSessionID;
 
     $('#btnCreate').on('click',function(){
         $('#divHome').slideToggle(function(){
@@ -702,7 +705,7 @@
                     text: '<p> Incorrect FarmID or Password <p>'
                 })
             } else{
-                sessionStorage.setItem('Simple Session',resultSession.SessionID)
+                sessionStorage.setItem('swollenfarm',resultSession.SessionID)
                 $('#divFarm').slideToggle() 
             }  
         })
@@ -748,7 +751,7 @@
 
         if(blnError == false){
             $.post('http://localhost:8000/users',{firstname:strFirstName,lastname:strLastName,preferredname:strPreferredName,email:strEmai,password:strPassword},function(result){
-                result = JSON.parse
+                result = JSON.parse()
                 if(resultError){
                     swal({
                         icon: 'error',
@@ -756,7 +759,7 @@
                     })
                 } else{
                     $.post('http://localhost:8000/users',{email:strEmail,firstname:strFirstName,lastname:strLastName,preferredname:strPreferredName,password:strPassword},function(){
-                        result = JSON.parse
+                        result = JSON.parse()
                         if(resultError){
                             swal({
                                 icon: 'error',
@@ -837,30 +840,19 @@
         if(blnError == false){
             $.post('http://localhost:8000/farms',{farmID:strfarmID,farmname:strfarmname,streetaddress1:strstreetaddress1,streetaddress2:strstreetaddress2,
                 city:strcity,state:strstate,zip:strzip,email:stremail,firstname:strfirstname,lastname:strlastname,preferredname:strpreferredname,password:strpassword},function(result){
-                result = JSON.parse
-                if(resultError){
+                if(result.Type=='Error'){
                     swal({
                         icon: 'error',
                         text: '<p> User Creation Error <p>'
                     })
                 } else{
-                    $.post('http://localhost:8000/farms',{farmID,strfarmID},function(){
-                        result = JSON.parse
-                        if(resultError){
-                            swal({
-                                icon: 'error',
-                                text: '<p> Please Return to Login, User Creation Failed <p>'
-                            })
-                        }
-                        if(resultSucess){
-                            sessionStorage.setItem('Simple Session',resultSession.SessionID)
-                            $('#divFarm').slideToggle()
-                        }
-                    })
+                    sessionStorage.setItem('Simple Session',result.Message)
+                     $('#divFarm').slideToggle()
                 }
             })
         }
     })
+
 
     //farm ID validation
     $('btnFarmUserID').on('click',function(){
