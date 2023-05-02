@@ -778,7 +778,7 @@
         }
 
         if(blnError == false){
-            $.post('http://localhost:8000/farm',{farmID:strfarmID,farmname:strfarmname,streetaddress1:strstreetaddress1,streetaddress2:strstreetaddress2,
+            $.post('http://localhost:8000/farms',{farmID:strfarmID,farmname:strfarmname,streetaddress1:strstreetaddress1,streetaddress2:strstreetaddress2,
                 city:strcity,state:strstate,zip:strzip,email:stremail,firstname:strfirstname,lastname:strlastname,preferredname:strpreferredname,password:strpassword},function(result){
                 result = JSON.parse
                 if(resultError){
@@ -787,7 +787,7 @@
                         text: '<p> User Creation Error <p>'
                     })
                 } else{
-                    $.post('http://localhost:8000/farm',{farmID,strfarmID},function(){
+                    $.post('http://localhost:8000/farms',{farmID,strfarmID},function(){
                         result = JSON.parse
                         if(resultError){
                             swal({
@@ -814,12 +814,12 @@
             let strPreferredName = $('#txtCreatePreferredName').val()            
 
             var objInsertResult;
-            var objInsertCallBack = $.post('http://localhost:8000/user?FirstName=' + strFirstName + '&LastName=' + strLastName + '&Email='+ strEmail + '&PreferredName=' + strPreferredName, function(result){
+            var objInsertCallBack = $.post('http://localhost:8000/users?FirstName=' + strFirstName + '&LastName=' + strLastName + '&Email='+ strEmail + '&PreferredName=' + strPreferredName, function(result){
                 objInsertResult = result;
             })
 
             $.when(objInsertCallBack).done(function(){
-                $.getJSON('http://localhost:8000/user',{session:objInsertResult}, function(result){
+                $.getJSON('http://localhost:8000/users',{session:objInsertResult}, function(result){
                     $.each(result,function(index,user){
                         $('#divFarm').append(user.FirstName + ' ' + user.LastName + ' ' + user.Email + ' ' + user.PreferredName);
                     })
@@ -838,12 +838,12 @@
             let strDescription = $('#txtProductDespcription').val()
 
             var objInsertResult;
-            var objInsertCallBack = $.post('http://localhost:8000/product?productID=' + strProductID + '&SName=' + strShortName + '&LName=' + strLongName + '&description' + strDescription, function(result){
+            var objInsertCallBack = $.post('http://localhost:8000/products?productID=' + strProductID + '&SName=' + strShortName + '&LName=' + strLongName + '&description' + strDescription, function(result){
                 objInsertResult = result;
             })
 
         $.when(objInsertCallBack).done(function(){
-            $.getJSON('http://localhost:8000/user',{session:objInsertResult}, function(result){
+            $.getJSON('http://localhost:8000/users',{session:objInsertResult}, function(result){
                 var table = $('<table>');
                 var headerRow = $('<tr>').append(
                     $('<th>').text('First Name'),
@@ -873,12 +873,12 @@
             let strTask = $('#txtTask').val();
 
             var objInsertResult;
-            var objInsertCallBack = $.post('http://localhost:8000/task?tasklogID=' + strTaskLogID + '&task=' + strTask, function(result){
+            var objInsertCallBack = $.post('http://localhost:8000/tasks?tasklogID=' + strTaskLogID + '&task=' + strTask, function(result){
                 objInsertResult = result;
             })
 
             $.when(objInsertCallBack).done(function(){
-                $.getJSON('http://localhost:8000/task', function(result){
+                $.getJSON('http://localhost:8000/tasks', function(result){
                     $.each(result,function(index,task){
                         $('#divFarm').append(task.tasklogID + ' ' + task.task);
                     })
@@ -895,12 +895,12 @@
             let strUnitofMeasure = $('#txtUnitofMeasure').val()
 
             var objInsertResult;
-            var objInsertCallBack = $.post('http://localhost:8000/harvest?harvestID=' + strHarvestID + '&product=' + strProduct + '&quantity= ' + strQuantity + '&unitofmeasure=' + strUnitofMeasure, function(result){
+            var objInsertCallBack = $.post('http://localhost:8000/harvests?harvestID=' + strHarvestID + '&product=' + strProduct + '&quantity= ' + strQuantity + '&unitofmeasure=' + strUnitofMeasure, function(result){
                 objInsertResult = result;
             })
 
             $.when(objInsertCallBack).done(function(){
-                $.getJSON('http://localhost:8000/farm', function(result){
+                $.getJSON('http://localhost:8000/farms', function(result){
                     $.each(result,function(index,harvest){
                         $('#divFarm').append(harvest.harvestID + ' ' + harvest.product + ' ' + harvest.quantity + ' ' + harvest.UnitofMeasure);
                     })
