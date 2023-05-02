@@ -926,6 +926,19 @@
                     icon: 'error',
                     text: strErrorMessage
                 })
+            } else{
+                $.post('http://localhost:8000/products',{ProductID:strProductID,ProductShortName:strProductShortName,ProductLongName:strProductLongName,ProductDescription:strProductDescription},function(result){
+                    if(result.Type=='Error'){
+                        swal({
+                            icon: 'error',
+                            text: '<p> Product Creation Error <p>'
+                        })
+                    } else{
+                        sessionStorage.setItem('Simple Session',result.Message)
+                        $('#divCreateProduct').slideToggle()
+                            $('#divProduct').slideToggle()
+                    }
+                })
             }
         })
 
@@ -956,6 +969,19 @@
                     icon: 'error',
                     text: strErrorMessage
                 })
+            } else{
+                $.post('http://localhost:8000/tasks',{TaskID:strTaskID,TaskName:strTaskName,TaskNotes:strTaskNotes,TaskPreferredName:strTaskPreferredName},function(result){
+                    if(result.Type=='Error'){
+                        swal({
+                            icon: 'error',
+                            text: '<p> Task Creation Error <p>'
+                        })
+                    } else{
+                        sessionStorage.setItem('Simple Session',result.Message)
+                        $('#divCreateTask').slideToggle()
+                            $('#divTask').slideToggle()
+                    }
+                })
             }
         })
 
@@ -980,6 +1006,19 @@
                 swal({
                     icon: 'error',
                     text: strErrorMessage
+                })
+            } else {
+                $.post('http://localhost:8000/materials',{MaterialID:strMaterialID,MaterialDescription:strMaterialDescription},function(result){
+                    if(result.Type=='Error'){
+                        swal({
+                            icon: 'error',
+                            text: '<p> Material Creation Error <p>'
+                        })
+                    } else{
+                        sessionStorage.setItem('Simple Session',result.Message)
+                        $('#divCreateMaterial').slideToggle()
+                            $('#divMaterial').slideToggle()
+                    }
                 })
             }
         })
@@ -1015,6 +1054,19 @@
                 swal({
                     icon: 'error',
                     text: strErrorMessage
+                })
+            } else{
+                $.post('http://localhost:8000/harvests',{HarvestID:strHarvestID,HarvestLName:strLName,HarvestEmail:strCreateEmail,HarvestPreferredName:strCreatePreferredName,HarvestPassword:strPassword},function(result){
+                    if(result.Type=='Error'){
+                        swal({
+                            icon: 'error',
+                            text: '<p> Harvest Creation Error <p>'
+                        })
+                    } else{
+                        sessionStorage.setItem('Simple Session',result.Message)
+                        $('#divCreateHarvest').slideToggle()
+                            $('#divHarvest').slideToggle()
+                    }
                 })
             }
         })
